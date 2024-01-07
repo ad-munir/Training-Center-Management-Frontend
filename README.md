@@ -27,13 +27,13 @@ Before you begin, ensure you have the following installed:
 1. Clone the repository:
 
     ```bash
-    git clone https://github.com/your-username/frontend.git
+    git clone https://github.com/ad-munir/Training-Center-Management-Frontend.git
     ```
 
 2. Navigate to the project directory:
 
     ```bash
-    cd frontend
+    cd Training-Center-Management-Frontend
     ```
 
 3. Install dependencies:
