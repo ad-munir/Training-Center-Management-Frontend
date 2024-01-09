@@ -7,8 +7,11 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class TrainigCenterService {
-   url_backend : String  = 'http://localhost:8080/'
 
+  // endpoint
+  url_backend : String  = 'http://localhost:8080/api/v1/auth/'
+  
+  // using HttpClient
   constructor( private http: HttpClient ) {}
 
   // login function, using for authenticating, called from login.component.ts
