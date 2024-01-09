@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { TrainigCenterService } from '../trainig-center.service';
+import { TrainigCenterService } from '../../trainig-center.service';
 import { Router } from '@angular/router';
 
 @Component({
