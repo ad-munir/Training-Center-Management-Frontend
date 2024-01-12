@@ -18,4 +18,11 @@ export class TrainigCenterService {
   login(loginRequest: any): Observable<any> {
     return this.http.post(this.url_backend + "authenticate", loginRequest)
   }
+
+  // save a participant
+
+  saveParticipant(participants : any){
+
+    return this.http.post(this.url_backend + "participants" , participants)
+  }
 }

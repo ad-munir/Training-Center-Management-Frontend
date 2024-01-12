@@ -1,0 +1,29 @@
+    
+ 
+ <div class="form">
+    <form (ngSubmit)="submitForm()">
+
+      <div class="title">Enter Your Infos:</div>
+
+      <div class="input-container ic2">
+        <input type="text"  [(ngModel)]="participant.firstname" name="firstname" placeholder="firstname">
+      </div>
+      <div class="input-container ic2">
+        <input type="text"  [(ngModel)]="participant.lastname" name="lastname" placeholder="lastname">
+      </div>
+      <div class="input-container ic2">
+        <input type="text"  [(ngModel)]="participant.email" name="email" placeholder="email">
+      </div>
+      <div class="input-container ic2">
+        <input type="text"  [(ngModel)]="participant.phone" name="phone" placeholder="phone">
+      </div>
+      <div class="input-container ic2">
+        <input type="text"  [(ngModel)]="participant.birthday" name="birthday" placeholder="birthday" >
+      </div>
+      <div class="input-container ic2">
+        <input type="text"  [(ngModel)]="participant.city" name="city" placeholder="city">
+      </div>
+      <button type="text" class="submit">submit</button>
+    </form>
+
+    </div>
