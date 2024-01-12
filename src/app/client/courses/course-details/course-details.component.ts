@@ -7,20 +7,20 @@ import { EnrollCourseComponent } from '../enroll-course/enroll-course.component'
   templateUrl: './course-details.component.html',
   styleUrls: [
     './course-details.component.css',
-    '../../css/bootstrap.min.css',
-    '../../css/animate.css',
-    '../../css/owl.carousel.min.css',
-    '../../css/themify-icons.css',
-    '../../css/flaticon.css',
-    '../../css/magnific-popup.css',
-    '../../css/slick.css',
-    '../../css/style.css',
+    '../../../css/bootstrap.min.css',
+    '../../../css/animate.css',
+    '../../../css/owl.carousel.min.css',
+    '../../../css/themify-icons.css',
+    '../../../css/flaticon.css',
+    '../../../css/magnific-popup.css',
+    '../../../css/slick.css',
+    '../../../css/style.css',
   ],
 })
 export class CourseDetailsComponent {
 
   constructor(private dialog:MatDialog){}
-  
+
   openDialog() {
     this.dialog.open(EnrollCourseComponent, {
       height: '600px',

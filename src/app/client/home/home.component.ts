@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-courses',
-  templateUrl: './courses.component.html',
+  selector: 'app-home',
+  templateUrl: './home.component.html',
   styleUrls: [
-    './courses.component.css',
+    './home.component.css',
     '../../css/bootstrap.min.css',
     '../../css/animate.css',
     '../../css/owl.carousel.min.css',
@@ -15,4 +15,4 @@ import { Component } from '@angular/core';
     '../../css/style.css'
   ],
 })
-export class CoursesComponent {}
+export class HomeComponent {}

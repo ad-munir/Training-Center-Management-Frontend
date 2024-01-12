@@ -13,11 +13,11 @@ export class EnrollCourseComponent {
   // constructor(@Inject(MAT_DIALOG_DATA) public data:any){}
 
   submitForm() {
-    
+
     console.log('Participant Information:', this.participant);
-    
-    
-  
+
+
+
   }
 
 }
