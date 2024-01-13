@@ -20,6 +20,8 @@ import { ContactComponent } from './client/contact/contact.component';
 import { SidebarComponent } from './admin/layout/sidebar/sidebar.component';
 import { MainContentComponent } from './admin/layout/main-content/main-content.component';
 import { LayoutComponent } from './admin/layout/layout.component';
+import { CalendarComponent } from './calendar/calendar.component';
+import { FullCalendarModule } from '@fullcalendar/angular';
 
 
 @NgModule({
@@ -36,6 +38,7 @@ import { LayoutComponent } from './admin/layout/layout.component';
     LayoutComponent,
     SidebarComponent,
     MainContentComponent,
+    CalendarComponent,
   ],
   imports: [
     BrowserModule,
@@ -47,7 +50,8 @@ import { LayoutComponent } from './admin/layout/layout.component';
     MatButtonModule,
     MatFormFieldModule,
     MatIconModule,
-    MatInputModule
+    MatInputModule,
+    FullCalendarModule
   ],
   providers: [],
   bootstrap: [AppComponent]

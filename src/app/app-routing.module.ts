@@ -8,6 +8,7 @@ import { CourseDetailsComponent } from './client/courses/course-details/course-d
 import { ContactComponent } from './client/contact/contact.component';
 import { LayoutComponent } from './admin/layout/layout.component';
 import { MainContentComponent } from './admin/layout/main-content/main-content.component';
+import { CalendarComponent } from './calendar/calendar.component';
 
 
 const routes: Routes = [
@@ -16,10 +17,7 @@ const routes: Routes = [
   { path: 'about', component: AboutComponent },
   { path: 'contact', component: ContactComponent },
   { path: 'course-details', component: CourseDetailsComponent },
-
-
-
-
+  { path: 'calender', component: CalendarComponent },
 
   { path: 'login', component: LoginComponent },
   { path: 'dashboard', component: LayoutComponent },
