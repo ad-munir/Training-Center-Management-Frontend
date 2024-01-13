@@ -23,6 +23,7 @@ import { AssistantsMainComponent } from './admin/content/assistants/assistants-m
 import { CompaniesMainComponent } from './admin/content/companies/companies-main/companies-main.component';
 import { MainContentComponent } from './admin/content/main/main-content/main-content.component';
 import { TrainersMainComponent } from './admin/content/trainers/trainers-main/trainers-main.component';
+import { ParticipantComponent } from './admin/content/participants/participant/participant.component';
 
 
 @NgModule({
@@ -42,6 +43,7 @@ import { TrainersMainComponent } from './admin/content/trainers/trainers-main/tr
     AssistantsMainComponent,
     CompaniesMainComponent,
     TrainersMainComponent,
+    ParticipantComponent,
   ],
   imports: [
     BrowserModule,
