@@ -1,0 +1,73 @@
+<app-sidebar></app-sidebar>
+<!--Content Start-->
+<div class="content-start transition">
+  <div class="container-fluid dashboard px-5">
+
+    <div class="content-header">
+      <h1>Add a Trainer</h1>
+    </div>
+
+
+    <div class="row content-form">
+
+
+      <div class="col-12 col-md-6 col-lg-6">
+        <div class="card">
+          <form>
+
+            <div class="card-body">
+              <div class="mb-3">
+                <label>First Name</label>
+                <input type="text" class="form-control" required="">
+              </div>
+              <div class="mb-3">
+                <label>Last Name</label>
+                <input type="text" class="form-control" required="">
+              </div>
+              <div class="mb-3">
+                <label>Email</label>
+                <input type="email" class="form-control" required="">
+              </div>
+              <div class="mb-3">
+                <label>Phone</label>
+                <input type="email" class="form-control">
+              </div>
+              <div class="mb-3">
+                <label>Password</label>
+                <input type="password" class="form-control">
+              </div>
+
+              <div class="mb-3">
+                <label for="formFile" class="form-label mb-1">Image</label>
+                <input class="form-control" type="file" id="formFile">
+              </div>
+
+              <div class="container mt-5">
+                <h2>Add Keywords</h2>
+                <div class="input-group mb-3">
+                  <input type="text" class="form-control" [(ngModel)]="newKeyword" placeholder="Enter keyword" aria-label="Enter keyword" aria-describedby="addKeywordBtn">
+                  <div class="input-group-append">
+                    <button class="btn btn-primary" type="button" (click)="addKeyword()" id="addKeywordBtn">Add Keyword</button>
+                  </div>
+                </div>
+
+                <h3>Added Keywords</h3>
+                <ul class="list-group">
+                  <li class="list-group-item" *ngFor="let keyword of keywords">{{ keyword }}</li>
+                </ul>
+              </div>
+
+
+            </div>
+            <div class="card-footer text-right">
+              <button class="btn btn-primary">Submit</button>
+            </div>
+          </form>
+        </div>
+      </div>
+
+    </div>
+
+
+  </div>
+</div>
