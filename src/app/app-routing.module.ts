@@ -7,7 +7,10 @@ import { AboutComponent } from './client/about/about.component';
 import { CourseDetailsComponent } from './client/courses/course-details/course-details.component';
 import { ContactComponent } from './client/contact/contact.component';
 import { LayoutComponent } from './admin/layout/layout.component';
-import { MainContentComponent } from './admin/layout/main-content/main-content.component';
+import { MainContentComponent } from './admin/content/main/main-content/main-content.component';
+import { AssistantsMainComponent } from './admin/content/assistants/assistants-main/assistants-main.component';
+import { CompaniesMainComponent } from './admin/content/companies/companies-main/companies-main.component';
+import { TrainersMainComponent } from './admin/content/trainers/trainers-main/trainers-main.component';
 
 
 const routes: Routes = [
@@ -19,11 +22,15 @@ const routes: Routes = [
 
 
 
-
-
   { path: 'login', component: LoginComponent },
   { path: 'dashboard', component: LayoutComponent },
   { path: 'main', component: MainContentComponent },
+
+
+
+  { path: 'assistants', component: AssistantsMainComponent },
+  { path: 'companies', component: CompaniesMainComponent },
+  { path: 'trainers', component: TrainersMainComponent },
 ];
 
 @NgModule({

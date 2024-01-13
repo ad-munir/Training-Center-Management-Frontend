@@ -18,8 +18,11 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { ContactComponent } from './client/contact/contact.component';
 import { SidebarComponent } from './admin/layout/sidebar/sidebar.component';
-import { MainContentComponent } from './admin/layout/main-content/main-content.component';
 import { LayoutComponent } from './admin/layout/layout.component';
+import { AssistantsMainComponent } from './admin/content/assistants/assistants-main/assistants-main.component';
+import { CompaniesMainComponent } from './admin/content/companies/companies-main/companies-main.component';
+import { MainContentComponent } from './admin/content/main/main-content/main-content.component';
+import { TrainersMainComponent } from './admin/content/trainers/trainers-main/trainers-main.component';
 
 
 @NgModule({
@@ -36,6 +39,9 @@ import { LayoutComponent } from './admin/layout/layout.component';
     LayoutComponent,
     SidebarComponent,
     MainContentComponent,
+    AssistantsMainComponent,
+    CompaniesMainComponent,
+    TrainersMainComponent,
   ],
   imports: [
     BrowserModule,

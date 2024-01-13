@@ -86,7 +86,7 @@
             <i class='bx bx-chevron-right icon-right'></i>
           </a>
           <ul class="side-dropdown" [ngClass]="{'show': isTrainersDropdownOpen}">
-            <li><a routerLink="/">Default Layout</a></li>
+            <li><a routerLink="/trainers">Add trainer</a></li>
             <li><a routerLink="/">Top Navigation</a></li>
           </ul>
         </li>
@@ -116,7 +116,23 @@
             <i class='bx bx-chevron-right icon-right'></i>
           </a>
           <ul class="side-dropdown" [ngClass]="{'show': isAssistantsDropdownOpen}">
-            <li><a routerLink="/">Default Layout</a></li>
+            <li><a routerLink="/assistants">Add Assiastant</a></li>
+            <li><a routerLink="/">Top Navigation</a></li>
+          </ul>
+        </li>
+
+
+        <!-- Companies Divider -->
+        <li class="divider" data-text="STARTER">Companies</li>
+        <!-- Companies Dropdown -->
+        <li>
+          <a (click)="toggleCompaniesDropdown()">
+            <i class='bx bx-columns icon'></i>
+            Companies
+            <i class='bx bx-chevron-right icon-right'></i>
+          </a>
+          <ul class="side-dropdown" [ngClass]="{'show': isCompaniesDropdownOpen}">
+            <li><a routerLink="/companies">Add Company</a></li>
             <li><a routerLink="/">Top Navigation</a></li>
           </ul>
         </li>

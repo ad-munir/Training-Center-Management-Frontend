@@ -11,6 +11,7 @@ export class SidebarComponent {
   isTrainersDropdownOpen = false;
   isParticipantsDropdownOpen = false;
   isAssistantsDropdownOpen = false;
+  isCompaniesDropdownOpen = false;
 
   isProfileDropdownOpen = false;
 
@@ -38,6 +39,12 @@ export class SidebarComponent {
     this.closeOtherDropdowns('assistants');
   }
 
+  toggleCompaniesDropdown(): void {
+    this.isCompaniesDropdownOpen = !this.isCompaniesDropdownOpen;
+    this.closeOtherDropdowns('companies');
+  }
+
+
   private closeOtherDropdowns(exclude: string): void {
     if (exclude !== 'courses') {
       this.isCoursesDropdownOpen = false;
@@ -50,6 +57,9 @@ export class SidebarComponent {
     }
     if (exclude !== 'assistants') {
       this.isAssistantsDropdownOpen = false;
+    }
+    if (exclude !== 'companies') {
+      this.isCompaniesDropdownOpen = false;
     }
   }
 }

@@ -4,7 +4,7 @@
   <div class="container-fluid dashboard px-5">
 
     <div class="content-header">
-      <h1>Add a Trainer</h1>
+      <h1>Add Assistant</h1>
     </div>
 
 
@@ -41,21 +41,6 @@
                 <label for="formFile" class="form-label mb-1">Image</label>
                 <input class="form-control" type="file" id="formFile">
               </div>
-
-              <div class="container mt-5">
-                <h2>Add Keywords</h2>
-                <div class="input-group mb-3">
-                  <input type="text" class="form-control" [(ngModel)]="newKeyword" placeholder="Enter keyword" aria-label="Enter keyword" aria-describedby="addKeywordBtn">
-                  <div class="input-group-append">
-                    <button class="btn btn-primary" type="button" (click)="addKeyword()" id="addKeywordBtn">Add Keyword</button>
-                  </div>
-                </div>
-
-                <ul class="list-group">
-                  <li class="list-group-item" *ngFor="let keyword of keywords">{{ keyword }}</li>
-                </ul>
-              </div>
-
 
             </div>
             <div class="card-footer text-right">
