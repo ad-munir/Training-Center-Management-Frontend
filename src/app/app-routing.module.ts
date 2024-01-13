@@ -11,6 +11,7 @@ import { MainContentComponent } from './admin/content/main/main-content/main-con
 import { AssistantsMainComponent } from './admin/content/assistants/assistants-main/assistants-main.component';
 import { CompaniesMainComponent } from './admin/content/companies/companies-main/companies-main.component';
 import { TrainersMainComponent } from './admin/content/trainers/trainers-main/trainers-main.component';
+import { TrainersFormComponent } from './admin/content/trainers/trainers-form/trainers-form.component';
 
 
 const routes: Routes = [
@@ -30,7 +31,9 @@ const routes: Routes = [
 
   { path: 'assistants', component: AssistantsMainComponent },
   { path: 'companies', component: CompaniesMainComponent },
-  { path: 'trainers', component: TrainersMainComponent },
+
+  { path: 'trainers/all', component: TrainersMainComponent },
+  { path: 'trainers', component: TrainersFormComponent },
 ];
 
 @NgModule({

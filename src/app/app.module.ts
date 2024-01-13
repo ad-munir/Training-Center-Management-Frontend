@@ -23,7 +23,12 @@ import { AssistantsMainComponent } from './admin/content/assistants/assistants-m
 import { CompaniesMainComponent } from './admin/content/companies/companies-main/companies-main.component';
 import { MainContentComponent } from './admin/content/main/main-content/main-content.component';
 import { TrainersMainComponent } from './admin/content/trainers/trainers-main/trainers-main.component';
-
+import { TagsInputComponent } from './material-components/tags-input/tags-input.component';
+import { MatChipsModule } from '@angular/material/chips';
+import { TrainersFormComponent } from './admin/content/trainers/trainers-form/trainers-form.component';
+import { MatTableModule } from '@angular/material/table';
+import { TrainersTableComponent } from './material-components/tables/trainers-table/table.component';
+import { LoaderComponent } from './material-components/loader/loader.component';
 
 @NgModule({
   declarations: [
@@ -42,6 +47,10 @@ import { TrainersMainComponent } from './admin/content/trainers/trainers-main/tr
     AssistantsMainComponent,
     CompaniesMainComponent,
     TrainersMainComponent,
+    TagsInputComponent,
+    TrainersFormComponent,
+    TrainersTableComponent,
+    LoaderComponent
   ],
   imports: [
     BrowserModule,
@@ -51,10 +60,13 @@ import { TrainersMainComponent } from './admin/content/trainers/trainers-main/tr
     ReactiveFormsModule,
     MatDialogModule,
     MatButtonModule,
+    MatInputModule,
     MatFormFieldModule,
+    MatChipsModule,
     MatIconModule,
-    MatInputModule
-  ],
+    MatTableModule
+
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })

@@ -298,6 +298,7 @@ a.dropdown-item{
 }
 #sidebar .side-dropdown li{
 	list-style-type: circle;
+  padding: 10px;
 }
 #sidebar .side-dropdown {
 	padding-left: 54px;
@@ -568,3 +569,5 @@ a.dropdown-item{
   align-items: center;
   justify-content: center;
 }
+
+

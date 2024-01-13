@@ -85,9 +85,20 @@
             Trainers
             <i class='bx bx-chevron-right icon-right'></i>
           </a>
+          
           <ul class="side-dropdown" [ngClass]="{'show': isTrainersDropdownOpen}">
-            <li><a routerLink="/trainers">Add trainer</a></li>
-            <li><a routerLink="/">Top Navigation</a></li>
+            <li>
+              <a routerLink="/trainers/all" class="d-inline  ">
+                <i class='bx bx-table'></i>
+                Show Trainers
+            </a>
+          </li>
+            <li>
+              <a routerLink="/trainers" class="d-inline">
+                <i class='bx bxs-user-plus'></i>
+                <span>Add trainer</span>
+              </a>
+            </li>
           </ul>
         </li>
 
