@@ -29,6 +29,8 @@ import { TrainersFormComponent } from './admin/content/trainers/trainers-form/tr
 import { MatTableModule } from '@angular/material/table';
 import { TrainersTableComponent } from './material-components/tables/trainers-table/table.component';
 import { LoaderComponent } from './material-components/loader/loader.component';
+import { ParticipantComponent } from './admin/content/participants/participant/participant.component';
+
 
 @NgModule({
   declarations: [
@@ -50,7 +52,8 @@ import { LoaderComponent } from './material-components/loader/loader.component';
     TagsInputComponent,
     TrainersFormComponent,
     TrainersTableComponent,
-    LoaderComponent
+    LoaderComponent,
+    ParticipantComponent,
   ],
   imports: [
     BrowserModule,
