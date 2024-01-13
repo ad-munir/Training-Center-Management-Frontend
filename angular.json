@@ -25,7 +25,9 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.css",
+              "bootstrap/dist/css/bootstrap.css",
+              "boxicons/css/boxicons.min.css"
             ],
             "scripts": []
           },

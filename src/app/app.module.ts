@@ -17,6 +17,9 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { ContactComponent } from './client/contact/contact.component';
+import { SidebarComponent } from './admin/layout/sidebar/sidebar.component';
+import { MainContentComponent } from './admin/layout/main-content/main-content.component';
+import { LayoutComponent } from './admin/layout/layout.component';
 
 
 @NgModule({
@@ -30,7 +33,9 @@ import { ContactComponent } from './client/contact/contact.component';
     CourseDetailsComponent,
     EnrollCourseComponent,
     ContactComponent,
-
+    LayoutComponent,
+    SidebarComponent,
+    MainContentComponent,
   ],
   imports: [
     BrowserModule,
