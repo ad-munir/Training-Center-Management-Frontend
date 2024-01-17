@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './auth/login/login.component';
 import { HomeComponent } from './client/home/home.component';
@@ -30,7 +30,7 @@ import { MatTableModule } from '@angular/material/table';
 import { TrainersTableComponent } from './material-components/tables/trainers-table/table.component';
 import { LoaderComponent } from './material-components/loader/loader.component';
 import { ParticipantComponent } from './admin/content/participants/participant/participant.component';
-
+import { Interceptor } from './inteceptors';
 
 @NgModule({
   declarations: [
@@ -67,10 +67,11 @@ import { ParticipantComponent } from './admin/content/participants/participant/p
     MatFormFieldModule,
     MatChipsModule,
     MatIconModule,
-    MatTableModule
-
-    ],
-  providers: [],
-  bootstrap: [AppComponent]
+    MatTableModule,
+  ],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: Interceptor, multi: true },
+  ],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
