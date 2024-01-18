@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import 'swiper';
 
 @Component({
   selector: 'app-courses',

@@ -31,9 +31,11 @@ export class LoginComponent {
     this.service.login(this.loginForm.value).subscribe((response) => {
 
       if (response.token) {
-        const jwtToken = response.token 
+        const jwtToken = response.token
+        const role = response.role ; 
+        localStorage.setItem('ROLE', role);
         localStorage.setItem('JWT', jwtToken);
-        this.router.navigateByUrl('/assistants');      }
+        this.router.navigateByUrl('/dashboard');      }
     });
   }
 }

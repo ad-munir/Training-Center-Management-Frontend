@@ -60,9 +60,9 @@
           </a>
         </li>
 
-
-        <!-- Courses Divider -->
-        <li class="divider" data-text="STARTER">Courses</li>
+         <div *ngIf="role === 'ADMIN'">
+           <!-- Courses Divider -->
+           <li   class="divider" data-text="STARTER">Courses</li>
         <!-- Courses Dropdown -->
         <li>
           <a (click)="toggleCoursesDropdown()">
@@ -75,6 +75,8 @@
             <li><a routerLink="/">New Course</a></li>
           </ul>
         </li>
+         </div>
+        
 
         <!-- Trainers Divider -->
         <li class="divider" data-text="STARTER">Trainers</li>

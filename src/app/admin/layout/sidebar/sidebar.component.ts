@@ -1,11 +1,18 @@
-import { Component } from '@angular/core';
+import { Component , OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-sidebar',
   templateUrl: './sidebar.component.html',
   styleUrls: ['./sidebar.component.css', './../layout.component.css']
 })
-export class SidebarComponent {
+export class SidebarComponent implements OnInit  {
+
+  role: any ; // Assurez-vous de définir le type correct de votre rôle
+
+  ngOnInit() {
+    // Obtenez le rôle à partir du stockage local
+    this.role = localStorage.getItem('ROLE');
+  }
 
   isCoursesDropdownOpen = false;
   isTrainersDropdownOpen = false;
