@@ -13,13 +13,13 @@ export class Interceptor implements HttpInterceptor {
     request: HttpRequest<any>,
     next: HttpHandler
   ): Observable<HttpEvent<any>> {
-    if (
-      !request.url.includes('http://localhost:8080/api/v1/auth/authenticate')
-    ) {
+
+
+    if ( !request.url.includes('http://localhost:8080/api/v1/auth/authenticate') ) {
+
       const jwtToken = localStorage.getItem('JWT');
 
       if (jwtToken) {
-        console.log(jwtToken);
         request = request.clone({
           headers: request.headers.set('Authorization', `Bearer ${jwtToken}`),
         });

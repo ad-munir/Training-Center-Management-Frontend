@@ -1,39 +1,35 @@
-
-
 import {COMMA, ENTER} from '@angular/cdk/keycodes';
-import {Component, inject} from '@angular/core';
-import {MatChipEditedEvent, MatChipInputEvent, MatChipsModule} from '@angular/material/chips';
-import {LiveAnnouncer} from '@angular/cdk/a11y';
+import { Component, EventEmitter, Input, Output, inject } from '@angular/core';
+import { MatChipEditedEvent, MatChipInputEvent } from '@angular/material/chips';
+import { LiveAnnouncer } from '@angular/cdk/a11y';
 
 export interface Keyword {
   name: string;
 }
 
-/**
- * @title Chips with input
- */
 @Component({
   selector: 'app-tags-input',
   templateUrl: './tags-input.component.html',
   styleUrls: ['./tags-input.component.css'],
-  standalone: false,
 })
 export class TagsInputComponent {
+
+  @Input() keywords: Keyword[] = [{name: 'Java'}, {name: 'Spring'}, {name: 'Angular'}];
+  @Output() keywordsChanged = new EventEmitter<Keyword[]>();
+
   addOnBlur = true;
   readonly separatorKeysCodes = [ENTER, COMMA] as const;
-  keywords: Keyword[] = [{name: 'Java'}, {name: 'Spring'}, {name: 'Angular'}];
 
   announcer = inject(LiveAnnouncer);
 
   add(event: MatChipInputEvent): void {
     const value = (event.value || '').trim();
 
-    // Add our keyword
     if (value) {
       this.keywords.push({name: value});
+      this.keywordsChanged.emit(this.keywords); // Emitting event to notify parent about the change
     }
 
-    // Clear the input value
     event.chipInput!.clear();
   }
 
@@ -42,7 +38,7 @@ export class TagsInputComponent {
 
     if (index >= 0) {
       this.keywords.splice(index, 1);
-
+      this.keywordsChanged.emit(this.keywords); // Emitting event to notify parent about the change
       this.announcer.announce(`Removed ${keyword}`);
     }
   }
@@ -50,16 +46,15 @@ export class TagsInputComponent {
   edit(keyword: Keyword, event: MatChipEditedEvent) {
     const value = event.value.trim();
 
-    // Remove keyword if it no longer has a name
     if (!value) {
       this.remove(keyword);
       return;
     }
 
-    // Edit existing keyword
     const index = this.keywords.indexOf(keyword);
     if (index >= 0) {
       this.keywords[index].name = value;
+      this.keywordsChanged.emit(this.keywords); // Emitting event to notify parent about the change
     }
   }
 }

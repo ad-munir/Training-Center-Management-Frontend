@@ -1,0 +1,66 @@
+<!-- your.component.html -->
+<app-sidebar></app-sidebar>
+
+<!-- Content Start -->
+<div class="content-start transition">
+  <div class="container-fluid dashboard px-5">
+
+    <div class="content-header">
+      <h1>Add a Course</h1>
+    </div>
+
+    <div class="row content-form">
+
+      <div class="col-12 col-md-6 col-lg-6">
+        <div class="card p-4">
+          <form [formGroup]="form" (ngSubmit)="onSubmit()">
+            <div class="mb-3">
+              <label class="fw-semibold">Title</label>
+              <input type="text" formControlName="title" class="form-control p-2" required>
+            </div>
+
+            <div class="mb-3">
+              <label class="fw-semibold">Hours</label>
+              <input type="text" formControlName="hours" class="form-control p-2" required>
+            </div>
+
+            <div class="mb-3">
+              <label class="fw-semibold">Cost</label>
+              <input type="number" formControlName="cost" class="form-control p-2" required>
+            </div>
+
+            <div class="mb-3">
+              <label class="fw-semibold">Description</label>
+              <textarea formControlName="description" class="form-control p-2" required></textarea>
+            </div>
+
+            <div class="mb-3">
+              <label class="fw-semibold">Type</label>
+              <input type="text" formControlName="type" class="form-control p-2" required>
+            </div>
+
+            <div class="mb-3">
+              <label class="fw-semibold">Category</label>
+              <input type="text" formControlName="category" class="form-control p-2" required>
+            </div>
+
+            <div class="mb-3">
+              <label class="fw-semibold">Image</label>
+              <input type="file" (change)="onFileChange($event)" class="form-control p-2" required>
+            </div>
+
+            <div class="mb-3">
+              <label class="fw-semibold">Trainer id</label>
+              <input type="number" formControlName="trainerId" class="form-control p-2" required>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </form>
+
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</div>

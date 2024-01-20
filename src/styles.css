@@ -1,1 +1,13 @@
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
+body::-webkit-scrollbar {
+  width: 8px !important;
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: #017EFA !important;
+}
+
+body::-webkit-scrollbar-track {
+  background-color: #51CBFF !important;
+}

@@ -31,6 +31,13 @@ import { TrainersTableComponent } from './material-components/tables/trainers-ta
 import { LoaderComponent } from './material-components/loader/loader.component';
 import { ParticipantComponent } from './admin/content/participants/participant/participant.component';
 import { Interceptor } from './inteceptors';
+import { CompaniesFormComponent } from './admin/content/companies/companies-form/companies-form.component';
+import { CompaniesTableComponent } from './material-components/tables/companies-table/companies-table.component';
+import { AssistantsTableComponent } from './material-components/tables/assistants-table/assistants-table.component';
+import { AssistantsFormComponent } from './admin/content/assistants/assistants-form/assistants-form.component';
+import { CoursesFormComponent } from './admin/content/courses/courses-form/courses-form.component';
+import { CoursesMainComponent } from './admin/content/courses/courses-main/courses-main.component';
+import { CoursesTableComponent } from './material-components/tables/courses-table/courses-table.component';
 
 @NgModule({
   declarations: [
@@ -54,6 +61,13 @@ import { Interceptor } from './inteceptors';
     TrainersTableComponent,
     LoaderComponent,
     ParticipantComponent,
+    CompaniesFormComponent,
+    CompaniesTableComponent,
+    AssistantsTableComponent,
+    AssistantsFormComponent,
+    CoursesTableComponent,
+    CoursesFormComponent,
+    CoursesMainComponent,
   ],
   imports: [
     BrowserModule,

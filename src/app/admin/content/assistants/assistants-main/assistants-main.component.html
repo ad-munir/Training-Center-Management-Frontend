@@ -1,49 +1,15 @@
-
 <app-sidebar></app-sidebar>
-
+<!--Content Start-->
 <div class="content-start transition">
   <div class="container-fluid dashboard px-5">
 
     <div class="content-header">
-      <h1>Add Assistant</h1>
+      <h1>List of Assistants</h1>
     </div>
 
+
     <div class="row content-form">
-
-      <div class="col-12 col-md-6 col-lg-6">
-        <div class="card">
-          <form [formGroup]="assistantForm" >
-
-            <div class="card-body p-4">
-              <div class="mb-3">
-                <label class="fw-semibold">First Name</label>
-                <input type="text" class="form-control p-2" formControlName="firstName" required>
-              </div>
-              <div class="mb-3">
-                <label class="fw-semibold">Last Name</label>
-                <input type="text" class="form-control p-2" formControlName="lastName" required>
-              </div>
-              <div class="mb-3">
-                <label class="fw-semibold">Email</label>
-                <input type="email" class="form-control p-2" formControlName="email" required>
-              </div>
-              <div class="mb-3">
-                <label class="fw-semibold">Phone</label>
-                <input type="text" class="form-control p-2" formControlName="phone">
-              </div>
-              <div class="mb-3">
-                <label class="fw-semibold">Password</label>
-                <input type="password" class="form-control p-2" formControlName="password">
-              </div>
-            </div>
-
-            <div class="card-footer text-right">
-              <button type="submit" class="btn btn-primary" (click)="onSubmit()">Submit</button>
-            </div>
-          </form>
-        </div>
-      </div>
-
+      <app-assistants-table></app-assistants-table>
     </div>
 
   </div>

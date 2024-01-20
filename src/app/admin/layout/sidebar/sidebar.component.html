@@ -1,6 +1,5 @@
 <!--Topbar -->
 <div class="topbar transition">
-
   <div class="menu">
     <ul>
       <li class="nav-item dropdown">
@@ -46,111 +45,157 @@
       </div>
 
       <ul class="side-menu">
-        <li>
-          <a routerLink="/dashboard" class="active">
+
+
+        <li routerLinkActive="active">
+          <a routerLink="/dashboard">
             <i class='bx bxs-dashboard icon'></i> Dashboard
           </a>
         </li>
 
 
-        <li>
-          <a routerLink="/main" class="active">
+        <li  routerLinkActive="active">
+          <a routerLink="/main">
             <i class='bx bxs-dashboard icon'></i>
             Test
           </a>
         </li>
 
-         <div *ngIf="role === 'ADMIN'">
-           <!-- Courses Divider -->
-           <li   class="divider" data-text="STARTER">Courses</li>
-        <!-- Courses Dropdown -->
-        <li>
-          <a (click)="toggleCoursesDropdown()">
-            <i class='bx bx-columns icon'></i>
-            Courses
-            <i class='bx bx-chevron-right icon-right'></i>
-          </a>
-          <ul class="side-dropdown" [ngClass]="{'show': isCoursesDropdownOpen}">
-            <li><a routerLink="/">Course Details</a></li>
-            <li><a routerLink="/">New Course</a></li>
-          </ul>
-        </li>
-         </div>
-        
+        <div *ngIf="role === 'ADMIN'">
+          <!-- Courses Divider -->
+          <div class="divider" data-text="STARTER">Courses</div>
 
-        <!-- Trainers Divider -->
-        <li class="divider" data-text="STARTER">Trainers</li>
-        <!-- Trainers Dropdown -->
-        <li>
-          <a (click)="toggleTrainersDropdown()">
-            <i class='bx bx-columns icon'></i>
-            Trainers
-            <i class='bx bx-chevron-right icon-right'></i>
-          </a>
-          
-          <ul class="side-dropdown" [ngClass]="{'show': isTrainersDropdownOpen}">
-            <li>
-              <a routerLink="/trainers/all" class="d-inline  ">
-                <i class='bx bx-table'></i>
-                Show Trainers
+          <!-- Courses Dropdown -->
+          <li [routerLinkActive]="['active']">
+
+            <a (click)="toggleCoursesDropdown()">
+              <i class='bx bx-book icon'></i>Courses<i class='bx bx-chevron-down icon-right'></i>
             </a>
+
+            <ul class="side-dropdown" [ngClass]="{'show': isCoursesDropdownOpen}">
+
+              <li>
+                <i class='bx bx-columns'></i>
+                <a routerLink="/courses/all">All Courses</a>
+              </li>
+
+              <li>
+                <i class='bx bx-plus'></i>
+                <a routerLink="/courses">Add Courses</a>
+              </li>
+            </ul>
           </li>
-            <li>
-              <a routerLink="/trainers" class="d-inline">
-                <i class='bx bxs-user-plus'></i>
-                <span>Add trainer</span>
-              </a>
-            </li>
-          </ul>
-        </li>
-
-        <!-- Participants Divider -->
-        <li class="divider" data-text="STARTER">Participants</li>
-        <!-- Participants Dropdown -->
-        <li>
-          <a (click)="toggleParticipantsDropdown()">
-            <i class='bx bx-columns icon'></i>
-            Participants
-            <i class='bx bx-chevron-right icon-right'></i>
-          </a>
-          <ul class="side-dropdown" [ngClass]="{'show': isParticipantsDropdownOpen}">
-            <li><a routerLink="/participants">Default Layout</a></li>
-            <li><a routerLink="/">Top Navigation</a></li>
-          </ul>
-        </li>
-
-        <!-- Assistants Divider -->
-        <li class="divider" data-text="STARTER">Assistants</li>
-        <!-- Assistants Dropdown -->
-        <li>
-          <a (click)="toggleAssistantsDropdown()">
-            <i class='bx bx-columns icon'></i>
-            Assistants
-            <i class='bx bx-chevron-right icon-right'></i>
-          </a>
-          <ul class="side-dropdown" [ngClass]="{'show': isAssistantsDropdownOpen}">
-            <li><a routerLink="/assistants">Add Assiastant</a></li>
-            <li><a routerLink="/">Top Navigation</a></li>
-          </ul>
-        </li>
 
 
-        <!-- Companies Divider -->
-        <li class="divider" data-text="STARTER">Companies</li>
-        <!-- Companies Dropdown -->
-        <li>
-          <a (click)="toggleCompaniesDropdown()">
-            <i class='bx bx-columns icon'></i>
-            Companies
-            <i class='bx bx-chevron-right icon-right'></i>
-          </a>
-          <ul class="side-dropdown" [ngClass]="{'show': isCompaniesDropdownOpen}">
-            <li><a routerLink="/companies">Add Company</a></li>
-            <li><a routerLink="/">Top Navigation</a></li>
-          </ul>
-        </li>
+
+          <!-- Trainers Divider -->
+          <div class="divider" data-text="STARTER">Trainers</div>
+          <!-- Trainers Dropdown -->
+          <li [routerLinkActive]="['active']">
+
+            <a (click)="toggleTrainersDropdown()">
+              <i class='bx bx-user icon'></i>Trainers<i class='bx bx-chevron-down icon-right'></i>
+            </a>
+
+            <ul class="side-dropdown" [ngClass]="{'show': isTrainersDropdownOpen}">
 
 
+              <li>
+                <i class='bx bx-columns'></i>
+                <a routerLink="/trainers/all">All Trainers</a>
+              </li>
+
+              <li>
+                <i class='bx bx-plus'></i>
+                <a routerLink="/trainers">Add Trainers</a>
+              </li>
+
+            </ul>
+          </li>
+        </div>
+
+
+
+        <div  *ngIf="role === 'ADMIN' || 'ASSISTANT'">
+
+
+          <!-- Participants Divider -->
+          <div class="divider" data-text="STARTER">Participants</div>
+          <!-- Participants Dropdown -->
+          <li [routerLinkActive]="['active']">
+
+            <a (click)="toggleParticipantsDropdown()">
+              <i class='bx bx-user icon'></i>Participants<i class='bx bx-chevron-down icon-right'></i>
+            </a>
+
+            <ul class="side-dropdown" [ngClass]="{'show': isParticipantsDropdownOpen}">
+
+              <li>
+                <i class='bx bx-columns'></i>
+                <a routerLink="/participants/all">All Participants</a>
+              </li>
+
+              <li>
+                <i class='bx bx-plus'></i>
+                <a routerLink="/participants">Add Participants</a>
+              </li>
+            </ul>
+          </li>
+
+
+
+
+
+          <!-- Assistants Divider -->
+          <div class="divider" data-text="STARTER">Assistants</div>
+          <!-- Assistants Dropdown -->
+          <li [routerLinkActive]="['active']">
+
+            <a (click)="toggleAssistantsDropdown()">
+              <i class='bx bx-user icon'></i>Assistants<i class='bx bx-chevron-down icon-right'></i>
+            </a>
+
+            <ul class="side-dropdown" [ngClass]="{'show': isAssistantsDropdownOpen}">
+
+              <li>
+                <i class='bx bx-columns'></i>
+                <a routerLink="/assistants/all">All Assiastants</a>
+              </li>
+
+              <li>
+                <i class='bx bx-plus'></i>
+                <a routerLink="/assistants">Add Assiastant</a>
+              </li>
+            </ul>
+          </li>
+
+
+
+          <!-- Companies Divider -->
+          <div class="divider" data-text="STARTER">Companies</div>
+          <!-- Companies Dropdown -->
+          <li [routerLinkActive]="['active']">
+
+            <a (click)="toggleCompaniesDropdown()">
+              <i class='bx bx-building icon'></i>Companies<i class='bx bx-chevron-down icon-right'></i>
+            </a>
+
+            <ul class="side-dropdown" [ngClass]="{'show': isCompaniesDropdownOpen}">
+
+              <li>
+                <i class='bx bx-columns'></i>
+                <a routerLink="/companies/all">All Companies</a>
+              </li>
+
+              <li>
+                <i class='bx bx-plus'></i>
+                <a routerLink="/companies">Add Company</a>
+              </li>
+            </ul>
+
+          </li>
+
+        </div>
       </ul>
 
     </div>
