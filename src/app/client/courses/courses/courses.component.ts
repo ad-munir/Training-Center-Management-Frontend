@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { TrainigCenterService } from 'src/app/trainig-center.service';
 import 'swiper';
 
 @Component({
@@ -16,4 +17,24 @@ import 'swiper';
     '../../../css/style.css'
   ],
 })
-export class CoursesComponent {}
+export class CoursesComponent {
+  constructor(private service: TrainigCenterService) {}
+
+  courses ?: any[];
+
+  async ngOnInit() {
+    await this.getCourses();
+    // Do something else after courses are fetched
+  }
+  
+  async getCourses() {
+    try {
+      this.courses = await this.service.getCourses().toPromise();
+      console.log(this.courses);
+    } catch (error) {
+      console.error('Error fetching courses:', error);
+    }
+  }
+  
+
+}

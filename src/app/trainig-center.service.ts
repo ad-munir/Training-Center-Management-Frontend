@@ -9,20 +9,19 @@ import { Observable } from 'rxjs';
 export class TrainigCenterService {
 
   // endpoint
-  url_backend : String  = 'http://localhost:8080/api/v1/auth/'
+  url_backend : String  = 'http://localhost:8080/api/v1/'
   
   // using HttpClient
   constructor( private http: HttpClient ) {}
 
   // login function, using for authenticating, called from login.component.ts
   login(loginRequest: any): Observable<any> {
-    return this.http.post(this.url_backend + "authenticate", loginRequest)
+    return this.http.post(this.url_backend + "auth/authenticate", loginRequest)
   }
 
-  // save a participant
-
-  saveParticipant(participants : any){
-
-    return this.http.post(this.url_backend + "participants" , participants)
+  // get courses
+  getCourses(): Observable<any[]> {
+    return this.http.get<any[]>(this.url_backend+"courses");
   }
+
 }
