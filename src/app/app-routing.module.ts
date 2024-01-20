@@ -13,11 +13,15 @@ import { CompaniesMainComponent } from './admin/content/companies/companies-main
 import { TrainersMainComponent } from './admin/content/trainers/trainers-main/trainers-main.component';
 import { TrainersFormComponent } from './admin/content/trainers/trainers-form/trainers-form.component';
 import { ParticipantComponent } from './admin/content/participants/participant/participant.component';
+import { CompaniesFormComponent } from './admin/content/companies/companies-form/companies-form.component';
+import { AssistantsFormComponent } from './admin/content/assistants/assistants-form/assistants-form.component';
+import { CoursesMainComponent } from './admin/content/courses/courses-main/courses-main.component';
+import { CoursesFormComponent } from './admin/content/courses/courses-form/courses-form.component';
 
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
-  { path: 'courses', component: CoursesComponent },
+  { path: 'data/courses', component: CoursesComponent },
   { path: 'about', component: AboutComponent },
   { path: 'contact', component: ContactComponent },
   { path: 'course-details', component: CourseDetailsComponent },
@@ -28,12 +32,22 @@ const routes: Routes = [
   { path: 'main', component: MainContentComponent },
 
 
+  { path: 'courses/all', component: CoursesMainComponent },
+  { path: 'courses', component: CoursesFormComponent },
 
-  { path: 'assistants', component: AssistantsMainComponent },
-  { path: 'companies', component: CompaniesMainComponent },
+
 
   { path: 'trainers/all', component: TrainersMainComponent },
   { path: 'trainers', component: TrainersFormComponent },
+
+
+  { path: 'assistants/all', component: AssistantsMainComponent },
+  { path: 'assistants', component: AssistantsFormComponent },
+
+
+  { path: 'companies/all', component: CompaniesMainComponent },
+  { path: 'companies', component: CompaniesFormComponent },
+
 ];
 
 @NgModule({

@@ -1,4 +1,7 @@
-import { Component } from '@angular/core';
+import { TrainerService } from './../../../../services/trainer.service';
+import { Component, Input, OnInit } from '@angular/core';
+import { FormBuilder, Validators } from '@angular/forms';
+import { Keyword } from 'src/app/material-components/tags-input/tags-input.component';
 
 @Component({
   selector: 'app-trainers-form',
@@ -9,6 +12,69 @@ import { Component } from '@angular/core';
     './.././../../layout/bootstrap-overwrite.css'
   ]
 })
-export class TrainersFormComponent {
+export class TrainersFormComponent implements OnInit{
+
+  keywords: Keyword[] = []; // Initialize keywords array
+
+  onKeywordsChanged(newKeywords: Keyword[]): void {
+    this.keywords = newKeywords;
+  }
+
+  form: any;
+  selectedFile: File | null = null;
+
+  constructor(private fb: FormBuilder, private trainerService: TrainerService) {}
+
+
+  ngOnInit(): void {
+    this.form = this.fb.group({
+      firstname: ['', Validators.required],
+      lastname: ['', Validators.required],
+      email: ['', Validators.required],
+      phone: ['', Validators.required],
+      password: ['', Validators.required],
+      image: [null, Validators.required],
+    });
+  }
+
+  onFileChange(event: Event): void {
+    const inputElement = event.target as HTMLInputElement;
+
+    if (inputElement.files && inputElement.files.length > 0) {
+      this.selectedFile = inputElement.files[0];
+    }
+  }
+
+  onSubmit(): void {
+    if (this.selectedFile) {
+      console.log("selectedFile");
+      console.log(this.form);
+
+
+      const formData = new FormData();
+
+      formData.append('firstname', this.form.get('firstname')?.value);
+      formData.append('lastname', this.form.get('lastname')?.value);
+      formData.append('email', this.form.get('email')?.value);
+      formData.append('phone', this.form.get('phone')?.value);
+      formData.append('password', this.form.get('password')?.value);
+      formData.append('keywords', this.keywords.join(','));
+      formData.append('image', this.selectedFile);
+
+      this.trainerService.addTrainer(formData)
+        .subscribe(
+          (newTrainer) => {
+            console.log('Trainer added successfully:', newTrainer);
+            // Optionally, you can redirect or perform other actions here
+          },
+          (error) => {
+            console.error('Error adding trainer:', error);
+            // Handle error as needed
+          }
+        );
+    } else {
+      console.error('No file selected');
+    }
+  }
 
 }

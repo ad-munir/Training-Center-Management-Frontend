@@ -32,7 +32,7 @@ export class LoginComponent {
 
       if (response.token) {
         const jwtToken = response.token
-        const role = response.role ; 
+        const role = response.role ;
         localStorage.setItem('ROLE', role);
         localStorage.setItem('JWT', jwtToken);
         this.router.navigateByUrl('/dashboard');      }

@@ -1,6 +1,4 @@
 import {Component} from '@angular/core';
-import {NgIf, NgFor} from '@angular/common';
-import {MatTableModule} from '@angular/material/table';
 
 export interface TableElements {
   firstname: string;

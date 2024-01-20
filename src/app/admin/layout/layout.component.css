@@ -141,11 +141,11 @@ p{
 }
 
 .topbar .menu ul {
-	padding: 0;
+  padding: 0;
 	margin: 0;
 }
 .topbar .menu ul li span{
-	margin-left: 12px;
+  margin-left: 12px;
 	font-size: 15px;
 }
 
@@ -247,10 +247,7 @@ a.dropdown-item{
 	align-items: center;
 	margin-right: 6px;
 }
-#sidebar .icon-right {
-	margin-left: auto;
-	transition: all .3s ease;
-}
+
 #sidebar .side-menu {
 	margin: 36px 0;
 	padding: 0 20px;
@@ -271,15 +268,34 @@ a.dropdown-item{
 	background: #1B2B65;
 	color: #ffffff;
 }
-#sidebar .side-menu > li > a.active .icon-right {
-	transform: rotateZ(90deg);
+
+
+
+li {
+  cursor: default;
 }
-#sidebar .side-menu > li > a.active,
+/* #sidebar .side-menu > li > a.active,
 #sidebar .side-menu > li > a.active:hover {
 	background: #1B2B65;
 	color: #ffffff;
-
 }
+
+#sidebar .side-menu > li.active,
+#sidebar .side-menu > li.active:hover {
+	background: #1B2B65;
+	color: #ffffff;
+} */
+
+
+
+
+
+
+
+
+
+
+
 #sidebar .divider {
 	margin-top: 24px;
 	font-size: 11px;
@@ -297,9 +313,40 @@ a.dropdown-item{
 	text-align: center;
 }
 #sidebar .side-dropdown li{
-	list-style-type: circle;
-  padding: 10px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 5px;
+  list-style: none;
+  color: white;
 }
+
+#sidebar .side-dropdown li:hover >* {
+	color:  #51CBFF;
+}
+
+li.active,
+li.active:hover {
+  border-radius: 15px;
+	background: #1B2B65;
+	color: #ffffff;
+}
+
+li:hover {
+  border-radius: 15px;
+	background: #1B2B65;
+	color: #ffffff;
+}
+
+.icon-right {
+  margin-left: auto;
+  transition: transform 0.3s ease;
+}
+
+li.active > .icon-right {
+  transform: rotateZ(180deg);
+}
+
 #sidebar .side-dropdown {
 	padding-left: 54px;
 	max-height: 0;
@@ -312,9 +359,7 @@ a.dropdown-item{
 #sidebar .side-dropdown.show {
 	max-height: 1000px;
 }
-#sidebar .side-dropdown a:hover {
-	color:  #51CBFF;
-}
+
 
 .sidebar-show {
 	left: 0;
@@ -333,21 +378,38 @@ a.dropdown-item{
 
 
 /** 3.3 Scroll**/
-  ::-webkit-scrollbar {
-	width: 0px;
-  }
 
   ::-webkit-scrollbar-track {
-	background: #f1f1f1;
+	background: rebeccapurple;
   }
 
   ::-webkit-scrollbar-thumb {
-	background: #888;
+	background: red;
   }
 
   ::-webkit-scrollbar-thumb:hover {
 	background: #555;
   }
+
+
+
+  /* For WebKit-based browsers */
+::-webkit-scrollbar {
+  width: 5px; /* Set the width of the scrollbar */
+}
+
+/* Handle portion of the scrollbar */
+::-webkit-scrollbar-thumb {
+  background-color: #51CBFF; /* Set the color of the scrollbar thumb */
+}
+
+/* Track portion of the scrollbar (the area where the thumb moves) */
+::-webkit-scrollbar-track {
+  background-color: #017EFA; /* Set the color of the scrollbar track */
+}
+
+
+
 
 /** 3.9 Buttons **/
   button{
