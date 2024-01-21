@@ -87,7 +87,7 @@
             <div class="row">
                 <div class="col-lg-8 course_details_left">
                     <div class="main_image">
-                        <img class="img-fluid" src="../../assets/img/single_cource.png" alt="">
+                        <img class="img-fluid" [src]="courseDetails.image" alt="">
                     </div>
                     <div class="content_wrapper">
                         <h4 class="title_top">Objectives</h4>
@@ -187,21 +187,18 @@
                             <li>
                                 <a class="justify-content-between d-flex" href="#">
                                     <p>Trainer’s Name</p>
-                                    <span class="color">George Mathews</span>
+                                    <span class="color">{{courseDetails.trainer.firstname}}</span>
                                 </a>
                             </li>
                             <li>
                                 <a class="justify-content-between d-flex" href="#">
                                     <p>Course Fee </p>
-                                    <span>$230</span>
+                                    <span>${{courseDetails.cost}}</span>
                                 </a>
                             </li>
                             <li>
-                                <a class="justify-content-between d-flex" href="#">
-                                    <p>Available Seats </p>
-                                    <span>15</span>
-                                </a>
-                            </li>
+                          
+                            </li> 
                             <li>
                                 <a class="justify-content-between d-flex" href="#">
                                     <p>Schedule </p>
@@ -210,8 +207,8 @@
                             </li>
 
                         </ul>
-                        <mat-dialog-actions>
-                            <button class="btn_1 d-block" (click)="openDialog()">Enroll the course</button>
+                        <mat-dialog-actions>           
+                            <button class="btn_1 d-block" [routerLink]="['/enroll-course',courseDetails.id ]">Enroll the course</button>
                         </mat-dialog-actions>
                     </div>
 

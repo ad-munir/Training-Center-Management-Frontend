@@ -38,6 +38,10 @@ import { AssistantsFormComponent } from './admin/content/assistants/assistants-f
 import { CoursesFormComponent } from './admin/content/courses/courses-form/courses-form.component';
 import { CoursesMainComponent } from './admin/content/courses/courses-main/courses-main.component';
 import { CoursesTableComponent } from './material-components/tables/courses-table/courses-table.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+
 
 @NgModule({
   declarations: [
@@ -70,6 +74,8 @@ import { CoursesTableComponent } from './material-components/tables/courses-tabl
     CoursesMainComponent,
   ],
   imports: [
+    MatDatepickerModule,
+    MatNativeDateModule,
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
@@ -82,6 +88,7 @@ import { CoursesTableComponent } from './material-components/tables/courses-tabl
     MatChipsModule,
     MatIconModule,
     MatTableModule,
+    NgbModule,
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: Interceptor, multi: true },

@@ -4,11 +4,16 @@ import {
   HttpHandler,
   HttpEvent,
   HttpInterceptor,
+  HttpErrorResponse,
 } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, catchError, throwError } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Injectable()
 export class Interceptor implements HttpInterceptor {
+
+  constructor( private router: Router) {}
+
   intercept(
     request: HttpRequest<any>,
     next: HttpHandler
@@ -26,6 +31,13 @@ export class Interceptor implements HttpInterceptor {
       }
     }
 
-    return next.handle(request);
+    return next.handle(request).pipe(
+      catchError((error: HttpErrorResponse) => {
+        if (error.status === 403) {
+          this.router.navigate(['/login']); 
+        }
+        return throwError(error);
+      })
+    );
   }
 }

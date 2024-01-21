@@ -35,7 +35,7 @@ export class LoginComponent {
         const role = response.role ;
         localStorage.setItem('ROLE', role);
         localStorage.setItem('JWT', jwtToken);
-        this.router.navigateByUrl('/courses');      }
+        this.router.navigateByUrl('/data/courses');      }
     });
   }
 }

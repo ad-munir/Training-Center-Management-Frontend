@@ -36,7 +36,7 @@
                                     <a class="nav-link" routerLink="/about">About</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" routerLink="/courses">Courses</a>
+                                    <a class="nav-link" routerLink="/data/courses">Courses</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href="blog.html">Blog</a>
@@ -98,18 +98,19 @@
                     <div class="single_special_cource">
                         <img [src]="course.image" class="special_img" alt="{{ course.title }}">
                         <div class="special_cource_text">
-                            <a routerLink="/course-details" class="btn_4">{{course.title}}</a>
+                            <a routerLink="/course-details" class="btn_4">{{course.category}}</a>
                             <h4>${{course.cost}}</h4>
-                            <a  routerLink="/course-details">
-                                <h3>{{course.category}}</h3>
-                            </a>
+                            <a [routerLink]="['/course-details', course.id]">
+                                <h3>{{ course.title }}</h3>
+                              </a>
+                              
                             <p>{{course.description}}</p>
                             <div class="author_info">
                                 <div class="author_img">
-                                    <img src="../../assets/img/author/author_1.png" alt="">
+                                    <img [src]="course.trainer.image" alt="">
                                     <div class="author_info_text">
                                         <p>Conduct by:</p>
-                                        <h5><a href="#">James Well</a></h5>
+                                        <h5><a href="#">{{course.trainer.firstname}}</a></h5>
                                     </div>
                                 </div>
                                 <div class="author_rating">

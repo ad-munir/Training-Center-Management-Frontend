@@ -1,29 +1,61 @@
 
+<div class="content-start transition">
+  <div class="container-fluid dashboard px-5">
 
- <div class="form">
-    <form (ngSubmit)="submitForm()">
+    <div class="content-header">
+      <h1>Fill your informations :</h1>
+    </div>
 
-      <div class="title">Enter Your Infos:</div>
 
-      <div class="input-container ic2">
-        <input type="text"  [(ngModel)]="participant.firstname" name="firstname" placeholder="firstname">
-      </div>
-      <div class="input-container ic2">
-        <input type="text"  [(ngModel)]="participant.lastname" name="lastname" placeholder="lastname">
-      </div>
-      <div class="input-container ic2">
-        <input type="text"  [(ngModel)]="participant.email" name="email" placeholder="email">
-      </div>
-      <div class="input-container ic2">
-        <input type="text"  [(ngModel)]="participant.phone" name="phone" placeholder="phone">
-      </div>
-      <div class="input-container ic2">
-        <input type="text"  [(ngModel)]="participant.birthday" name="birthday" placeholder="birthday" >
-      </div>
-      <div class="input-container ic2">
-        <input type="text"  [(ngModel)]="participant.city" name="city" placeholder="city">
-      </div>
-      <button type="text" class="submit">submit</button>
-    </form>
+    <div class="row content-form">
 
-    </div> 
+
+      <div class="col-12 col-md-6 col-lg-6">
+        <div class="card p-4">
+          <form [formGroup]="participantForm" >
+
+            <div class="card-body p-4">
+              <div class="mb-3">
+                <label class="fw-semibold">First Name</label>
+                <input type="text" formControlName="firstname" class="form-control p-2" required="">
+              </div>
+              <div class="mb-3">
+                <label class="fw-semibold">Last Name</label>
+                <input type="text" formControlName="lastname" class="form-control p-2" required="">
+              </div>
+              <div class="mb-3">
+                <label class="fw-semibold">BirthDay</label>
+                <input type="text" formControlName="birthday" class="form-control p-2" required="">
+              </div>
+              <div class="mb-3">
+                <label class="fw-semibold">Email</label>
+                <input type="email" formControlName="email" class="form-control p-2" required="">
+              </div>
+              <div class="mb-3">
+                <label class="fw-semibold">Phone</label>
+                <input type="text" formControlName="phone" class="form-control p-2">
+              </div>
+              <div class="mb-3">
+                <label class="fw-semibold">City</label>
+                <input type="text" formControlName="city" class="form-control p-2">
+              </div>
+
+            </div>
+
+
+            <div class="card-footer text-right">
+              <button class="btn btn-primary" (click)="onSubmit()">Submit</button>
+            </div>
+          </form>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</div>
+
+
+
+
+

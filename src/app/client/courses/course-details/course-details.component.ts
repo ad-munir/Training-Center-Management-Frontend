@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
-import { EnrollCourseComponent } from '../enroll-course/enroll-course.component';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { CourseService } from 'src/app/services/course.service';
 
 @Component({
   selector: 'app-course-details',
@@ -17,18 +17,25 @@ import { EnrollCourseComponent } from '../enroll-course/enroll-course.component'
     '../../../css/style.css',
   ],
 })
-export class CourseDetailsComponent {
+export class CourseDetailsComponent implements OnInit {
 
-  constructor(private dialog:MatDialog){}
+  courseId: any;
+  courseDetails: any; // Adjust the type according to your data model
 
-  openDialog() {
-    this.dialog.open(EnrollCourseComponent, {
-      height: '600px',
-      position: { top: '20px' },
-      data: {
-        radius: '20px'
-      }
+  constructor(private route: ActivatedRoute, private courseService: CourseService) {}
 
+  ngOnInit(): void {
+    this.route.paramMap.subscribe(params => {
+      this.courseId = params.get('id');
+      console.log(this.courseId);
+      
+      
+      // Fetch course details using courseId
+      this.courseService.getCourseById(this.courseId).subscribe((data) => {
+        this.courseDetails = data;
+        console.log(this.courseDetails);
+        
+      });
     });
   }
 }

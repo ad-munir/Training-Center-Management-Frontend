@@ -14,16 +14,16 @@ export class CourseService {
   getCourses(): Observable<Course[]> {
     return this.http.get<Course[]>(this.url_backend + 'courses');
   }
+  
 
   addCourse(formData: FormData): Observable<Course> {
     return this.http.post<Course>(`${this.url_backend}courses`, formData);
   }
 
-  // updateCourse(courseId: number, updatedCourse: Course): Observable<Course> {
-  //   return this.http.put<Course>(`${this.url_backend}courses/${courseId}`, updatedCourse);
-  // }
+  getCourseById(courseId: any): Observable<any> {
+    const url = `${this.url_backend}courses/${courseId}`;
+    return this.http.get(url);
+  }
 
-  // deleteCourse(courseId: number): Observable<void> {
-  //   return this.http.delete<void>(`${this.url_backend}courses/${courseId}`);
-  // }
+  
 }

@@ -17,6 +17,8 @@ import { CompaniesFormComponent } from './admin/content/companies/companies-form
 import { AssistantsFormComponent } from './admin/content/assistants/assistants-form/assistants-form.component';
 import { CoursesMainComponent } from './admin/content/courses/courses-main/courses-main.component';
 import { CoursesFormComponent } from './admin/content/courses/courses-form/courses-form.component';
+import { EnrollCourseComponent } from './client/courses/enroll-course/enroll-course.component';
+import { GuardAuthService } from './services/guard-auth.service';
 
 
 const routes: Routes = [
@@ -24,11 +26,17 @@ const routes: Routes = [
   { path: 'data/courses', component: CoursesComponent },
   { path: 'about', component: AboutComponent },
   { path: 'contact', component: ContactComponent },
-  { path: 'course-details', component: CourseDetailsComponent },
+  { path: 'course-details/:id', component: CourseDetailsComponent },
+  { path: 'enroll-course/:id', component: EnrollCourseComponent },
   { path: 'participants', component: ParticipantComponent },
-
+  
   { path: 'login', component: LoginComponent },
-  { path: 'dashboard', component: LayoutComponent },
+  {
+    path: 'dashboard',
+    component: LayoutComponent,
+    canActivate: [GuardAuthService] // Apply the AdminGuard to protect access to the AdminComponent
+  },
+  // { path: 'dashboard', component: LayoutComponent },
   { path: 'main', component: MainContentComponent },
 
 
