@@ -3,10 +3,13 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Course } from '../models/course.model';
 
+
 @Injectable({
   providedIn: 'root',
 })
+
 export class CourseService {
+
   private url_backend = 'http://localhost:8080/api/v1/';
 
   constructor(private http: HttpClient) {}

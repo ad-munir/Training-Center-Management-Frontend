@@ -21,7 +21,7 @@
 
             <div class="mb-3">
               <label class="fw-semibold">Hours</label>
-              <input type="text" formControlName="hours" class="form-control p-2" required>
+              <input type="number" formControlName="hours" class="form-control p-2" required>
             </div>
 
             <div class="mb-3">
@@ -46,15 +46,23 @@
 
             <div class="mb-3">
               <label class="fw-semibold">Image</label>
-              <input type="file" (change)="onFileChange($event)" class="form-control p-2" required>
+              <input type="file" formControlName="image" (change)="onFileChange($event)" class="form-control p-2" required>
             </div>
+
 
             <div class="mb-3">
-              <label class="fw-semibold">Trainer id</label>
-              <input type="number" formControlName="trainerId" class="form-control p-2" required>
+              <label class="fw-semibold">Trainer</label>
+              <select formControlName="trainerId" class="form-control p-2" required (change)="selectTrainer($event)">
+                <option *ngFor="let trainer of trainers" [value]="trainer.id">
+                  {{ trainer.firstname }} {{ trainer.lastname }}
+                </option>
+              </select>
             </div>
 
-            <button type="submit" class="btn btn-primary">Submit</button>
+
+
+
+            <button type="submit" class="btn btn-primary mt-3">Submit</button>
           </form>
 
         </div>

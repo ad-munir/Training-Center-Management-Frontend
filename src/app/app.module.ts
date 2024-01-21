@@ -27,7 +27,7 @@ import { TagsInputComponent } from './material-components/tags-input/tags-input.
 import { MatChipsModule } from '@angular/material/chips';
 import { TrainersFormComponent } from './admin/content/trainers/trainers-form/trainers-form.component';
 import { MatTableModule } from '@angular/material/table';
-import { TrainersTableComponent } from './material-components/tables/trainers-table/table.component';
+import { TrainersTableComponent } from './material-components/tables/trainers-table/trainers-table.component';
 import { LoaderComponent } from './material-components/loader/loader.component';
 import { ParticipantComponent } from './admin/content/participants/participant/participant.component';
 import { Interceptor } from './inteceptors';
@@ -38,6 +38,10 @@ import { AssistantsFormComponent } from './admin/content/assistants/assistants-f
 import { CoursesFormComponent } from './admin/content/courses/courses-form/courses-form.component';
 import { CoursesMainComponent } from './admin/content/courses/courses-main/courses-main.component';
 import { CoursesTableComponent } from './material-components/tables/courses-table/courses-table.component';
+import { TrainerProfileComponent } from './admin/content/trainers/trainer-profile/trainer-profile.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+
 
 @NgModule({
   declarations: [
@@ -68,6 +72,7 @@ import { CoursesTableComponent } from './material-components/tables/courses-tabl
     CoursesTableComponent,
     CoursesFormComponent,
     CoursesMainComponent,
+    TrainerProfileComponent,
   ],
   imports: [
     BrowserModule,
@@ -82,6 +87,7 @@ import { CoursesTableComponent } from './material-components/tables/courses-tabl
     MatChipsModule,
     MatIconModule,
     MatTableModule,
+    BrowserAnimationsModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: Interceptor, multi: true },

@@ -1,7 +1,8 @@
 import { TrainerService } from './../../../../services/trainer.service';
 import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-import { Keyword } from 'src/app/material-components/tags-input/tags-input.component';
+import { Keyword } from 'src/app/models/keyword.model';
+import { KeywordService } from 'src/app/services/keyword.service';
 
 @Component({
   selector: 'app-trainers-form',
@@ -14,16 +15,15 @@ import { Keyword } from 'src/app/material-components/tags-input/tags-input.compo
 })
 export class TrainersFormComponent implements OnInit{
 
-  keywords: Keyword[] = []; // Initialize keywords array
+  keywords: Keyword[] = [];
 
-  onKeywordsChanged(newKeywords: Keyword[]): void {
-    this.keywords = newKeywords;
+  constructor(private fb: FormBuilder, private trainerService: TrainerService, private keywordService: KeywordService) {
+    this.keywords = this.keywordService.getKeywords();
   }
 
   form: any;
   selectedFile: File | null = null;
 
-  constructor(private fb: FormBuilder, private trainerService: TrainerService) {}
 
 
   ngOnInit(): void {
@@ -49,7 +49,11 @@ export class TrainersFormComponent implements OnInit{
     if (this.selectedFile) {
       console.log("selectedFile");
       console.log(this.form);
+      console.log(this.keywords);
 
+      const keys = this.keywords.map(key => key.name).join(',');
+
+      console.log(keys);
 
       const formData = new FormData();
 
@@ -58,7 +62,7 @@ export class TrainersFormComponent implements OnInit{
       formData.append('email', this.form.get('email')?.value);
       formData.append('phone', this.form.get('phone')?.value);
       formData.append('password', this.form.get('password')?.value);
-      formData.append('keywords', this.keywords.join(','));
+      formData.append('keywords', keys);
       formData.append('image', this.selectedFile);
 
       this.trainerService.addTrainer(formData)

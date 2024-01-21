@@ -17,6 +17,7 @@ import { CompaniesFormComponent } from './admin/content/companies/companies-form
 import { AssistantsFormComponent } from './admin/content/assistants/assistants-form/assistants-form.component';
 import { CoursesMainComponent } from './admin/content/courses/courses-main/courses-main.component';
 import { CoursesFormComponent } from './admin/content/courses/courses-form/courses-form.component';
+import { TrainerProfileComponent } from './admin/content/trainers/trainer-profile/trainer-profile.component';
 
 
 const routes: Routes = [
@@ -39,6 +40,7 @@ const routes: Routes = [
 
   { path: 'trainers/all', component: TrainersMainComponent },
   { path: 'trainers', component: TrainersFormComponent },
+  { path: 'trainer-profile/:id', component: TrainerProfileComponent },
 
 
   { path: 'assistants/all', component: AssistantsMainComponent },

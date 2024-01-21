@@ -1,35 +1,87 @@
-import { Component } from '@angular/core';
-
+import { TrainersTableComponent } from './../trainers-table/trainers-table.component';
+import { Course } from 'src/app/models/course.model';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
+import { CourseService } from 'src/app/services/course.service';
+import { Router } from '@angular/router';
+import { Trainer } from 'src/app/models/trainer.model';
+import { TrainerService } from 'src/app/services/trainer.service';
 
 export interface TableElements {
-  title: string;
-  hours: string;
+  category: string;
   cost: number;
   description: string;
+  hours: string;
+  image: string;
+  title: string;
+  trainer: number;
   type: string;
-  category: string;
 }
 
-const ELEMENT_DATA: TableElements[] = [
-
-  { title: 'Angular Development', hours: '40', cost: 500.0, description: 'Learn Angular for web development', type: 'Companies', category: 'Programming' },
-  { title: 'Java Fundamentals', hours: '30', cost: 400.0, description: 'Basic Java programming concepts', type: 'Persons', category: 'Programming' }
-];
-
-
-/**
- * @title Binding event handlers and properties to the table rows.
- */
 @Component({
   selector: 'app-courses-table',
   templateUrl: './courses-table.component.html',
   styleUrls: ['./courses-table.component.css'],
-  standalone: false
 })
 
-export class CoursesTableComponent {
+export class CoursesTableComponent implements OnInit {
 
-  displayedColumns: string[] = ['title', 'hours', 'cost', 'description', 'type', 'category'];
-  dataSource = ELEMENT_DATA;
+  constructor(
+    private courseService: CourseService,
+    private trainerService: TrainerService,
+    private changeDetectorRef: ChangeDetectorRef,
+    private router: Router
+  ) {}
+
+  courses: Course[] = [];
+  trainers: Trainer[] = [];
+
+  ngOnInit(): void {
+    this.getCourses();
+    this.getTrainers();
+  }
+
+
+
+
+  getTrainers(): void {
+    this.trainerService.getTrainers()
+      .subscribe(
+        (data: Trainer[]) => {
+          console.log('fetch trainers:', data);
+
+          // Update trainers and trigger change detection
+          this.trainers = data;
+          this.changeDetectorRef.detectChanges();
+        },
+        error => {
+          console.error('Error fetching trainers:', error);
+        }
+      );
+  }
+
+
+  getCourses(): void {
+    this.courseService.getCourses()
+      .subscribe(
+        (data: Course[]) => {
+          console.log('fetch Courses:', data);
+
+          // Update courses and trigger change detection
+          this.courses = data;
+          this.changeDetectorRef.detectChanges();
+
+        },
+        error => {
+          console.error('Error fetching courses:', error);
+        }
+      );
+  }
+
+  displayedColumns: string[] = ['category', 'cost', 'description', 'hours', 'image', 'title', 'trainer', 'type'];
   clickedRows = new Set<TableElements>();
+
+
+  navigateToTrainerProfile(trainerId: number): void {
+    this.router.navigate(['/trainer-profile', trainerId]);
+  }
 }

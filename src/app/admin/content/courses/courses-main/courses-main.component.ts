@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-courses-main',
@@ -9,4 +9,6 @@ import { Component } from '@angular/core';
     './.././../../layout/bootstrap-overwrite.css',
   ],
 })
-export class CoursesMainComponent {}
+export class CoursesMainComponent {
+
+}
