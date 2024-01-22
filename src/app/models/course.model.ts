@@ -1,3 +1,5 @@
+import { Trainer } from "./trainer.model";
+
 export interface Course {
   title: string;
   hours: string;
@@ -5,7 +7,8 @@ export interface Course {
   description: string;
   type: string;
   category: string;
-  image: File;
+  image: any;
+  trainer: Trainer;
 
-  [key: string]: string | number | File;
+  [key: string]: string | number | File | Trainer | null;
 }

@@ -19,6 +19,7 @@ import { CoursesMainComponent } from './admin/content/courses/courses-main/cours
 import { CoursesFormComponent } from './admin/content/courses/courses-form/courses-form.component';
 import { EnrollCourseComponent } from './client/courses/enroll-course/enroll-course.component';
 import { GuardAuthService } from './services/guard-auth.service';
+import { TrainerProfileComponent } from './admin/content/trainers/trainer-profile/trainer-profile.component';
 
 
 const routes: Routes = [
@@ -34,9 +35,8 @@ const routes: Routes = [
   {
     path: 'dashboard',
     component: LayoutComponent,
-    canActivate: [GuardAuthService] // Apply the AdminGuard to protect access to the AdminComponent
+    canActivate: [GuardAuthService] // Apply the guard to protect access to the Dashboard component
   },
-  // { path: 'dashboard', component: LayoutComponent },
   { path: 'main', component: MainContentComponent },
 
 
@@ -47,6 +47,7 @@ const routes: Routes = [
 
   { path: 'trainers/all', component: TrainersMainComponent },
   { path: 'trainers', component: TrainersFormComponent },
+  { path: 'trainer-profile/:id', component: TrainerProfileComponent },
 
 
   { path: 'assistants/all', component: AssistantsMainComponent },

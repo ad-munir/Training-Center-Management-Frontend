@@ -11,9 +11,15 @@ export class TrainerService {
 
   constructor(private http: HttpClient) {}
 
-  getTrainer(): Observable<Trainer[]> {
+  getTrainers(): Observable<Trainer[]> {
     return this.http.get<Trainer[]>(this.url_backend + 'trainers');
   }
+
+
+  getTrainerById(trainerId: string): Observable<Trainer> {
+    return this.http.get<Trainer>(this.url_backend + 'trainers/' + trainerId);
+  }
+
 
   addTrainer(formData: FormData): Observable<Trainer> {
     return this.http.post<Trainer>(`${this.url_backend}trainers`, formData);

@@ -20,7 +20,7 @@ import { CourseService } from 'src/app/services/course.service';
 export class CourseDetailsComponent implements OnInit {
 
   courseId: any;
-  courseDetails: any; // Adjust the type according to your data model
+  courseDetails: any; 
 
   constructor(private route: ActivatedRoute, private courseService: CourseService) {}
 

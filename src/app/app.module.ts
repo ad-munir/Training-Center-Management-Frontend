@@ -27,7 +27,7 @@ import { TagsInputComponent } from './material-components/tags-input/tags-input.
 import { MatChipsModule } from '@angular/material/chips';
 import { TrainersFormComponent } from './admin/content/trainers/trainers-form/trainers-form.component';
 import { MatTableModule } from '@angular/material/table';
-import { TrainersTableComponent } from './material-components/tables/trainers-table/table.component';
+import { TrainersTableComponent } from './material-components/tables/trainers-table/trainers-table.component';
 import { LoaderComponent } from './material-components/loader/loader.component';
 import { ParticipantComponent } from './admin/content/participants/participant/participant.component';
 import { Interceptor } from './inteceptors';
@@ -41,6 +41,9 @@ import { CoursesTableComponent } from './material-components/tables/courses-tabl
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
+import { TrainerProfileComponent } from './admin/content/trainers/trainer-profile/trainer-profile.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 
 
 @NgModule({
@@ -72,6 +75,7 @@ import { MatNativeDateModule } from '@angular/material/core';
     CoursesTableComponent,
     CoursesFormComponent,
     CoursesMainComponent,
+    TrainerProfileComponent,
   ],
   imports: [
     MatDatepickerModule,
@@ -89,6 +93,7 @@ import { MatNativeDateModule } from '@angular/material/core';
     MatIconModule,
     MatTableModule,
     NgbModule,
+    BrowserAnimationsModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: Interceptor, multi: true },

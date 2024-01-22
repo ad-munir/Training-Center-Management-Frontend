@@ -1,8 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { from } from 'rxjs';
 import { CourseService } from 'src/app/services/course.service';
 import { Course } from 'src/app/models/course.model';
+import { TrainerService } from 'src/app/services/trainer.service';
+import { Router } from '@angular/router';
+import { Trainer } from 'src/app/models/trainer.model';
 
 @Component({
   selector: 'app-courses-form',
@@ -16,11 +19,43 @@ import { Course } from 'src/app/models/course.model';
 export class CoursesFormComponent implements OnInit {
   form: any;
   selectedFile: File | null = null;
-  
 
-  constructor(private fb: FormBuilder, private courseService: CourseService) {}
+
+  constructor(private fb: FormBuilder, private courseService: CourseService,
+    private trainerService: TrainerService,
+    private changeDetectorRef: ChangeDetectorRef,
+    private router: Router
+  ) {}
+
+  courses: Course[] = [];
+  trainers: Trainer[] = [];
+
+
+
+
+
+  getTrainers(): void {
+    this.trainerService.getTrainers()
+      .subscribe(
+        (data: Trainer[]) => {
+          console.log('fetch trainers:', data);
+
+          // Update trainers and trigger change detection
+          this.trainers = data;
+          this.changeDetectorRef.detectChanges();
+        },
+        error => {
+          console.error('Error fetching trainers:', error);
+        }
+      );
+  }
+
+
 
   ngOnInit(): void {
+
+    this.getTrainers();
+
     this.form = this.fb.group({
       title: ['', Validators.required],
       hours: ['', Validators.required],
@@ -29,7 +64,8 @@ export class CoursesFormComponent implements OnInit {
       type: ['', Validators.required],
       category: ['', Validators.required],
       image: [null, Validators.required],
-      trainerId: [, Validators.required],
+      trainerId: [null, Validators.required],
+
     });
   }
 
@@ -40,6 +76,7 @@ export class CoursesFormComponent implements OnInit {
       this.selectedFile = inputElement.files[0];
     }
   }
+
 
   onSubmit(): void {
     if (this.selectedFile) {
@@ -57,6 +94,7 @@ export class CoursesFormComponent implements OnInit {
       formData.append('image', this.selectedFile);
       formData.append('trainerId', this.form.get('trainerId')?.value);
 
+
       this.courseService.addCourse(formData).subscribe(
         (newCourse) => {
           console.log('Course added successfully:', newCourse);
@@ -72,22 +110,11 @@ export class CoursesFormComponent implements OnInit {
     }
   }
 
-  // courses: Course[] = [];
+  selectTrainer(event: any): void {
+    const trainerId = event.target.value;
+    this.form.get('trainerId').setValue(trainerId);
+  }
 
-  // ngOnInit(): void {
-  //   this.getCourses();
-  // }
 
-  // getCourses(): void {
-  //   this.courseService.getCourses()
-  //     .subscribe(
-  //       (data: Course[]) => {
-  //         this.courses = data;
-  //         console.log('Courses:', this.courses);
-  //       },
-  //       error => {
-  //         console.error('Error fetching courses:', error);
-  //       }
-  //     );
-  // }
+
 }

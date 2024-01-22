@@ -28,11 +28,16 @@ export class EnrollCourseComponent {
       courseId: [this.courseId, Validators.required],
       firstname: ['', Validators.required],
       lastname: ['', Validators.required],
-      birthday: ['', Validators.required],
+      birthday: ['', [Validators.required, this.validateDate]],
       email: ['', [Validators.required, Validators.email]],
       phone: [''],
       city: [''],
     });
+  }
+
+  validateDate(control: any) {
+    const isValid = /\d{4}-\d{2}-\d{2}/.test(control.value);
+    return isValid ? null : { invalidDateFormat: true };
   }
 
   onSubmit() {
