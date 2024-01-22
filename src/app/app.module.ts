@@ -16,7 +16,6 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-import { ContactComponent } from './client/contact/contact.component';
 import { SidebarComponent } from './admin/layout/sidebar/sidebar.component';
 import { LayoutComponent } from './admin/layout/layout.component';
 import { AssistantsMainComponent } from './admin/content/assistants/assistants-main/assistants-main.component';
@@ -43,6 +42,15 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { TrainerProfileComponent } from './admin/content/trainers/trainer-profile/trainer-profile.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NavbarComponent } from './client/navbar/navbar.component';
+import { BannerComponent } from './client/home/banner/banner.component';
+import { FeaturesComponent } from './client/home/features/features.component';
+import { LearningComponent } from './client/home/learning/learning.component';
+import { SpecialCoursesComponent } from './client/home/special-courses/special-courses.component';
+import { AdvancedFeatureComponent } from './client/home/advanced-feature/advanced-feature.component';
+import { ReviewsComponent } from './client/home/reviews/reviews.component';
+import { FooterComponent } from './client/footer/footer.component';
+import { PartnersComponent } from './client/partners/partners.component';
 
 
 
@@ -56,7 +64,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     AboutComponent,
     CourseDetailsComponent,
     EnrollCourseComponent,
-    ContactComponent,
     LayoutComponent,
     SidebarComponent,
     MainContentComponent,
@@ -76,6 +83,15 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     CoursesFormComponent,
     CoursesMainComponent,
     TrainerProfileComponent,
+    NavbarComponent,
+    BannerComponent,
+    FeaturesComponent,
+    LearningComponent,
+    SpecialCoursesComponent,
+    AdvancedFeatureComponent,
+    ReviewsComponent,
+    FooterComponent,
+    PartnersComponent,
   ],
   imports: [
     MatDatepickerModule,

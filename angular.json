@@ -28,9 +28,24 @@
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "src/styles.css",
               "bootstrap/dist/css/bootstrap.css",
-              "boxicons/css/boxicons.min.css"
+              "boxicons/css/boxicons.min.css",
+              "src/assets/css/themify-icons.css"
+
             ],
-            "scripts": []
+            "scripts": [
+              "./src/assets/js/jquery-1.12.1.min.js",
+              "./src/assets/js/popper.min.js",
+              "./src/assets/js/bootstrap.min.js",
+              "./src/assets/js/jquery.magnific-popup.js",
+              "./src/assets/js/swiper.min.js",
+              "./src/assets/js/masonry.pkgd.js",
+              "./src/assets/js/owl.carousel.min.js",
+              "./src/assets/js/jquery.nice-select.min.js",
+              "./src/assets/js/slick.min.js",
+              "./src/assets/js/jquery.counterup.min.js",
+              "./src/assets/js/waypoints.min.js",
+              "./src/assets/js/custom.js"
+            ]
           },
           "configurations": {
             "production": {

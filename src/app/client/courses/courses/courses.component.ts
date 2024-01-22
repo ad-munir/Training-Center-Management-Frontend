@@ -1,20 +1,19 @@
 import { Component } from '@angular/core';
 import { TrainigCenterService } from 'src/app/trainig-center.service';
-import 'swiper';
 
 @Component({
   selector: 'app-courses',
   templateUrl: './courses.component.html',
   styleUrls: [
     './courses.component.css',
-    '../../../css/bootstrap.min.css',
-    '../../../css/animate.css',
-    '../../../css/owl.carousel.min.css',
-    '../../../css/themify-icons.css',
-    '../../../css/flaticon.css',
-    '../../../css/magnific-popup.css',
-    '../../../css/slick.css',
-    '../../../css/style.css'
+    './../../../../assets/css/bootstrap.min.css',
+    './../../../../assets/css/animate.css',
+    './../../../../assets/css/owl.carousel.min.css',
+    './../../../../assets/css/themify-icons.css',
+    './../../../../assets/css/flaticon.css',
+    './../../../../assets/css/magnific-popup.css',
+    './../../../../assets/css/slick.css',
+    './../../../../assets/css/style.css'
   ],
 })
 export class CoursesComponent {
@@ -26,7 +25,7 @@ export class CoursesComponent {
     await this.getCourses();
     // Do something else after courses are fetched
   }
-  
+
   async getCourses() {
     try {
       this.courses = await this.service.getCourses().toPromise();
@@ -35,6 +34,6 @@ export class CoursesComponent {
       console.error('Error fetching courses:', error);
     }
   }
-  
+
 
 }

@@ -5,7 +5,6 @@ import { HomeComponent } from './client/home/home.component';
 import { CoursesComponent } from './client/courses/courses/courses.component';
 import { AboutComponent } from './client/about/about.component';
 import { CourseDetailsComponent } from './client/courses/course-details/course-details.component';
-import { ContactComponent } from './client/contact/contact.component';
 import { LayoutComponent } from './admin/layout/layout.component';
 import { MainContentComponent } from './admin/content/main/main-content/main-content.component';
 import { AssistantsMainComponent } from './admin/content/assistants/assistants-main/assistants-main.component';
@@ -20,17 +19,17 @@ import { CoursesFormComponent } from './admin/content/courses/courses-form/cours
 import { EnrollCourseComponent } from './client/courses/enroll-course/enroll-course.component';
 import { GuardAuthService } from './services/guard-auth.service';
 import { TrainerProfileComponent } from './admin/content/trainers/trainer-profile/trainer-profile.component';
+import { PartnersComponent } from './client/partners/partners.component';
 
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'data/courses', component: CoursesComponent },
   { path: 'about', component: AboutComponent },
-  { path: 'contact', component: ContactComponent },
   { path: 'course-details/:id', component: CourseDetailsComponent },
   { path: 'enroll-course/:id', component: EnrollCourseComponent },
   { path: 'participants', component: ParticipantComponent },
-  
+
   { path: 'login', component: LoginComponent },
   {
     path: 'dashboard',
@@ -56,6 +55,9 @@ const routes: Routes = [
 
   { path: 'companies/all', component: CompaniesMainComponent },
   { path: 'companies', component: CompaniesFormComponent },
+
+
+  { path: 'partners', component: PartnersComponent },
 
 ];
 

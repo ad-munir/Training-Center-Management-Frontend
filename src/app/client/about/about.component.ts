@@ -5,14 +5,15 @@ import { Component } from '@angular/core';
   templateUrl: './about.component.html',
   styleUrls: [
     './about.component.css',
-    '../../css/bootstrap.min.css',
-    '../../css/animate.css',
-    '../../css/owl.carousel.min.css',
-    '../../css/themify-icons.css',
-    '../../css/flaticon.css',
-    '../../css/magnific-popup.css',
-    '../../css/slick.css',
-    '../../css/style.css',
+    './../../../assets/css/style.css'
+    // '../../css/bootstrap.min.css',
+    // '../../css/animate.css',
+    // '../../css/owl.carousel.min.css',
+    // '../../css/themify-icons.css',
+    // '../../css/flaticon.css',
+    // '../../css/magnific-popup.css',
+    // '../../css/slick.css',
+    // '../../css/style.css',
   ],
 })
 export class AboutComponent {}
