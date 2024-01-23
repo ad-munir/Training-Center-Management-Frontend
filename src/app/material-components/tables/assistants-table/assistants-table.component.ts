@@ -1,20 +1,17 @@
-import { Component } from '@angular/core';
+import { ChangeDetectorRef, Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { Assistant } from 'src/app/models/assistant.model';
+import { AssistantService } from 'src/app/services/assistant.service';
+
 
 export interface TableElements {
   firstname: string;
   lastname: string;
   email: string;
   phone: string;
+  keywords: string;
+  image: File;
 }
-
-const ELEMENT_DATA: TableElements[] = [
-
-  {firstname: 'Reda', lastname: 'Alami', email: 'reda@outlook.com', phone:'0652331210' },
-  {firstname: 'Salim', lastname: 'Karimi', email: 'salim@gmail.com', phone:'0789002345' }
-];
-/**
- * @title Binding event handlers and properties to the table rows.
- */
 
 @Component({
   selector: 'app-assistants-table',
@@ -23,11 +20,40 @@ const ELEMENT_DATA: TableElements[] = [
   standalone: false
 })
 export class AssistantsTableComponent {
+  constructor(
+    private assistantService: AssistantService,
+    private changeDetectorRef: ChangeDetectorRef,
+    private router: Router
+
+  ) {}
 
 
+  assistants: Assistant[] = [];
 
-  displayedColumns: string[] = ['firstname', 'lastname', 'email', 'phone'];
-  dataSource = ELEMENT_DATA;
+  ngOnInit(): void {
+    this.getAssistants();
+  }
+
+  getAssistants(): void {
+    this.assistantService.getAssistants()
+      .subscribe(
+        (data: Assistant[]) => {
+          console.log('fetch assistants:', data);
+
+          // Update assistants and trigger change detection
+          this.assistants = data;
+          this.changeDetectorRef.detectChanges();
+        },
+        error => {
+          console.error('Error fetching assistants:', error);
+        }
+      );
+  }
+
+  displayedColumns: string[] = ['fullname', 'email', 'phone', 'image'];
   clickedRows = new Set<TableElements>();
+
+
+
 
 }
