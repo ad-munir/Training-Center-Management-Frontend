@@ -1,7 +1,7 @@
-import { Component } from '@angular/core';
-
-
-
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { Company } from 'src/app/models/company.model';
+import { CompanyService } from 'src/app/services/company.service';
 
 export interface TableElements {
   name: string;
@@ -11,12 +11,6 @@ export interface TableElements {
   url: string;
 }
 
-const ELEMENT_DATA: TableElements[] = [
-
-  {name: 'Babel', address: 'Casablanca', email: 'hr@babel.com', phone:'0523331210', url: 'https://github.com/ad-munir/Training-Center-Management/'},
-  {name: 'SQLI', address: 'Rabat', email: 'hr@sqli.com', phone:'0511002345', url: 'https://github.com/ad-munir/Training-Center-Management/'}
-];
-
 /**
  * @title Binding event handlers and properties to the table rows.
  */
@@ -24,13 +18,37 @@ const ELEMENT_DATA: TableElements[] = [
   selector: 'app-companies-table',
   templateUrl: './companies-table.component.html',
   styleUrls: ['./companies-table.component.css'],
-  standalone: false
+  standalone: false,
 })
+export class CompaniesTableComponent implements OnInit {
+  constructor(
+    private companyService: CompanyService,
+    private changeDetectorRef: ChangeDetectorRef,
+    private router: Router
+  ) {}
 
-export class CompaniesTableComponent {
+  companies: Company[] = [];
 
+  ngOnInit(): void {
+    this.getCompanies();
+  }
+
+  getCompanies(): void {
+    this.companyService.getCompanies().subscribe(
+      (data: Company[]) => {
+        console.log('fetch companies:', data);
+
+        this.companies = data;
+        this.dataSource = this.companies; // Set dataSource to the retrieved companies
+        this.changeDetectorRef.detectChanges();
+      },
+      (error) => {
+        console.error('Error fetching companies:', error);
+      }
+    );
+  }
 
   displayedColumns: string[] = ['name', 'address', 'email', 'phone', 'url'];
-  dataSource = ELEMENT_DATA;
+  dataSource: Company[] = [];
   clickedRows = new Set<TableElements>();
 }
