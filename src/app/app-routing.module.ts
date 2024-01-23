@@ -21,6 +21,7 @@ import { TrainerProfileComponent } from './admin/content/trainers/trainer-profil
 import { PartnersComponent } from './client/partners/partners.component';
 import { ParticipantMainComponent } from './admin/content/participants/participant-main/participant-main.component';
 import { SortingTableComponent } from './material-components/tables/sorting-table/sorting-table.component';
+import { ExternTrainerComponent } from './client/trainers/extern-trainer/extern-trainer.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -43,6 +44,7 @@ const routes: Routes = [
   { path: 'trainers/all', component: TrainersMainComponent },
   { path: 'trainers', component: TrainersFormComponent },
   { path: 'trainer-profile/:id', component: TrainerProfileComponent },
+  { path: 'extern-trainer', component: ExternTrainerComponent },
 
   { path: 'assistants/all', component: AssistantsMainComponent },
   { path: 'assistants', component: AssistantsFormComponent },

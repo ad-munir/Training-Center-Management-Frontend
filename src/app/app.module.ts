@@ -53,6 +53,7 @@ import { PartnersComponent } from './client/partners/partners.component';
 import { ParticipantsTableComponent } from './material-components/tables/participants-table/participants-table.component';
 import { ParticipantMainComponent } from './admin/content/participants/participant-main/participant-main.component';
 import { SortingTableComponent } from './material-components/tables/sorting-table/sorting-table.component';
+import { ExternTrainerComponent } from './client/trainers/extern-trainer/extern-trainer.component';
 
 @NgModule({
   declarations: [
@@ -94,6 +95,7 @@ import { SortingTableComponent } from './material-components/tables/sorting-tabl
     PartnersComponent,
     ParticipantsTableComponent,
     SortingTableComponent,
+    ExternTrainerComponent,
   ],
   imports: [
     MatDatepickerModule,
