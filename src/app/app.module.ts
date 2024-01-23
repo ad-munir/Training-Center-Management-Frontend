@@ -28,7 +28,6 @@ import { TrainersFormComponent } from './admin/content/trainers/trainers-form/tr
 import { MatTableModule } from '@angular/material/table';
 import { TrainersTableComponent } from './material-components/tables/trainers-table/trainers-table.component';
 import { LoaderComponent } from './material-components/loader/loader.component';
-import { ParticipantComponent } from './admin/content/participants/participant/participant.component';
 import { Interceptor } from './inteceptors';
 import { CompaniesFormComponent } from './admin/content/companies/companies-form/companies-form.component';
 import { CompaniesTableComponent } from './material-components/tables/companies-table/companies-table.component';
@@ -51,8 +50,8 @@ import { AdvancedFeatureComponent } from './client/home/advanced-feature/advance
 import { ReviewsComponent } from './client/home/reviews/reviews.component';
 import { FooterComponent } from './client/footer/footer.component';
 import { PartnersComponent } from './client/partners/partners.component';
-
-
+import { ParticipantsTableComponent } from './material-components/tables/participants-table/participants-table.component';
+import { ParticipantMainComponent } from './admin/content/participants/participant-main/participant-main.component';
 
 @NgModule({
   declarations: [
@@ -74,7 +73,7 @@ import { PartnersComponent } from './client/partners/partners.component';
     TrainersFormComponent,
     TrainersTableComponent,
     LoaderComponent,
-    ParticipantComponent,
+    ParticipantMainComponent,
     CompaniesFormComponent,
     CompaniesTableComponent,
     AssistantsTableComponent,
@@ -92,6 +91,7 @@ import { PartnersComponent } from './client/partners/partners.component';
     ReviewsComponent,
     FooterComponent,
     PartnersComponent,
+    ParticipantsTableComponent,
   ],
   imports: [
     MatDatepickerModule,
@@ -109,7 +109,7 @@ import { PartnersComponent } from './client/partners/partners.component';
     MatIconModule,
     MatTableModule,
     NgbModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: Interceptor, multi: true },

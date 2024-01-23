@@ -13,11 +13,11 @@ export class ParticipantService {
 
   constructor(private http: HttpClient) {}
 
-  getParticipant(): Observable<Participant[]> {
+  getParticipants(): Observable<Participant[]> {
     return this.http.get<Participant[]>(this.url_backend + 'participants');
   }
 
-  addParticipant(participants: FormGroup): Observable<Participant> {
+  addParticipant(participants: Participant): Observable<Participant> {
     return this.http.post<Participant>(`${this.url_backend}participants`, participants);
   }
 }

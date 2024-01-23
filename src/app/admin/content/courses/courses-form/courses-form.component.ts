@@ -115,6 +115,4 @@ export class CoursesFormComponent implements OnInit {
     this.form.get('trainerId').setValue(trainerId);
   }
 
-
-
 }

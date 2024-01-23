@@ -6,9 +6,7 @@ import { ParticipantService } from 'src/app/services/participant.service';
 @Component({
   selector: 'app-enroll-course',
   templateUrl: './enroll-course.component.html',
-  styleUrls: [
-    './enroll-course.component.css',
-  ],
+  styleUrls: ['./enroll-course.component.css'],
 })
 export class EnrollCourseComponent {
   participantForm!: FormGroup;
@@ -21,17 +19,19 @@ export class EnrollCourseComponent {
   ) {}
 
   ngOnInit(): void {
+
     this.route.paramMap.subscribe((params) => {
       this.courseId = params.get('id');
     });
+
     this.participantForm = this.fb.group({
-      courseId: [this.courseId, Validators.required],
       firstname: ['', Validators.required],
       lastname: ['', Validators.required],
       birthday: ['', [Validators.required, this.validateDate]],
       email: ['', [Validators.required, Validators.email]],
       phone: [''],
       city: [''],
+      courseId: +this.courseId,
     });
   }
 
@@ -44,11 +44,16 @@ export class EnrollCourseComponent {
     if (this.participantForm.valid) {
       const participantData = this.participantForm.value;
 
-      this.participantService
-        .addParticipant(participantData)
-        .subscribe((response) => {
-          console.log(response);
-        });
+      this.participantService.addParticipant(participantData).subscribe(
+        (response) => {
+          console.log('Participant added successfully:', response);
+        },
+
+        (error) => {
+          console.error('Error adding participant:', error);
+        }
+      );
     }
   }
+
 }

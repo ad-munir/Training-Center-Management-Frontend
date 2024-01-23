@@ -11,7 +11,6 @@ import { AssistantsMainComponent } from './admin/content/assistants/assistants-m
 import { CompaniesMainComponent } from './admin/content/companies/companies-main/companies-main.component';
 import { TrainersMainComponent } from './admin/content/trainers/trainers-main/trainers-main.component';
 import { TrainersFormComponent } from './admin/content/trainers/trainers-form/trainers-form.component';
-import { ParticipantComponent } from './admin/content/participants/participant/participant.component';
 import { CompaniesFormComponent } from './admin/content/companies/companies-form/companies-form.component';
 import { AssistantsFormComponent } from './admin/content/assistants/assistants-form/assistants-form.component';
 import { CoursesMainComponent } from './admin/content/courses/courses-main/courses-main.component';
@@ -20,7 +19,7 @@ import { EnrollCourseComponent } from './client/courses/enroll-course/enroll-cou
 import { GuardAuthService } from './services/guard-auth.service';
 import { TrainerProfileComponent } from './admin/content/trainers/trainer-profile/trainer-profile.component';
 import { PartnersComponent } from './client/partners/partners.component';
-
+import { ParticipantMainComponent } from './admin/content/participants/participant-main/participant-main.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -28,41 +27,37 @@ const routes: Routes = [
   { path: 'about', component: AboutComponent },
   { path: 'course-details/:id', component: CourseDetailsComponent },
   { path: 'enroll-course/:id', component: EnrollCourseComponent },
-  { path: 'participants', component: ParticipantComponent },
 
   { path: 'login', component: LoginComponent },
   {
     path: 'dashboard',
     component: LayoutComponent,
-    canActivate: [GuardAuthService] // Apply the guard to protect access to the Dashboard component
+    canActivate: [GuardAuthService], // Apply the guard to protect access to the Dashboard component
   },
   { path: 'main', component: MainContentComponent },
 
-
   { path: 'courses/all', component: CoursesMainComponent },
   { path: 'courses', component: CoursesFormComponent },
-
-
 
   { path: 'trainers/all', component: TrainersMainComponent },
   { path: 'trainers', component: TrainersFormComponent },
   { path: 'trainer-profile/:id', component: TrainerProfileComponent },
 
-
   { path: 'assistants/all', component: AssistantsMainComponent },
   { path: 'assistants', component: AssistantsFormComponent },
 
 
+  { path: 'participants/all', component: ParticipantMainComponent },
+  // { path: 'participants', component:  },
+
   { path: 'companies/all', component: CompaniesMainComponent },
   { path: 'companies', component: CompaniesFormComponent },
 
-
   { path: 'partners', component: PartnersComponent },
-
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
