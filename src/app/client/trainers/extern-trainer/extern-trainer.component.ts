@@ -62,7 +62,7 @@ export class ExternTrainerComponent {
       formData.append('keywords', keys);
       formData.append('image', this.selectedFile);
 
-      this.trainerService.addTrainer(formData)
+      this.trainerService.addTrainerExtern(formData)
         .subscribe(
           (newTrainer) => {
             console.log('Trainer added successfully:', newTrainer);
