@@ -52,6 +52,7 @@ import { FooterComponent } from './client/footer/footer.component';
 import { PartnersComponent } from './client/partners/partners.component';
 import { ParticipantsTableComponent } from './material-components/tables/participants-table/participants-table.component';
 import { ParticipantMainComponent } from './admin/content/participants/participant-main/participant-main.component';
+import { ExternTrainerComponent } from './client/trainers/extern-trainer/extern-trainer.component';
 
 @NgModule({
   declarations: [
@@ -92,6 +93,7 @@ import { ParticipantMainComponent } from './admin/content/participants/participa
     FooterComponent,
     PartnersComponent,
     ParticipantsTableComponent,
+    ExternTrainerComponent,
   ],
   imports: [
     MatDatepickerModule,

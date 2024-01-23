@@ -20,6 +20,7 @@ import { GuardAuthService } from './services/guard-auth.service';
 import { TrainerProfileComponent } from './admin/content/trainers/trainer-profile/trainer-profile.component';
 import { PartnersComponent } from './client/partners/partners.component';
 import { ParticipantMainComponent } from './admin/content/participants/participant-main/participant-main.component';
+import { ExternTrainerComponent } from './client/trainers/extern-trainer/extern-trainer.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -42,6 +43,7 @@ const routes: Routes = [
   { path: 'trainers/all', component: TrainersMainComponent },
   { path: 'trainers', component: TrainersFormComponent },
   { path: 'trainer-profile/:id', component: TrainerProfileComponent },
+  { path: 'extern-trainer', component: ExternTrainerComponent },
 
   { path: 'assistants/all', component: AssistantsMainComponent },
   { path: 'assistants', component: AssistantsFormComponent },
