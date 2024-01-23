@@ -52,6 +52,7 @@ import { FooterComponent } from './client/footer/footer.component';
 import { PartnersComponent } from './client/partners/partners.component';
 import { ParticipantsTableComponent } from './material-components/tables/participants-table/participants-table.component';
 import { ParticipantMainComponent } from './admin/content/participants/participant-main/participant-main.component';
+import { SortingTableComponent } from './material-components/tables/sorting-table/sorting-table.component';
 
 @NgModule({
   declarations: [
@@ -92,6 +93,7 @@ import { ParticipantMainComponent } from './admin/content/participants/participa
     FooterComponent,
     PartnersComponent,
     ParticipantsTableComponent,
+    SortingTableComponent,
   ],
   imports: [
     MatDatepickerModule,
@@ -110,6 +112,8 @@ import { ParticipantMainComponent } from './admin/content/participants/participa
     MatTableModule,
     NgbModule,
     BrowserAnimationsModule,
+
+
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: Interceptor, multi: true },

@@ -20,6 +20,7 @@ import { GuardAuthService } from './services/guard-auth.service';
 import { TrainerProfileComponent } from './admin/content/trainers/trainer-profile/trainer-profile.component';
 import { PartnersComponent } from './client/partners/partners.component';
 import { ParticipantMainComponent } from './admin/content/participants/participant-main/participant-main.component';
+import { SortingTableComponent } from './material-components/tables/sorting-table/sorting-table.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -54,6 +55,8 @@ const routes: Routes = [
   { path: 'companies', component: CompaniesFormComponent },
 
   { path: 'partners', component: PartnersComponent },
+
+  { path: 'sorting', component: SortingTableComponent },
 ];
 
 @NgModule({
