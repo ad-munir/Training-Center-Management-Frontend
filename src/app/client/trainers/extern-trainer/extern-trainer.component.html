@@ -7,11 +7,11 @@
           <a class="navbar-brand" routerLink="/"> <img src="./../../../assets/img/logo.png" alt="logo"> </a>
       </div>
    -->
-  
+
       <div class="col-12 col-md-6 col-lg-6 ">
         <div class="card p-2 ">
           <form [formGroup]="form" (ngSubmit)="onSubmit()">
-  
+
             <div class="card-body p-4">
               <div class="mb-3">
                 <label class="fw-semibold">First Name</label>
@@ -33,7 +33,7 @@
                 <label class="fw-semibold">Phone</label>
                 <input type="text" formControlName="phone" class="form-control p-2">
               </div>
-           
+
               <div class="mb-3">
                 <label class="fw-semibold">Image</label>
                 <input type="file" (change)="onFileChange($event)" class="form-control p-2" required>
@@ -42,21 +42,21 @@
               <div class="mb-3">
                 <app-tags-input></app-tags-input>
               </div>
-  
+
             </div>
-  
-  
+
+
             <div class="card-footer text-right">
-              <button class="btn btn-primary" (click)="onSubmit()">Submit</button>
+              <button class="btn btn-primary">Submit</button>
             </div>
           </form>
         </div>
       </div>
-  
+
     </div>
   </div>
-  
-  
+
+
 
 
 

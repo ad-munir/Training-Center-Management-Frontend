@@ -11,6 +11,7 @@ export interface TableElements {
   email: string;
   phone: string;
   keywords: string;
+  active: boolean;
   image: File;
 }
 
@@ -52,7 +53,7 @@ export class TrainersTableComponent  implements OnInit {
       );
   }
 
-  displayedColumns: string[] = ['fullname', 'email', 'phone', 'keywords', 'image'];
+  displayedColumns: string[] = ['fullname', 'email', 'phone', 'keywords', 'active', 'image'];
   clickedRows = new Set<TableElements>();
 
 

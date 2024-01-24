@@ -216,7 +216,7 @@ a.dropdown-item{
 	width: 275px;
 	background: #081A51;
 	box-shadow: 0 0 50px rgba(0, 0, 0, .1);
-	z-index: 9999;
+	z-index: 999;
 }
 .sidebar{
 	overflow-y: auto;

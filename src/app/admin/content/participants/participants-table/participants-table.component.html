@@ -1,4 +1,4 @@
-<table mat-table [dataSource]="participants" class="mat-elevation-z8 demo-table mt-3">
+<table mat-table [dataSource]="participants" class="mat-elevation-z8 demo-table mt-3" #participantTable>
 
     <!-- Full name Column -->
     <ng-container matColumnDef="fullname">
@@ -32,6 +32,35 @@
   <ng-container matColumnDef="city">
     <th mat-header-cell *matHeaderCellDef>City</th>
     <td mat-cell *matCellDef="let element">{{element.city}}</td>
+  </ng-container>
+
+
+    <!-- Evaluated Column -->
+    <ng-container matColumnDef="evaluated">
+      <th mat-header-cell *matHeaderCellDef>Evaluated</th>
+      <td mat-cell *matCellDef="let element">{{element.evaluated}}</td>
+    </ng-container>
+
+  <!-- Assigned Column -->
+  <ng-container matColumnDef="assigned">
+    <th mat-header-cell *matHeaderCellDef>Assigned</th>
+    <td mat-cell *matCellDef="let element">{{element.assigned}}</td>
+  </ng-container>
+
+
+
+  <!-- Course Column -->
+  <ng-container matColumnDef="course">
+    <th mat-header-cell *matHeaderCellDef>Course</th>
+    <td mat-cell *matCellDef="let element">{{element.course.title}}</td>
+  </ng-container>
+
+  <!-- Action Column -->
+  <ng-container matColumnDef="action">
+    <th mat-header-cell *matHeaderCellDef>Action</th>
+    <td mat-cell *matCellDef="let element">
+      <span  *ngIf="!element.assigned" class=" btn-primary p-2 rounded pointer" (click)="assignToCourse(element.id)">Assign</span>
+    </td>
   </ng-container>
 
 

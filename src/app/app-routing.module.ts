@@ -49,9 +49,8 @@ const routes: Routes = [
   { path: 'assistants/all', component: AssistantsMainComponent },
   { path: 'assistants', component: AssistantsFormComponent },
 
-
-  { path: 'participants/all', component: ParticipantMainComponent },
-  // { path: 'participants', component:  },
+  { path: 'participants/all', component: ParticipantMainComponent }, // dont delete
+  { path: 'participants/assigned', component: ParticipantMainComponent }, //dont delete
 
   { path: 'companies/all', component: CompaniesMainComponent },
   { path: 'companies', component: CompaniesFormComponent },

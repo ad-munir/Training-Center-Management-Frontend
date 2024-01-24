@@ -38,7 +38,10 @@ import { CoursesMainComponent } from './admin/content/courses/courses-main/cours
 import { CoursesTableComponent } from './material-components/tables/courses-table/courses-table.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { MatDatepickerModule } from '@angular/material/datepicker';
-import { MatNativeDateModule } from '@angular/material/core';
+import {
+  MatNativeDateModule,
+  MatPseudoCheckboxModule,
+} from '@angular/material/core';
 import { TrainerProfileComponent } from './admin/content/trainers/trainer-profile/trainer-profile.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NavbarComponent } from './client/navbar/navbar.component';
@@ -50,10 +53,13 @@ import { AdvancedFeatureComponent } from './client/home/advanced-feature/advance
 import { ReviewsComponent } from './client/home/reviews/reviews.component';
 import { FooterComponent } from './client/footer/footer.component';
 import { PartnersComponent } from './client/partners/partners.component';
-import { ParticipantsTableComponent } from './material-components/tables/participants-table/participants-table.component';
+import { ParticipantsTableComponent } from './admin/content/participants/participants-table/participants-table.component';
 import { ParticipantMainComponent } from './admin/content/participants/participant-main/participant-main.component';
 import { SortingTableComponent } from './material-components/tables/sorting-table/sorting-table.component';
 import { ExternTrainerComponent } from './client/trainers/extern-trainer/extern-trainer.component';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { ParticipantDialogComponent } from './admin/content/participants/participant-dialog/participant-dialog.component';
+import { AssignedParticipantTableComponent } from './admin/content/participants/assigned-participant-table/assigned-participant-table.component';
 
 @NgModule({
   declarations: [
@@ -96,6 +102,8 @@ import { ExternTrainerComponent } from './client/trainers/extern-trainer/extern-
     ParticipantsTableComponent,
     SortingTableComponent,
     ExternTrainerComponent,
+    ParticipantDialogComponent,
+    AssignedParticipantTableComponent,
   ],
   imports: [
     MatDatepickerModule,
@@ -114,8 +122,7 @@ import { ExternTrainerComponent } from './client/trainers/extern-trainer/extern-
     MatTableModule,
     NgbModule,
     BrowserAnimationsModule,
-
-
+    MatCheckboxModule,
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: Interceptor, multi: true },

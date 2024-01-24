@@ -44,6 +44,9 @@ export class EnrollCourseComponent {
     if (this.participantForm.valid) {
       const participantData = this.participantForm.value;
 
+      console.log(participantData);
+
+
       this.participantService.addParticipant(participantData).subscribe(
         (response) => {
           console.log('Participant added successfully:', response);

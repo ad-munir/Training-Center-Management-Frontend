@@ -8,8 +8,9 @@ export interface Trainer {
   email: string;
   phone: string;
   keywords: string;
+  active: boolean;
   image: any;
   courses: Course[];
 
-  [key: string]: string | number | File | Number | Course[] | null;
+  [key: string]: string | number | File | Number | boolean | Course[] | null;
 }
