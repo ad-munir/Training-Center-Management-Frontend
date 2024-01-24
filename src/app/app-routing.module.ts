@@ -22,6 +22,7 @@ import { PartnersComponent } from './client/partners/partners.component';
 import { ParticipantMainComponent } from './admin/content/participants/participant-main/participant-main.component';
 import { SortingTableComponent } from './material-components/tables/sorting-table/sorting-table.component';
 import { ExternTrainerComponent } from './client/trainers/extern-trainer/extern-trainer.component';
+import { CourseFeedbackComponent } from './client/courses/course-feedback/course-feedback.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -29,6 +30,7 @@ const routes: Routes = [
   { path: 'about', component: AboutComponent },
   { path: 'course-details/:id', component: CourseDetailsComponent },
   { path: 'enroll-course/:id', component: EnrollCourseComponent },
+  { path: 'course-feedback', component: CourseFeedbackComponent },
 
   { path: 'login', component: LoginComponent },
   {

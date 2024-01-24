@@ -60,6 +60,7 @@ import { ExternTrainerComponent } from './client/trainers/extern-trainer/extern-
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { ParticipantDialogComponent } from './admin/content/participants/participant-dialog/participant-dialog.component';
 import { AssignedParticipantTableComponent } from './admin/content/participants/assigned-participant-table/assigned-participant-table.component';
+import { CourseFeedbackComponent } from './client/courses/course-feedback/course-feedback.component';
 
 @NgModule({
   declarations: [
@@ -104,15 +105,16 @@ import { AssignedParticipantTableComponent } from './admin/content/participants/
     ExternTrainerComponent,
     ParticipantDialogComponent,
     AssignedParticipantTableComponent,
+    CourseFeedbackComponent
   ],
   imports: [
     MatDatepickerModule,
+    ReactiveFormsModule,
     MatNativeDateModule,
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule,
     MatDialogModule,
     MatButtonModule,
     MatInputModule,
