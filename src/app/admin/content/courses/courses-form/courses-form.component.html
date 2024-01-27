@@ -34,10 +34,16 @@
               <textarea formControlName="description" class="form-control p-2" required></textarea>
             </div>
 
+
             <div class="mb-3">
               <label class="fw-semibold">Type</label>
-              <input type="text" formControlName="type" class="form-control p-2" required>
+              <select formControlName="type" class="form-control p-2" required (change)="selectType($event)">
+                <option *ngFor="let type of types" [value]="type">{{type}}</option>
+              </select>
             </div>
+
+
+
 
             <div class="mb-3">
               <label class="fw-semibold">Category</label>

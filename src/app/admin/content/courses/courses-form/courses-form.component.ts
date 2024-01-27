@@ -115,4 +115,12 @@ export class CoursesFormComponent implements OnInit {
     this.form.get('trainerId').setValue(trainerId);
   }
 
+
+  types = ["COMPANY", "PARTICIPANT"]
+
+  selectType(event: any): void {
+    const type = event.target.value;
+    this.form.get('type').setValue(type);
+  }
+
 }
