@@ -1,3 +1,5 @@
+import { FullCalendarModule } from '@fullcalendar/angular';
+
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
@@ -60,6 +62,7 @@ import { ExternTrainerComponent } from './client/trainers/extern-trainer/extern-
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { ParticipantDialogComponent } from './admin/content/participants/participant-dialog/participant-dialog.component';
 import { AssignedParticipantTableComponent } from './admin/content/participants/assigned-participant-table/assigned-participant-table.component';
+import { CalendarComponent } from './calendar/calendar.component';
 
 @NgModule({
   declarations: [
@@ -104,6 +107,8 @@ import { AssignedParticipantTableComponent } from './admin/content/participants/
     ExternTrainerComponent,
     ParticipantDialogComponent,
     AssignedParticipantTableComponent,
+    CalendarComponent,
+
   ],
   imports: [
     MatDatepickerModule,
@@ -123,6 +128,8 @@ import { AssignedParticipantTableComponent } from './admin/content/participants/
     NgbModule,
     BrowserAnimationsModule,
     MatCheckboxModule,
+    FullCalendarModule,
+
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: Interceptor, multi: true },

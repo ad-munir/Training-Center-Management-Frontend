@@ -1,3 +1,4 @@
+
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './auth/login/login.component';
@@ -22,6 +23,7 @@ import { PartnersComponent } from './client/partners/partners.component';
 import { ParticipantMainComponent } from './admin/content/participants/participant-main/participant-main.component';
 import { SortingTableComponent } from './material-components/tables/sorting-table/sorting-table.component';
 import { ExternTrainerComponent } from './client/trainers/extern-trainer/extern-trainer.component';
+import { CalendarComponent } from './calendar/calendar.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -31,10 +33,11 @@ const routes: Routes = [
   { path: 'enroll-course/:id', component: EnrollCourseComponent },
 
   { path: 'login', component: LoginComponent },
+  { path: 'calendar', component: CalendarComponent },
   {
     path: 'dashboard',
     component: LayoutComponent,
-    canActivate: [GuardAuthService], // Apply the guard to protect access to the Dashboard component
+     // Apply the guard to protect access to the Dashboard component
   },
   { path: 'main', component: MainContentComponent },
 
