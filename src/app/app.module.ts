@@ -61,6 +61,9 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { ParticipantDialogComponent } from './admin/content/participants/participant-dialog/participant-dialog.component';
 import { AssignedParticipantTableComponent } from './admin/content/participants/assigned-participant-table/assigned-participant-table.component';
 import { CourseFeedbackComponent } from './client/courses/course-feedback/course-feedback.component';
+import { CalendarComponent } from './admin/content/calendar/calendar.component';
+import { FullCalendarModule } from '@fullcalendar/angular';
+
 
 @NgModule({
   declarations: [
@@ -105,7 +108,8 @@ import { CourseFeedbackComponent } from './client/courses/course-feedback/course
     ExternTrainerComponent,
     ParticipantDialogComponent,
     AssignedParticipantTableComponent,
-    CourseFeedbackComponent
+    CourseFeedbackComponent,
+    CalendarComponent
   ],
   imports: [
     MatDatepickerModule,
@@ -125,6 +129,7 @@ import { CourseFeedbackComponent } from './client/courses/course-feedback/course
     NgbModule,
     BrowserAnimationsModule,
     MatCheckboxModule,
+    FullCalendarModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: Interceptor, multi: true },
