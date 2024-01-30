@@ -29,4 +29,9 @@ export class TrainerService {
     return this.http.post<Trainer>(`${this.url_backend}trainers/extern`, formData);
   }
 
+ validateTrainerExtern(id: string): Observable<boolean> {
+  return this.http.post<boolean>(this.url_backend + 'trainers/validate/' + id, {});
+}
+
+
 }
