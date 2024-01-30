@@ -20,4 +20,8 @@ export class GuardService {
   isTrainer(): boolean {
     return this.getUserRole() === 'TRAINER';
   }
+
+  isAuthenticated(): boolean {
+    return !!localStorage.getItem('JWT');
+  }
 }

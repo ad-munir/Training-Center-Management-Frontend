@@ -23,6 +23,8 @@ import { ParticipantMainComponent } from './admin/content/participants/participa
 import { SortingTableComponent } from './material-components/tables/sorting-table/sorting-table.component';
 import { ExternTrainerComponent } from './client/trainers/extern-trainer/extern-trainer.component';
 import { CourseFeedbackComponent } from './client/courses/course-feedback/course-feedback.component';
+import { AdminGuard } from './services/admin-guard.service';
+import { LogoutComponent } from './auth/logout/logout.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -33,6 +35,8 @@ const routes: Routes = [
   { path: 'course-feedback', component: CourseFeedbackComponent },
 
   { path: 'login', component: LoginComponent },
+  { path: 'logout', component: LogoutComponent },
+
   {
     path: 'dashboard',
     component: LayoutComponent,
@@ -44,27 +48,66 @@ const routes: Routes = [
     canActivate: [GuardAuthService], 
   },
 
-  //{ path: 'main', component: MainContentComponent },
+  {
+    path: 'courses/all',
+    component: CoursesMainComponent,
+    canActivate: [GuardAuthService], 
+  },
+  {
+    path: 'courses',
+    component: CoursesFormComponent,
+    canActivate: [AdminGuard], 
+  },
+  {
+    path: 'trainers/all',
+    component: TrainersMainComponent,
+    canActivate: [GuardAuthService], 
+  },
+  {
+    path: 'trainers',
+    component: TrainersFormComponent,
+    canActivate: [AdminGuard], 
+  },
 
-  { path: 'courses/all', component: CoursesMainComponent },
-  { path: 'courses', component: CoursesFormComponent },
-
-  { path: 'trainers/all', component: TrainersMainComponent },
-  { path: 'trainers', component: TrainersFormComponent },
   { path: 'trainer-profile/:id', component: TrainerProfileComponent },
   { path: 'extern-trainer', component: ExternTrainerComponent },
 
-  { path: 'assistants/all', component: AssistantsMainComponent },
-  { path: 'assistants', component: AssistantsFormComponent },
+  {
+    path: 'assistants/all',
+    component: AssistantsMainComponent,
+    canActivate: [GuardAuthService], 
+  },
 
-  { path: 'participants/all', component: ParticipantMainComponent }, // dont delete
-  { path: 'participants/assigned', component: ParticipantMainComponent }, //dont delete
-
-  { path: 'companies/all', component: CompaniesMainComponent },
-  { path: 'companies', component: CompaniesFormComponent },
-
+  {
+    path: 'assistants',
+    component: AssistantsFormComponent,
+    canActivate: [AdminGuard], 
+  },
+  
+  {
+    path: 'participants/all',
+    component: ParticipantMainComponent,
+    canActivate: [GuardAuthService], 
+  },
+  
+  {
+    path: 'participants/assigned',
+    component: ParticipantMainComponent,
+    canActivate: [GuardAuthService], 
+  },
+  
+  {
+    path: 'companies/all',
+    component: CompaniesMainComponent,
+    canActivate: [GuardAuthService], 
+  },
+  {
+    path: 'companies',
+    component: CompaniesFormComponent,
+    canActivate: [AdminGuard], 
+  },
+  
   { path: 'partners', component: PartnersComponent },
-
   { path: 'sorting', component: SortingTableComponent },
 ];
 

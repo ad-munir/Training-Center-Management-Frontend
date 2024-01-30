@@ -20,9 +20,9 @@
 
           <hr class="dropdown-divider">
 
-          <a class="dropdown-item">
+          <a class="dropdown-item" routerLink="/logout">
             <i class="fa fa-sign-out-alt  size-icon-1"></i>
-            <span>My Profile</span>
+            <span>Log out</span>
           </a>
         </ul>
 
@@ -61,7 +61,7 @@
           </a>
         </li>
 
-        <div *ngIf="role === 'ADMIN'">
+        <div  *ngIf="role === 'ADMIN' || 'ASSISTANT'">
           <!-- Courses Divider -->
           <div class="divider" data-text="STARTER">Courses</div>
 
@@ -78,11 +78,14 @@
                 <i class='bx bx-columns'></i>
                 <a routerLink="/courses/all">All Courses</a>
               </li>
+              
+              <div  *ngIf="role === 'ADMIN'">
+                <li>
+                  <i class='bx bx-plus'></i>
+                  <a routerLink="/courses">Add Courses</a>
+                </li>
 
-              <li>
-                <i class='bx bx-plus'></i>
-                <a routerLink="/courses">Add Courses</a>
-              </li>
+              </div>
             </ul>
           </li>
 
@@ -104,19 +107,17 @@
                 <i class='bx bx-columns'></i>
                 <a routerLink="/trainers/all">All Trainers</a>
               </li>
+              <div  *ngIf="role === 'ADMIN'">
 
               <li>
                 <i class='bx bx-plus'></i>
                 <a routerLink="/trainers">Add Trainers</a>
               </li>
+              </div>
 
             </ul>
           </li>
         </div>
-
-
-
-        <div  *ngIf="role === 'ADMIN' || 'ASSISTANT'">
 
 
           <!-- Participants Divider -->
@@ -140,15 +141,8 @@
                 <a routerLink="/participants/assigned">Assigned Participants</a>
               </li>
 
-              <li>
-                <i class='bx bx-plus'></i>
-                <a routerLink="/participants">Add Participants</a>
-              </li>
             </ul>
           </li>
-
-
-
 
 
           <!-- Assistants Divider -->
@@ -166,11 +160,13 @@
                 <i class='bx bx-columns'></i>
                 <a routerLink="/assistants/all">All Assiastants</a>
               </li>
+              <div  *ngIf="role === 'ADMIN'">
 
               <li>
                 <i class='bx bx-plus'></i>
                 <a routerLink="/assistants">Add Assiastant</a>
               </li>
+              </div>
             </ul>
           </li>
 
@@ -191,21 +187,22 @@
                 <i class='bx bx-columns'></i>
                 <a routerLink="/companies/all">All Companies</a>
               </li>
+              <div  *ngIf="role === 'ADMIN'">
 
               <li>
                 <i class='bx bx-plus'></i>
                 <a routerLink="/companies">Add Company</a>
               </li>
+              </div>
             </ul>
 
           </li>
 
-        </div>
       </ul>
 
     </div>
   </div>
-</div><!-- End Sidebar-->
+</div>
 
 
 <div class="sidebar-overlay"></div>

@@ -63,6 +63,7 @@ import { AssignedParticipantTableComponent } from './admin/content/participants/
 import { CourseFeedbackComponent } from './client/courses/course-feedback/course-feedback.component';
 import { CalendarComponent } from './admin/content/calendar/calendar.component';
 import { FullCalendarModule } from '@fullcalendar/angular';
+import { LogoutComponent } from './auth/logout/logout.component';
 
 
 @NgModule({
@@ -109,7 +110,8 @@ import { FullCalendarModule } from '@fullcalendar/angular';
     ParticipantDialogComponent,
     AssignedParticipantTableComponent,
     CourseFeedbackComponent,
-    CalendarComponent
+    CalendarComponent,
+    LogoutComponent
   ],
   imports: [
     MatDatepickerModule,
