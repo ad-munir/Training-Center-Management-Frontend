@@ -43,7 +43,7 @@ import {
   MatPseudoCheckboxModule,
 } from '@angular/material/core';
 import { TrainerProfileComponent } from './admin/content/trainers/trainer-profile/trainer-profile.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { BrowserAnimationsModule, provideAnimations } from '@angular/platform-browser/animations';
 import { NavbarComponent } from './client/navbar/navbar.component';
 import { BannerComponent } from './client/home/banner/banner.component';
 import { FeaturesComponent } from './client/home/features/features.component';
@@ -63,6 +63,7 @@ import { AssignedParticipantTableComponent } from './admin/content/participants/
 import { CourseFeedbackComponent } from './client/courses/course-feedback/course-feedback.component';
 import { CalendarComponent } from './admin/content/calendar/calendar.component';
 import { FullCalendarModule } from '@fullcalendar/angular';
+import { NgToastModule } from 'ng-angular-popup';
 
 
 @NgModule({
@@ -129,7 +130,8 @@ import { FullCalendarModule } from '@fullcalendar/angular';
     NgbModule,
     BrowserAnimationsModule,
     MatCheckboxModule,
-    FullCalendarModule
+    FullCalendarModule,
+    NgToastModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: Interceptor, multi: true },

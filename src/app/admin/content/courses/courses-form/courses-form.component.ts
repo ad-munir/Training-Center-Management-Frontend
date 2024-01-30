@@ -6,6 +6,7 @@ import { Course } from 'src/app/models/course.model';
 import { TrainerService } from 'src/app/services/trainer.service';
 import { Router } from '@angular/router';
 import { Trainer } from 'src/app/models/trainer.model';
+import { ToastService } from 'src/app/services/toast.service';
 
 @Component({
   selector: 'app-courses-form',
@@ -17,21 +18,19 @@ import { Trainer } from 'src/app/models/trainer.model';
   ],
 })
 export class CoursesFormComponent implements OnInit {
-  form: any;
+  form!: FormGroup;
   selectedFile: File | null = null;
+  courses: Course[] = [];
+  trainers: Trainer[] = [];
+  types = ["COMPANY", "PARTICIPANT"]
 
 
   constructor(private fb: FormBuilder, private courseService: CourseService,
     private trainerService: TrainerService,
     private changeDetectorRef: ChangeDetectorRef,
-    private router: Router
+    private router: Router,
+    private toast: ToastService
   ) {}
-
-  courses: Course[] = [];
-  trainers: Trainer[] = [];
-
-
-
 
 
   getTrainers(): void {
@@ -53,19 +52,17 @@ export class CoursesFormComponent implements OnInit {
 
 
   ngOnInit(): void {
-
     this.getTrainers();
 
     this.form = this.fb.group({
       title: ['', Validators.required],
-      hours: ['', Validators.required],
-      cost: [0, Validators.required],
+      hours: ['', [Validators.required, Validators.min(1)]],  // Add minimum value validation for hours
+      cost: [0, [Validators.required, Validators.min(0)]],     // Add minimum value validation for cost
       description: ['', Validators.required],
       type: ['', Validators.required],
       category: ['', Validators.required],
       image: [null, Validators.required],
       trainerId: [null, Validators.required],
-
     });
   }
 
@@ -77,12 +74,8 @@ export class CoursesFormComponent implements OnInit {
     }
   }
 
-
   onSubmit(): void {
-    if (this.selectedFile) {
-      console.log('selectedFile');
-      console.log(this.form);
-
+    if (this.form.valid && this.selectedFile) {
       const formData = new FormData();
 
       formData.append('title', this.form.get('title')?.value);
@@ -94,33 +87,39 @@ export class CoursesFormComponent implements OnInit {
       formData.append('image', this.selectedFile);
       formData.append('trainerId', this.form.get('trainerId')?.value);
 
-
       this.courseService.addCourse(formData).subscribe(
         (newCourse) => {
           console.log('Course added successfully:', newCourse);
-          // Optionally, you can redirect or perform other actions here
+          this.toast.showSuccess('Course added successfully!');
+
+          this.form.reset();
+          this.selectedFile = null;
         },
         (error) => {
           console.error('Error adding course:', error);
-          // Handle error as needed
+          this.toast.showError('Error adding course!');
         }
       );
     } else {
-      console.error('No file selected');
+      if (!this.selectedFile) {
+        this.toast.showWarn('Please select an image !');
+      } else {
+        this.toast.showWarn('All fields are required !');
+      }
     }
   }
 
+
   selectTrainer(event: any): void {
     const trainerId = event.target.value;
-    this.form.get('trainerId').setValue(trainerId);
+    this.form.get('trainerId')?.setValue(trainerId);
   }
 
 
-  types = ["COMPANY", "PARTICIPANT"]
 
   selectType(event: any): void {
     const type = event.target.value;
-    this.form.get('type').setValue(type);
+    this.form.get('type')?.setValue(type);
   }
 
 }

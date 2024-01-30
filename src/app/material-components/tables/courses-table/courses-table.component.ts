@@ -29,8 +29,10 @@ export class CoursesTableComponent implements OnInit {
     private courseService: CourseService,
     private trainerService: TrainerService,
     private changeDetectorRef: ChangeDetectorRef,
-    private router: Router
+    private router: Router,
   ) {}
+
+
 
   courses: Course[] = [];
   trainers: Trainer[] = [];
@@ -39,8 +41,6 @@ export class CoursesTableComponent implements OnInit {
     this.getCourses();
     this.getTrainers();
   }
-
-
 
 
   getTrainers(): void {
@@ -84,4 +84,6 @@ export class CoursesTableComponent implements OnInit {
   navigateToTrainerProfile(trainerId: number): void {
     this.router.navigate(['/trainer-profile', trainerId]);
   }
+
+
 }
