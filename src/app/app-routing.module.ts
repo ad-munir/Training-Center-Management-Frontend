@@ -38,7 +38,13 @@ const routes: Routes = [
     component: LayoutComponent,
     canActivate: [GuardAuthService], // Apply the guard to protect access to the Dashboard component
   },
-  { path: 'main', component: MainContentComponent },
+  {
+    path: 'main',
+    component: MainContentComponent,
+    canActivate: [GuardAuthService], 
+  },
+
+  //{ path: 'main', component: MainContentComponent },
 
   { path: 'courses/all', component: CoursesMainComponent },
   { path: 'courses', component: CoursesFormComponent },

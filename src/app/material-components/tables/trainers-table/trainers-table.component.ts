@@ -53,7 +53,7 @@ export class TrainersTableComponent  implements OnInit {
       );
   }
 
-  displayedColumns: string[] = ['fullname', 'email', 'phone', 'keywords', 'active', 'image'];
+  displayedColumns: string[] = ['fullname', 'email', 'phone', 'keywords', 'active', 'image', 'validate'];
   clickedRows = new Set<TableElements>();
 
 
@@ -62,5 +62,31 @@ export class TrainersTableComponent  implements OnInit {
   navigateToTrainerProfile(trainerId: number): void {
     this.router.navigate(['/trainer-profile', trainerId]);
   }
+
+  // validateTrainer(id: any) {
+  //   this.trainerService.validateTrainerExtern(id).subscribe(data => {
+  //     console.log(data);
+  //   });
+  // }
+  
+  validateTrainer(id: any) {
+    this.trainerService.validateTrainerExtern(id).subscribe(data => {
+      console.log(data);
+
+      if (data === true) {
+        const trainerToUpdate = this.trainers.find(trainer => trainer.id === id);
+
+        if (trainerToUpdate) {
+          // Update the 'active' property of the trainer
+          trainerToUpdate.active = true;
+        } else {
+          console.error('Trainer not found in the list.');
+        }
+      } else {
+        console.error('Validation failed.');
+      }
+    });
+  }
 }
+
 

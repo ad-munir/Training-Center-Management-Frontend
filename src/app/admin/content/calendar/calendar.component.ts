@@ -66,42 +66,44 @@ export class CalendarComponent implements OnInit {
 
 
   ngOnInit(): void {
-
     this.calendarService.getSchedules().subscribe((data) => {
-      console.log(data);
+      console.log("fetching data ------- ", data);
+  
+      // Transform the fetched data into FullCalendar events
+      // this.scheduleEvents = data.map(schedule => ({
+      //   id: String(schedule.course.id),  
+      //   title: schedule.course.title,
+      //   start: schedule.startDate,
+      //   end: schedule.endDate,
+      // }));
 
-      this.scheduleEvents = this.convertSchedulesToEvents(data);
-      console.log('----*****',this.scheduleEvents);
+      
+      this.scheduleEvents = [
+        {
+          id: '1',
+          title: 'Manual Event',
+          start: '2024-01-27T10:00:00',
+          end: '2024-01-27T12:00:00',
+        },
+      ];
 
-
-
-       // Update the calendarOptions with the new data
+  
+      // Update the calendarOptions with the new data
       this.calendarOptions.update(options => ({
         ...options,
         initialEvents: this.scheduleEvents,
       }));
 
+  
+      // Move change detection to the end of the subscription block
       this.changeDetector.detectChanges();
     });
-
-    this.changeDetector.detectChanges();
   }
+  
 
 
 
-  convertSchedulesToEvents(schedules: Schedule[]): EventInput[] {
-    return schedules.map((schedule) => ({
-      id: createEventId(),
-      title: schedule.course.title,
-      start: this.formatDate(schedule.startDate),
-      end: this.formatDate(schedule.endDate),
-    }));
-  }
 
-  formatDate(date: Date): string {
-    const formattedDate = date.toISOString().replace(/T.*$/, ''); // Keep only the date part
-    return formattedDate;
-  }
 
 
 
