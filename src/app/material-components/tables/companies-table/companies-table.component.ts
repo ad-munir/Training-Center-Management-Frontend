@@ -48,7 +48,7 @@ export class CompaniesTableComponent implements OnInit {
     );
   }
 
-  displayedColumns: string[] = ['name', 'address', 'email', 'phone', 'url'];
+  displayedColumns: string[] = ['name', 'address', 'email', 'phone', 'url','action'];
   dataSource: Company[] = [];
   clickedRows = new Set<TableElements>();
 }

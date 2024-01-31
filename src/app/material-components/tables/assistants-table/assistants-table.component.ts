@@ -50,7 +50,7 @@ export class AssistantsTableComponent {
       );
   }
 
-  displayedColumns: string[] = ['fullname', 'email', 'phone', 'image'];
+  displayedColumns: string[] = ['fullname', 'email', 'phone', 'image','action'];
   clickedRows = new Set<TableElements>();
 
 

@@ -26,19 +26,19 @@ export class CourseFeedbackComponent {
   ngOnInit() {
     this.courseId = this.route.snapshot.queryParams['courseId'];
     this.participantId = this.route.snapshot.queryParams['participantId'];
-  
-    // getting participant using participantId 
+
+    // getting participant using participantId
     this.participantService.getParticipantById(this.participantId)
       .subscribe((participant) => {
         this.participant = participant;
-        
+
       }, error => {
         console.error('Error fetching participant:', error);
       });
-   
+
     this.createForm();
   }
-  
+
 
   createForm() {
     this.feedbackForm = this.fb.group({
@@ -50,12 +50,12 @@ export class CourseFeedbackComponent {
   onSubmit() {
     if (this.feedbackForm.valid) {
       const feedbackData = {
-        comments: this.feedbackForm.get('comments')!.value,        
+        comments: this.feedbackForm.get('comments')!.value,
         score: this.feedbackForm.get('score')!.value,
         courseId: this.courseId,
         participantId : this.participantId
       };
-      
+
 
       this.feedbackService.addFeedback(feedbackData).subscribe((data) => {
         console.log(data);
@@ -63,4 +63,5 @@ export class CourseFeedbackComponent {
       });
     }
   }
+  
 }

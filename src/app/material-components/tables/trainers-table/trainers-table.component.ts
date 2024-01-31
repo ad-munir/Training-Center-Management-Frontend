@@ -53,7 +53,7 @@ export class TrainersTableComponent  implements OnInit {
       );
   }
 
-  displayedColumns: string[] = ['fullname', 'email', 'phone', 'keywords', 'active', 'image', 'validate'];
+  displayedColumns: string[] = ['fullname', 'email', 'phone', 'keywords', 'active', 'image','validate','action'];
   clickedRows = new Set<TableElements>();
 
 

@@ -28,7 +28,7 @@ const ELEMENT_DATA: PeriodicElement[] = [
 })
 export class SortingTableComponent implements OnInit {
 
-  displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
+  displayedColumns: string[] = ['position', 'name', 'weight', 'symbol','action'];
   dataSource = new MatTableDataSource(ELEMENT_DATA);
 
   @ViewChild(MatSort) sort!: MatSort;

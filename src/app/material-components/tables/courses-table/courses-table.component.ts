@@ -29,8 +29,10 @@ export class CoursesTableComponent implements OnInit {
     private courseService: CourseService,
     private trainerService: TrainerService,
     private changeDetectorRef: ChangeDetectorRef,
-    private router: Router
+    private router: Router,
   ) {}
+
+
 
   courses: Course[] = [];
   trainers: Trainer[] = [];
@@ -39,8 +41,6 @@ export class CoursesTableComponent implements OnInit {
     this.getCourses();
     this.getTrainers();
   }
-
-
 
 
   getTrainers(): void {
@@ -77,11 +77,33 @@ export class CoursesTableComponent implements OnInit {
       );
   }
 
-  displayedColumns: string[] = ['category', 'cost', 'description', 'hours', 'image', 'title', 'trainer', 'type'];
+  displayedColumns: string[] = ['category', 'cost', 'description', 'hours', 'image', 'title', 'trainer', 'type', 'action'];
   clickedRows = new Set<TableElements>();
 
 
   navigateToTrainerProfile(trainerId: number): void {
     this.router.navigate(['/trainer-profile', trainerId]);
   }
+
+
+
+
+  editCourse(course: any) {
+
+    console.log('Edit course:', course);
+  }
+
+  deleteCourse(courseId: number) {
+    this.courseService.deleteCourse(courseId).subscribe(
+      (data) => {
+        console.log('Delete course with ID:', courseId);
+        this.changeDetectorRef.detectChanges();
+      },
+      error => {
+        console.error('Error deleting courses:', error);
+      }
+    );
+  }
+
+
 }

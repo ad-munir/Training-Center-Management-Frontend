@@ -30,7 +30,6 @@
               "bootstrap/dist/css/bootstrap.css",
               "boxicons/css/boxicons.min.css",
               "src/assets/css/themify-icons.css"
-
             ],
             "scripts": [
               "./src/assets/js/jquery-1.12.1.min.js",
