@@ -48,12 +48,12 @@ export class CalendarComponent implements OnInit {
 
   ngOnInit(): void {
     this.calendarService.getSchedules().subscribe((data) => {
-      console.log('events : ', data);
+      console.log('data : ', data);
 
       this.events = data;
 
       this.calendarOptions.events = this.events.map((event) => ({
-        title: event.course.title,
+        title: event.course.title ,
         start: new Date(event.startDate),
         end: new Date(event.endDate),
       }));
@@ -75,18 +75,4 @@ export class CalendarComponent implements OnInit {
     });
   }
 
-  // async openPlanningModal(): Promise<string> {
-  //   const dialogRef = this.dialog.open(PlanningModalComponent, {
-  //     width: '400px',
-  //   });
-
-  //   const result = await dialogRef.afterClosed().toPromise();
-
-  //   return result;
-  // }
-
-  // async saveQuery() {
-  //   const queryName = await this.openPlanningModal();
-  //   console.log('Entered query name:', queryName);
-  // }
 }

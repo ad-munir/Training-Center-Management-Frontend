@@ -16,8 +16,12 @@ export class CalendarService {
   constructor(private http: HttpClient) {}
 
 
-  getSchedules():Observable<Schedule[]> {
-    return this.http.get<Schedule[]>(this.url_backend + 'schedules');
+  getSchedules():Observable<any[]> {
+    return this.http.get<any[]>(this.url_backend + 'schedules');
+  }
+
+  saveSchedule(schedule:  any): Observable<any> {
+    return this.http.post<any>(`${this.url_backend}schedules`, schedule);
   }
 
 

@@ -1,13 +1,13 @@
+import { CalendarService } from 'src/app/services/calendar.service';
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { Course } from 'src/app/models/course.model';
+import { Schedule } from 'src/app/models/schedule.model';
 import { CourseService } from 'src/app/services/course.service';
+import { ToastService } from 'src/app/services/toast.service';
+import { Router } from '@angular/router';
 
-interface DATA {
-  id: any;
-  title: string;
-}
 
 @Component({
   selector: 'app-planning-modal',
@@ -18,7 +18,10 @@ export class PlanningModalComponent implements OnInit {
   constructor(
     private dialogRef: MatDialogRef<PlanningModalComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
-    private courseService: CourseService
+    private courseService: CourseService,
+    private router: Router,
+    private calendarService: CalendarService,
+    private toast: ToastService
   ) {}
 
   selectedCourseId: any;
@@ -29,7 +32,6 @@ export class PlanningModalComponent implements OnInit {
   }
 
   courses!: Course[];
-  coursesNames!: DATA[];
 
 
   getCourses(): void {
@@ -38,12 +40,6 @@ export class PlanningModalComponent implements OnInit {
         console.log('fetch Courses:', data);
 
         this.courses = data;
-        this.coursesNames = data.map((course) => ({
-          id: course.id,
-          title: course.title,
-        }));
-
-        console.log(this.coursesNames);
 
       },
       (error) => {
@@ -52,7 +48,42 @@ export class PlanningModalComponent implements OnInit {
     );
   }
 
-  onSubmit(queryName: string) {
-    this.dialogRef.close(queryName);
+  onSubmit() {
+
+    console.log(this.selectedCourseId);
+
+
+    if(this.selectedCourseId) {
+
+      const schedule: Schedule = {
+        startDate: new Date(this.data.start),
+        endDate: new Date(this.data.end),
+        courseId: this.selectedCourseId,
+        course: null
+      };
+
+      this.calendarService.saveSchedule(schedule).subscribe(
+        (savedSchedule) => {
+          console.log('Schedule saved:', savedSchedule);
+          this.dialogRef.close();
+          this.router.navigate(['/dashboard'])
+          this.toast.showSuccess('Schedule saved')
+        },
+        (error) => {
+          console.error('Error saving schedule:', error);
+          this.toast.showError('Error saving schedule')
+        }
+      );
+
+    }else {
+      this.toast.showWarn('Please select a course')
+    }
+
+
+  }
+
+
+  onCancel(){
+    this.dialogRef.close();
   }
 }

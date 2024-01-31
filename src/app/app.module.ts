@@ -69,6 +69,7 @@ import { LogoutComponent } from './auth/logout/logout.component';
 import { PlanningModalComponent } from './admin/content/planning-modal/planning-modal.component';
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -139,7 +140,8 @@ import { PlanningModalComponent } from './admin/content/planning-modal/planning-
     NgToastModule,
     MatInputModule,
     MatSelectModule,
-    MatFormFieldModule
+    MatFormFieldModule,
+
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: Interceptor, multi: true },
