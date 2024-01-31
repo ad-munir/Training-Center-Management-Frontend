@@ -32,6 +32,6 @@ export class ParticipantService {
   }
 
   assignToCourse(participantId: number): Observable<string> {
-    return this.http.post<string>(`${this.url_backend}participants/assign/${participantId}`, null);
+    return this.http.put<string>(`${this.url_backend}participants/assign/${participantId}`, null);
   }
 }

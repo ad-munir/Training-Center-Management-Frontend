@@ -33,9 +33,9 @@ export class Interceptor implements HttpInterceptor {
 
     return next.handle(request).pipe(
       catchError((error: HttpErrorResponse) => {
-        if (error.status === 403) {
-          this.router.navigate(['/login']); 
-        }
+        // if (error.status === 403) {
+        //   this.router.navigate(['/login']);
+        // }
         return throwError(error);
       })
     );

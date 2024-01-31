@@ -17,16 +17,22 @@ export class CourseService {
   getCourses(): Observable<Course[]> {
     return this.http.get<Course[]>(this.url_backend + 'courses');
   }
-  
+
 
   addCourse(formData: FormData): Observable<Course> {
     return this.http.post<Course>(`${this.url_backend}courses`, formData);
   }
+
+
+  deleteCourse(courseId: any): Observable<Course> {
+    return this.http.delete<Course>(this.url_backend + 'courses/' + courseId);
+  }
+
 
   getCourseById(courseId: any): Observable<any> {
     const url = `${this.url_backend}courses/${courseId}`;
     return this.http.get(url);
   }
 
-  
+
 }

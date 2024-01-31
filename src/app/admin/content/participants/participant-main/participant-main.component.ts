@@ -6,6 +6,7 @@ import { ParticipantService } from 'src/app/services/participant.service';
 import { Email } from 'src/app/models/email.model';
 import { ActivatedRoute } from '@angular/router';
 import { AssignedParticipantTableComponent } from '../assigned-participant-table/assigned-participant-table.component';
+import { ToastService } from 'src/app/services/toast.service';
 
 @Component({
   selector: 'app-participant',
@@ -18,7 +19,7 @@ import { AssignedParticipantTableComponent } from '../assigned-participant-table
 })
 export class ParticipantMainComponent implements OnInit {
 
-  constructor(public dialog: MatDialog, private participantService: ParticipantService, private route: ActivatedRoute) {}
+  constructor(public dialog: MatDialog, private participantService: ParticipantService, private route: ActivatedRoute, private toast:ToastService) {}
 
   ngOnInit(): void {
   }
@@ -57,14 +58,13 @@ export class ParticipantMainComponent implements OnInit {
       };
 
       this.participantService.sendFeedbackMail(email).subscribe(
-        (response: Email) => {
-          console.log('Feedback email sent successfully:', response);
-          console.log('To:', response.to);
-          console.log('Subject:', response.subject);
-          console.log('Body:', response.body);
+        (response) => {
+          console.error('Error sending feedback email:');
+          this.toast.showSuccess('Error sending feedback email');
         },
         error => {
-          console.error('Error sending feedback email:', error);
+          console.log('Feedback email sent successfully:');
+          this.toast.showSuccess('Email has been sent successfully!');
         }
       );
     });

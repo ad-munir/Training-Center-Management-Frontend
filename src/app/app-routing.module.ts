@@ -35,14 +35,14 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   {
     path: 'dashboard',
-    component: LayoutComponent,
+    component: MainContentComponent,
     canActivate: [GuardAuthService], // Apply the guard to protect access to the Dashboard component
   },
-  {
-    path: 'main',
-    component: MainContentComponent,
-    canActivate: [GuardAuthService], 
-  },
+  // {
+  //   path: 'main',
+  //   component: MainContentComponent,
+  //   canActivate: [GuardAuthService],
+  // },
 
   //{ path: 'main', component: MainContentComponent },
 

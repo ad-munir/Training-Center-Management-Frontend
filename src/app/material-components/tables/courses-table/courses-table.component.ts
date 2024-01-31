@@ -5,6 +5,7 @@ import { CourseService } from 'src/app/services/course.service';
 import { Router } from '@angular/router';
 import { Trainer } from 'src/app/models/trainer.model';
 import { TrainerService } from 'src/app/services/trainer.service';
+import { ToastService } from 'src/app/services/toast.service';
 
 export interface TableElements {
   category: string;
@@ -30,6 +31,7 @@ export class CoursesTableComponent implements OnInit {
     private trainerService: TrainerService,
     private changeDetectorRef: ChangeDetectorRef,
     private router: Router,
+    private toast: ToastService
   ) {}
 
 
@@ -77,7 +79,7 @@ export class CoursesTableComponent implements OnInit {
       );
   }
 
-  displayedColumns: string[] = ['category', 'cost', 'description', 'hours', 'image', 'title', 'trainer', 'type'];
+  displayedColumns: string[] = ['category', 'cost', 'description', 'hours', 'image', 'title', 'trainer', 'type', 'action'];
   clickedRows = new Set<TableElements>();
 
 
@@ -86,4 +88,25 @@ export class CoursesTableComponent implements OnInit {
   }
 
 
+  deleteCourse(id: any) {
+    this.courseService.deleteCourse(id)
+    .subscribe(
+        (response) => {
+          console.log(response);
+          this.toast.showSuccess('Course has been deleted successfuly!');
+        },
+        error => {
+          console.log(error);
+          this.toast.showError('Error in deleting Course !');
+        }
+        );
+        this.router.navigate(['/courses/all']);
+      }
+
+
+  editCourse(id: number) {
+
+  }
 }
+
+
