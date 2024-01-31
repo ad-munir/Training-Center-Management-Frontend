@@ -1,3 +1,4 @@
+import { MatSelectModule } from '@angular/material/select';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
@@ -65,6 +66,7 @@ import { CalendarComponent } from './admin/content/calendar/calendar.component';
 import { FullCalendarModule } from '@fullcalendar/angular';
 import { NgToastModule } from 'ng-angular-popup';
 import { LogoutComponent } from './auth/logout/logout.component';
+import { PlanningModalComponent } from './admin/content/planning-modal/planning-modal.component';
 
 
 @NgModule({
@@ -112,7 +114,8 @@ import { LogoutComponent } from './auth/logout/logout.component';
     AssignedParticipantTableComponent,
     CourseFeedbackComponent,
     CalendarComponent,
-    LogoutComponent
+    LogoutComponent,
+    PlanningModalComponent
   ],
   imports: [
     MatDatepickerModule,
@@ -133,7 +136,10 @@ import { LogoutComponent } from './auth/logout/logout.component';
     BrowserAnimationsModule,
     MatCheckboxModule,
     FullCalendarModule,
-    NgToastModule
+    NgToastModule,
+    MatInputModule,
+    MatSelectModule,
+    MatFormFieldModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: Interceptor, multi: true },
