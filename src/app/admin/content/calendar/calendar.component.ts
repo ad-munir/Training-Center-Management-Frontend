@@ -13,12 +13,8 @@ import timeGridPlugin from '@fullcalendar/timegrid';
 import listPlugin from '@fullcalendar/list';
 import { CalendarService } from 'src/app/services/calendar.service';
 import { Schedule } from 'src/app/models/schedule.model';
-
-let eventGuid = 0;
-
-export function createEventId() {
-  return String(eventGuid++);
-}
+import { PlanningModalComponent } from '../planning-modal/planning-modal.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-calendar',
@@ -26,6 +22,11 @@ export function createEventId() {
   styleUrls: ['./calendar.component.css'],
 })
 export class CalendarComponent implements OnInit {
+  constructor(
+    private calendarService: CalendarService,
+    private dialog: MatDialog
+  ) {}
+
   events: Schedule[] = [];
 
   calendarOptions: CalendarOptions = {
@@ -36,33 +37,16 @@ export class CalendarComponent implements OnInit {
       right: 'dayGridMonth,timeGridWeek,timeGridDay,listWeek',
     },
     initialView: 'dayGridMonth',
-    select: this.handleDateSelect.bind(this),
-
-    // initialView: 'timeGridWeek',
-
     events: [],
     weekends: true,
     editable: true,
     selectable: true,
     selectMirror: true,
     dayMaxEvents: true,
-    eventsSet: this.handleEvents.bind(this),
+    select: this.handleDateSelect.bind(this),
   };
 
-  calendarVisible = signal(true);
-
-  scheduleEvents: EventInput[] = [];
-
-  currentEvents = signal<EventApi[]>([]);
-
-  constructor(
-    private changeDetector: ChangeDetectorRef,
-    private calendarService: CalendarService
-  ) {}
-
   ngOnInit(): void {
-    console.log(this.calendarOptions);
-
     this.calendarService.getSchedules().subscribe((data) => {
       console.log('events : ', data);
 
@@ -73,21 +57,36 @@ export class CalendarComponent implements OnInit {
         start: new Date(event.startDate),
         end: new Date(event.endDate),
       }));
-
-      // Move change detection to the end of the subscription block
-      this.changeDetector.detectChanges();
     });
   }
 
   handleDateSelect(selectInfo: DateSelectArg) {
     console.log(selectInfo);
-
     console.log('Selection Start: ' + selectInfo.startStr);
     console.log('Selection End: ' + selectInfo.endStr);
+
+    const dialogRef = this.dialog.open(PlanningModalComponent, {
+      width: '400px',
+
+      data: {
+        start: selectInfo.startStr,
+        end: selectInfo.endStr,
+      },
+    });
   }
 
-  handleEvents(events: EventApi[]) {
-    this.currentEvents.set(events);
-    this.changeDetector.detectChanges(); // workaround for pressionChangedAfterItHasBeenCheckedError
-  }
+  // async openPlanningModal(): Promise<string> {
+  //   const dialogRef = this.dialog.open(PlanningModalComponent, {
+  //     width: '400px',
+  //   });
+
+  //   const result = await dialogRef.afterClosed().toPromise();
+
+  //   return result;
+  // }
+
+  // async saveQuery() {
+  //   const queryName = await this.openPlanningModal();
+  //   console.log('Entered query name:', queryName);
+  // }
 }

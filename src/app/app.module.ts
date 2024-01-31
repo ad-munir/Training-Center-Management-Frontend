@@ -1,3 +1,4 @@
+import { MatSelectModule } from '@angular/material/select';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
@@ -66,8 +67,7 @@ import { FullCalendarModule } from '@fullcalendar/angular';
 import { LogoutComponent } from './auth/logout/logout.component';
 import { NgToastModule } from 'ng-angular-popup';
 import { EditDialogComponent } from './material-components/tables/trainers-table/EditDialogComponent';
-
-
+import { PlanningModalComponent } from './admin/content/planning-modal/planning-modal.component';
 
 
 @NgModule({
@@ -116,8 +116,8 @@ import { EditDialogComponent } from './material-components/tables/trainers-table
     CourseFeedbackComponent,
     CalendarComponent,
     LogoutComponent,
-    EditDialogComponent
-
+    EditDialogComponent,
+    PlanningModalComponent
   ],
   imports: [
     MatDatepickerModule,
@@ -140,6 +140,9 @@ import { EditDialogComponent } from './material-components/tables/trainers-table
     FullCalendarModule,
     NgToastModule,
 
+    MatInputModule,
+    MatSelectModule,
+    MatFormFieldModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: Interceptor, multi: true },
