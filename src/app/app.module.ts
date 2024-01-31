@@ -70,6 +70,7 @@ import { EditDialogComponent } from './material-components/tables/trainers-table
 import { PlanningModalComponent } from './admin/content/planning-modal/planning-modal.component';
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -142,7 +143,8 @@ import { PlanningModalComponent } from './admin/content/planning-modal/planning-
 
     MatInputModule,
     MatSelectModule,
-    MatFormFieldModule
+    MatFormFieldModule,
+
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: Interceptor, multi: true },

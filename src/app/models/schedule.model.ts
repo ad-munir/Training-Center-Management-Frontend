@@ -3,6 +3,7 @@ import { Course } from "./course.model";
 export interface Schedule {
   startDate: Date,
   endDate: Date,
-  course: Course
+  courseId: any,
+  course: Course | null
 
 }

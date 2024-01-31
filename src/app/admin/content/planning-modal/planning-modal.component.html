@@ -1,27 +1,20 @@
-<h2 mat-dialog-title>Enter Query Name</h2>
-
-<mat-dialog-content>
-  <h2>Choose a course</h2>
+<h2 mat-dialog-title>Course scheduling</h2>
+<div mat-dialog-content>
   <mat-form-field>
-    <mat-label>Course</mat-label>
-    <mat-select placeholder="Select a course" [(ngModel)]="selectedCourseId" [formControl]="courseControl">
-      <mat-option *ngFor="let course of coursesNames" [value]="course.id">
+    <mat-label>Select a Course</mat-label>
+    <mat-select [(value)]="selectedCourseId" [formControl]="courseControl">
+      <mat-option *ngFor="let course of courses" [value]="course.id">
         {{ course.title }}
       </mat-option>
     </mat-select>
   </mat-form-field>
 
-  <mat-form-field>
+  <div>
     <h6>Start at: {{ data.start }}</h6>
     <h6>End at: {{ data.end }}</h6>
-  </mat-form-field>
-
-  <mat-form-field>
-    <input matInput #queryNameInput placeholder="Test">
-  </mat-form-field>
-</mat-dialog-content>
-
-<mat-dialog-actions align="end">
-  <button mat-button [mat-dialog-close]="false">Cancel</button>
-  <button mat-button color="primary" (click)="onSubmit(queryNameInput.value)">Save</button>
-</mat-dialog-actions>
+  </div>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onSubmit()">OK</button>
+    <button mat-button (click)="onCancel()">Cancel</button>
+</div>
