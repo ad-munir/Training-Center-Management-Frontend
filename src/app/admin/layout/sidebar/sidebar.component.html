@@ -1,46 +1,20 @@
 <!--Topbar -->
 <div class="topbar transition">
   <div class="menu">
-    <ul>
-      <li class="nav-item dropdown">
-        <a class="nav-link" (click)="toggleProfileDropdown()" role="button" aria-expanded="false">
-          <img src="assets/img/avatar-1.png" alt="">
-        </a>
-
-        <ul class="dropdown-menu" [ngClass]="{'show': isProfileDropdownOpen}" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item">
-            <i class="fa fa-user size-icon-1"></i>
-            <span>My Profile</span>
-          </a>
-
-          <a class="dropdown-item">
-            <i class="fa fa-cog size-icon-1"></i>
-            <span>Settings</span>
-          </a>
-
-          <hr class="dropdown-divider">
-
-          <a class="dropdown-item">
-            <i class="fa fa-sign-out-alt  size-icon-1"></i>
-            <span>My Profile</span>
-          </a>
-        </ul>
-
-      </li>
-    </ul>
+    
   </div>
 </div>
 
+
 <!--Sidebar-->
-<div class="sidebar transition overlay-scrollbars animate__animated  animate__slideInLeft">
+<div class="sidebar transition overlay-scrollbars animate_animated  animate_slideInLeft">
   <div class="sidebar-content">
     <div id="sidebar">
 
       <!-- Logo -->
       <div class="logo">
         <h2 class="px-3 mt-2 mb-0">
-          <img src="assets/img/logo2.png">
-          Training Center
+          <img src="assets/img/logo.png">
         </h2>
       </div>
 
@@ -54,7 +28,7 @@
         </li>
 
 
-        <div *ngIf="role === 'ADMIN'">
+        <div  *ngIf="role === 'ADMIN' || 'ASSISTANT'">
           <!-- Courses Divider -->
           <div class="divider" data-text="STARTER">Courses</div>
 
@@ -72,10 +46,13 @@
                 <a routerLink="/courses/all">All Courses</a>
               </li>
 
-              <li>
-                <i class='bx bx-plus'></i>
-                <a routerLink="/courses">Add Courses</a>
-              </li>
+              <div  *ngIf="role === 'ADMIN'">
+                <li>
+                  <i class='bx bx-plus'></i>
+                  <a routerLink="/courses">Add Courses</a>
+                </li>
+
+              </div>
             </ul>
           </li>
 
@@ -97,19 +74,17 @@
                 <i class='bx bx-columns'></i>
                 <a routerLink="/trainers/all">All Trainers</a>
               </li>
+              <div  *ngIf="role === 'ADMIN'">
 
               <li>
                 <i class='bx bx-plus'></i>
                 <a routerLink="/trainers">Add Trainers</a>
               </li>
+              </div>
 
             </ul>
           </li>
         </div>
-
-
-
-        <div  *ngIf="role === 'ADMIN' || 'ASSISTANT'">
 
 
           <!-- Participants Divider -->
@@ -133,15 +108,8 @@
                 <a routerLink="/participants/assigned">Assigned Participants</a>
               </li>
 
-              <li>
-                <i class='bx bx-plus'></i>
-                <a routerLink="/participants">Add Participants</a>
-              </li>
             </ul>
           </li>
-
-
-
 
 
           <!-- Assistants Divider -->
@@ -159,11 +127,13 @@
                 <i class='bx bx-columns'></i>
                 <a routerLink="/assistants/all">All Assiastants</a>
               </li>
+              <div  *ngIf="role === 'ADMIN'">
 
               <li>
                 <i class='bx bx-plus'></i>
                 <a routerLink="/assistants">Add Assiastant</a>
               </li>
+              </div>
             </ul>
           </li>
 
@@ -184,21 +154,29 @@
                 <i class='bx bx-columns'></i>
                 <a routerLink="/companies/all">All Companies</a>
               </li>
+              <div  *ngIf="role === 'ADMIN'">
 
               <li>
                 <i class='bx bx-plus'></i>
                 <a routerLink="/companies">Add Company</a>
               </li>
+              </div>
             </ul>
 
           </li>
 
-        </div>
       </ul>
+
+      <div class="logout-section">
+        <div routerLink="/logout" class="logout-btn">
+          <i class='bx bx-log-out'></i>
+          <a class="">Log out</a>
+        </div>
+      </div>
 
     </div>
   </div>
-</div><!-- End Sidebar-->
+</div>
 
 
 <div class="sidebar-overlay"></div>

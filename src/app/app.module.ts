@@ -64,6 +64,7 @@ import { CourseFeedbackComponent } from './client/courses/course-feedback/course
 import { CalendarComponent } from './admin/content/calendar/calendar.component';
 import { FullCalendarModule } from '@fullcalendar/angular';
 import { NgToastModule } from 'ng-angular-popup';
+import { LogoutComponent } from './auth/logout/logout.component';
 
 
 @NgModule({
@@ -110,7 +111,8 @@ import { NgToastModule } from 'ng-angular-popup';
     ParticipantDialogComponent,
     AssignedParticipantTableComponent,
     CourseFeedbackComponent,
-    CalendarComponent
+    CalendarComponent,
+    LogoutComponent
   ],
   imports: [
     MatDatepickerModule,
