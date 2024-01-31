@@ -3,10 +3,10 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { Course } from 'src/app/models/course.model';
-import { Schedule } from 'src/app/models/schedule.model';
 import { CourseService } from 'src/app/services/course.service';
 import { ToastService } from 'src/app/services/toast.service';
 import { Router } from '@angular/router';
+import { ScheduleIn } from 'src/app/models/schedule.model';
 
 
 @Component({
@@ -55,25 +55,24 @@ export class PlanningModalComponent implements OnInit {
 
     if(this.selectedCourseId) {
 
-      const schedule: Schedule = {
-        startDate: new Date(this.data.start),
-        endDate: new Date(this.data.end),
+      const schedule: ScheduleIn = {
         courseId: this.selectedCourseId,
-        course: null
+        startDate: new Date(this.data.start),
+        endDate: new Date(this.data.end)
       };
 
       this.calendarService.saveSchedule(schedule).subscribe(
         (savedSchedule) => {
           console.log('Schedule saved:', savedSchedule);
           this.dialogRef.close();
-          this.router.navigate(['/dashboard'])
           this.toast.showSuccess('Schedule saved')
         },
         (error) => {
           console.error('Error saving schedule:', error);
           this.toast.showError('Error saving schedule')
         }
-      );
+        );
+        this.router.navigate(['/dashboard'])
 
     }else {
       this.toast.showWarn('Please select a course')

@@ -1,9 +1,14 @@
 import { Course } from "./course.model";
 
-export interface Schedule {
-  startDate: Date,
-  endDate: Date,
-  courseId: any,
-  course: Course | null
+export interface ScheduleOut {
+  title: string;
+  startDate: Date;
+  endDate: Date;
 
+}
+
+export interface ScheduleIn {
+  courseId: any;
+  startDate: Date;
+  endDate: Date;
 }

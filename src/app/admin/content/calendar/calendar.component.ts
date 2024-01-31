@@ -12,9 +12,9 @@ import dayGridPlugin from '@fullcalendar/daygrid';
 import timeGridPlugin from '@fullcalendar/timegrid';
 import listPlugin from '@fullcalendar/list';
 import { CalendarService } from 'src/app/services/calendar.service';
-import { Schedule } from 'src/app/models/schedule.model';
 import { PlanningModalComponent } from '../planning-modal/planning-modal.component';
 import { MatDialog } from '@angular/material/dialog';
+import { ScheduleOut } from 'src/app/models/schedule.model';
 
 @Component({
   selector: 'app-calendar',
@@ -27,7 +27,7 @@ export class CalendarComponent implements OnInit {
     private dialog: MatDialog
   ) {}
 
-  events: Schedule[] = [];
+  events: ScheduleOut[] = [];
 
   calendarOptions: CalendarOptions = {
     plugins: [interactionPlugin, dayGridPlugin, timeGridPlugin, listPlugin],
@@ -53,7 +53,7 @@ export class CalendarComponent implements OnInit {
       this.events = data;
 
       this.calendarOptions.events = this.events.map((event) => ({
-        title: event.course.title ,
+        title: event.title ,
         start: new Date(event.startDate),
         end: new Date(event.endDate),
       }));
