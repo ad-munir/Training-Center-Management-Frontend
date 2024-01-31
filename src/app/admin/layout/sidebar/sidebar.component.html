@@ -1,46 +1,20 @@
 <!--Topbar -->
 <div class="topbar transition">
   <div class="menu">
-    <ul>
-      <li class="nav-item dropdown">
-        <a class="nav-link" (click)="toggleProfileDropdown()" role="button" aria-expanded="false">
-          <img src="assets/img/avatar-1.png" alt="">
-        </a>
-
-        <ul class="dropdown-menu" [ngClass]="{'show': isProfileDropdownOpen}" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item">
-            <i class="fa fa-user size-icon-1"></i>
-            <span>My Profile</span>
-          </a>
-
-          <a class="dropdown-item">
-            <i class="fa fa-cog size-icon-1"></i>
-            <span>Settings</span>
-          </a>
-
-          <hr class="dropdown-divider">
-
-          <a class="dropdown-item" routerLink="/logout">
-            <i class="fa fa-sign-out-alt  size-icon-1"></i>
-            <span>Log out</span>
-          </a>
-        </ul>
-
-      </li>
-    </ul>
+    
   </div>
 </div>
 
+
 <!--Sidebar-->
-<div class="sidebar transition overlay-scrollbars animate__animated  animate__slideInLeft">
+<div class="sidebar transition overlay-scrollbars animate_animated  animate_slideInLeft">
   <div class="sidebar-content">
     <div id="sidebar">
 
       <!-- Logo -->
       <div class="logo">
         <h2 class="px-3 mt-2 mb-0">
-          <img src="assets/img/logo2.png">
-          Training Center
+          <img src="assets/img/logo.png">
         </h2>
       </div>
 
@@ -78,7 +52,7 @@
                 <i class='bx bx-columns'></i>
                 <a routerLink="/courses/all">All Courses</a>
               </li>
-              
+
               <div  *ngIf="role === 'ADMIN'">
                 <li>
                   <i class='bx bx-plus'></i>
@@ -200,9 +174,19 @@
 
       </ul>
 
+      <div class="logout-section">
+        <div routerLink="/logout" class="logout-btn">
+          <i class='bx bx-log-out'></i>
+          <a class="">Log out</a>
+        </div>
+      </div>
+
     </div>
   </div>
 </div>
 
 
 <div class="sidebar-overlay"></div>
+
+
+<ng-toast></ng-toast>

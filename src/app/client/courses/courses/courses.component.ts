@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Course } from 'src/app/models/course.model';
-import { TrainigCenterService } from 'src/app/trainig-center.service';
+import { TrainigCenterService } from 'src/app/services/auth.service';
+import { CourseService } from 'src/app/services/course.service';
 // ... (your imports)
 
 @Component({
@@ -15,11 +16,11 @@ import { TrainigCenterService } from 'src/app/trainig-center.service';
     './../../../../assets/css/flaticon.css',
     './../../../../assets/css/magnific-popup.css',
     './../../../../assets/css/slick.css',
-    './../../../../assets/css/style.css'
+    './../../../../assets/css/style.css',
   ],
 })
 export class CoursesComponent implements OnInit {
-  constructor(private service: TrainigCenterService) {}
+  constructor(private service: CourseService) {}
 
   courses?: Course[];
   filteredCourses?: any[];
@@ -32,9 +33,8 @@ export class CoursesComponent implements OnInit {
   searchQuery: string = '';
   selectedCategories: Set<string> = new Set();
   maxPrice: number = 0;
-  priceRange!: { min: number, max: number };
+  priceRange!: { min: number; max: number };
   selectedTypes: Set<string> = new Set();
-
 
   async ngOnInit() {
     await this.getCourses();
@@ -46,47 +46,53 @@ export class CoursesComponent implements OnInit {
     try {
       this.courses = await this.service.getCourses().toPromise();
 
-
       if (this.courses && this.courses.length > 0) {
-
-        this.maxPrice = Math.max(...this.courses.map(course => course.cost));
+        this.maxPrice = Math.max(...this.courses.map((course) => course.cost));
         this.priceRange = { min: 0, max: this.maxPrice };
 
-        this.comapnyCourses = this.courses?.filter(course => course.type === "COMPANY")
-        this.participantCourses = this.courses?.filter(course => course.type === "PARTICIPNT")
+        this.comapnyCourses = this.courses?.filter(
+          (course) => course.type === 'COMPANY'
+        );
+        this.participantCourses = this.courses?.filter(
+          (course) => course.type === 'PARTICIPNT'
+        );
 
         this.filteredCourses = this.courses;
       }
-
-
-
     } catch (error) {
       console.error('Error fetching courses:', error);
     }
   }
 
   extractCategories() {
-    const uniqueCategories = Array.from(new Set(this.courses?.map(course => course.category)));
-    this.categories = uniqueCategories.map(category => ({ id: category, categoryName: category }));
+    const uniqueCategories = Array.from(
+      new Set(this.courses?.map((course) => course.category))
+    );
+    this.categories = uniqueCategories.map((category) => ({
+      id: category,
+      categoryName: category,
+    }));
   }
 
   filterByCategory(category: string) {
     if (category === 'All') {
       this.selectedCategories.clear(); // Clear selected categories if 'All' is selected
     } else {
-      this.selectedCategories.has(category) ? this.selectedCategories.delete(category) : this.selectedCategories.add(category);
+      this.selectedCategories.has(category)
+        ? this.selectedCategories.delete(category)
+        : this.selectedCategories.add(category);
     }
     this.applyFilters();
   }
 
-
   filterByType(type: string) {
     if (type === 'COMPANY' || type === 'PARTICIPANT') {
-      this.selectedTypes.has(type) ? this.selectedTypes.delete(type) : this.selectedTypes.add(type);
+      this.selectedTypes.has(type)
+        ? this.selectedTypes.delete(type)
+        : this.selectedTypes.add(type);
       this.applyFilters();
     }
   }
-
 
   sortByPrice() {
     this.filteredCourses?.sort((a, b) => {
@@ -96,36 +102,45 @@ export class CoursesComponent implements OnInit {
     });
   }
 
-
   getFilteredCourseCount(categoryId: string): number {
-    return (this.courses ?? []).filter(course => course.category === categoryId).length;
+    return (this.courses ?? []).filter(
+      (course) => course.category === categoryId
+    ).length;
   }
 
   applyFilters() {
-
-    if (this.selectedTypes.has('companies') && !this.selectedTypes.has('online')) {
+    if (
+      this.selectedTypes.has('companies') &&
+      !this.selectedTypes.has('online')
+    ) {
       this.filteredCourses = this.comapnyCourses;
-    } else if (!this.selectedTypes.has('companies') && this.selectedTypes.has('online')) {
+    } else if (
+      !this.selectedTypes.has('companies') &&
+      this.selectedTypes.has('online')
+    ) {
       this.filteredCourses = this.participantCourses;
     } else {
       this.filteredCourses = this.courses;
     }
 
-
-    this.filteredCourses = this.courses?.filter(course => {
-      const isInCategories = this.selectedCategories.size === 0 || this.selectedCategories.has(course.category);
-      const isInRange = course.cost >= this.priceRange.min && course.cost <= this.priceRange.max;
-      const isInTypes = this.selectedTypes.size === 0 || this.selectedTypes.has(course.type);
-      const matchesSearch = course.title.toLowerCase().includes(this.searchQuery.toLowerCase());
+    this.filteredCourses = this.courses?.filter((course) => {
+      const isInCategories =
+        this.selectedCategories.size === 0 ||
+        this.selectedCategories.has(course.category);
+      const isInRange =
+        course.cost >= this.priceRange.min &&
+        course.cost <= this.priceRange.max;
+      const isInTypes =
+        this.selectedTypes.size === 0 || this.selectedTypes.has(course.type);
+      const matchesSearch = course.title
+        .toLowerCase()
+        .includes(this.searchQuery.toLowerCase());
 
       return isInCategories && isInRange && isInTypes && matchesSearch;
     });
 
     this.sortByPrice(); // Apply sorting after applying filters
   }
-
-
-
 
   clearAllFilters() {
     this.searchQuery = '';

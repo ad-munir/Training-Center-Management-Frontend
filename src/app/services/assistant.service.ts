@@ -24,4 +24,8 @@ export class AssistantService {
   addAssistant(formData: FormData): Observable<Assistant> {
     return this.http.post<Assistant>(`${this.url_backend}assistants`, formData);
   }
+
+  deleteAssistant(assistantId: any): Observable<Assistant> {
+    return this.http.delete<Assistant>(this.url_backend + 'assistants/' + assistantId);
+  }
 }

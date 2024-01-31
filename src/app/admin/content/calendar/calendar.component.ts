@@ -1,14 +1,18 @@
 import { Component, OnInit } from '@angular/core';
 import { Calendar, EventInput } from '@fullcalendar/core';
 import { signal, ChangeDetectorRef } from '@angular/core';
-import { CalendarOptions, DateSelectArg, EventClickArg, EventApi } from '@fullcalendar/core';
+import {
+  CalendarOptions,
+  DateSelectArg,
+  EventClickArg,
+  EventApi,
+} from '@fullcalendar/core';
 import interactionPlugin from '@fullcalendar/interaction';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import timeGridPlugin from '@fullcalendar/timegrid';
 import listPlugin from '@fullcalendar/list';
 import { CalendarService } from 'src/app/services/calendar.service';
 import { Schedule } from 'src/app/models/schedule.model';
-
 
 let eventGuid = 0;
 
@@ -21,10 +25,7 @@ export function createEventId() {
   templateUrl: './calendar.component.html',
   styleUrls: ['./calendar.component.css'],
 })
-
-
 export class CalendarComponent implements OnInit {
-
   events: Schedule[] = [];
 
   calendarOptions: CalendarOptions = {
@@ -35,6 +36,8 @@ export class CalendarComponent implements OnInit {
       right: 'dayGridMonth,timeGridWeek,timeGridDay,listWeek',
     },
     initialView: 'dayGridMonth',
+    select: this.handleDateSelect.bind(this),
+
     // initialView: 'timeGridWeek',
 
     events: [],
@@ -46,12 +49,9 @@ export class CalendarComponent implements OnInit {
     eventsSet: this.handleEvents.bind(this),
   };
 
-
   calendarVisible = signal(true);
 
-
   scheduleEvents: EventInput[] = [];
-
 
   currentEvents = signal<EventApi[]>([]);
 
@@ -60,28 +60,31 @@ export class CalendarComponent implements OnInit {
     private calendarService: CalendarService
   ) {}
 
-
   ngOnInit(): void {
     console.log(this.calendarOptions);
 
     this.calendarService.getSchedules().subscribe((data) => {
-      console.log("events : ", data);
+      console.log('events : ', data);
 
       this.events = data;
 
-
-      this.calendarOptions.events = this.events.map(event => ({
-          title: event.course.title,
-          start: new Date(event.startDate),
-          end: new Date(event.endDate),
-        }));
-
+      this.calendarOptions.events = this.events.map((event) => ({
+        title: event.course.title,
+        start: new Date(event.startDate),
+        end: new Date(event.endDate),
+      }));
 
       // Move change detection to the end of the subscription block
       this.changeDetector.detectChanges();
     });
   }
 
+  handleDateSelect(selectInfo: DateSelectArg) {
+    console.log(selectInfo);
+
+    console.log('Selection Start: ' + selectInfo.startStr);
+    console.log('Selection End: ' + selectInfo.endStr);
+  }
 
   handleEvents(events: EventApi[]) {
     this.currentEvents.set(events);

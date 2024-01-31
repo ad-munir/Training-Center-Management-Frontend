@@ -28,4 +28,8 @@ export class KeywordService {
       this.keywords[index] = newKeyword;
     }
   }
+
+  clearKeywords(): void {
+    this.keywords = [];
+  }
 }

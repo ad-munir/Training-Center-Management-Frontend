@@ -56,7 +56,6 @@ export class TrainersFormComponent implements OnInit{
       console.log(keys);
 
       const formData = new FormData();
-
       formData.append('firstname', this.form.get('firstname')?.value);
       formData.append('lastname', this.form.get('lastname')?.value);
       formData.append('email', this.form.get('email')?.value);

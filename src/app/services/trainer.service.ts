@@ -30,6 +30,10 @@ export class TrainerService {
     return this.http.post<Trainer>(`${this.url_backend}trainers`, formData);
   }
 
+  editTrainer(formData: FormData, id : string): Observable<Trainer> {
+    return this.http.put<Trainer>(`${this.url_backend}trainers/${id}`, formData);
+  }
+
   addTrainerExtern(formData: FormData): Observable<Trainer> {
     return this.http.post<Trainer>(`${this.url_backend}trainers/extern`, formData);
   }

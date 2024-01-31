@@ -65,6 +65,9 @@ import { CalendarComponent } from './admin/content/calendar/calendar.component';
 import { FullCalendarModule } from '@fullcalendar/angular';
 import { LogoutComponent } from './auth/logout/logout.component';
 import { NgToastModule } from 'ng-angular-popup';
+import { EditDialogComponent } from './material-components/tables/trainers-table/EditDialogComponent';
+
+
 
 
 @NgModule({
@@ -112,7 +115,9 @@ import { NgToastModule } from 'ng-angular-popup';
     AssignedParticipantTableComponent,
     CourseFeedbackComponent,
     CalendarComponent,
-    LogoutComponent
+    LogoutComponent,
+    EditDialogComponent
+
   ],
   imports: [
     MatDatepickerModule,
@@ -133,7 +138,8 @@ import { NgToastModule } from 'ng-angular-popup';
     BrowserAnimationsModule,
     MatCheckboxModule,
     FullCalendarModule,
-    NgToastModule
+    NgToastModule,
+
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: Interceptor, multi: true },

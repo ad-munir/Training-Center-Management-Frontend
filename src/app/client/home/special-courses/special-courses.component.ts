@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import { TrainigCenterService } from 'src/app/trainig-center.service';
+import { TrainigCenterService } from 'src/app/services/auth.service';
+import { CourseService } from 'src/app/services/course.service';
 
 @Component({
   selector: 'app-special-courses',
   templateUrl: './special-courses.component.html',
-  styleUrls: ['./../home.component.css', './special-courses.component.css']
+  styleUrls: ['./../home.component.css', './special-courses.component.css'],
 })
 export class SpecialCoursesComponent implements OnInit {
-
-  constructor(private service: TrainigCenterService) {}
+  constructor(private service: CourseService) {}
 
   courses?: any[];
 
