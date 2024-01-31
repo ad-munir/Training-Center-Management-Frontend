@@ -34,5 +34,10 @@ export class CourseService {
     return this.http.get(url);
   }
 
+  // deleteCourse(courseId: any): Observable<any> {
+  //   const url = `${this.url_backend}courses/${courseId}`;
+  //   return this.http.delete(url);
+  // }
+
 
 }

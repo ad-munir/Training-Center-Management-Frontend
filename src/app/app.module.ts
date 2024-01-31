@@ -64,9 +64,12 @@ import { AssignedParticipantTableComponent } from './admin/content/participants/
 import { CourseFeedbackComponent } from './client/courses/course-feedback/course-feedback.component';
 import { CalendarComponent } from './admin/content/calendar/calendar.component';
 import { FullCalendarModule } from '@fullcalendar/angular';
-import { NgToastModule } from 'ng-angular-popup';
 import { LogoutComponent } from './auth/logout/logout.component';
 import { PlanningModalComponent } from './admin/content/planning-modal/planning-modal.component';
+
+import { NgToastModule } from 'ng-angular-popup';
+import { EditDialogComponent } from './material-components/tables/trainers-table/EditDialogComponent';
+
 
 
 
@@ -116,7 +119,9 @@ import { PlanningModalComponent } from './admin/content/planning-modal/planning-
     CourseFeedbackComponent,
     CalendarComponent,
     LogoutComponent,
-    PlanningModalComponent
+    PlanningModalComponent,
+    EditDialogComponent
+
   ],
   imports: [
     MatDatepickerModule,
@@ -141,6 +146,7 @@ import { PlanningModalComponent } from './admin/content/planning-modal/planning-
     MatInputModule,
     MatSelectModule,
     MatFormFieldModule,
+
 
   ],
   providers: [

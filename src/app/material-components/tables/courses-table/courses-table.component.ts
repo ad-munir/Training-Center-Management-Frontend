@@ -88,25 +88,43 @@ export class CoursesTableComponent implements OnInit {
   }
 
 
-  deleteCourse(id: any) {
-    this.courseService.deleteCourse(id)
-    .subscribe(
-        (response) => {
-          console.log(response);
-          this.toast.showSuccess('Course has been deleted successfuly!');
-        },
-        error => {
-          console.log(error);
-          this.toast.showError('Error in deleting Course !');
-        }
-        );
-        this.router.navigate(['/courses/all']);
-      }
 
 
-  editCourse(id: number) {
+  editCourse(course: any) {
 
+    console.log('Edit course:', course);
   }
+
+  deleteCourse(courseId: number) {
+    this.courseService.deleteCourse(courseId).subscribe(
+      (data) => {
+        console.log('Delete course with ID:', courseId);
+        this.changeDetectorRef.detectChanges();
+      },
+      error => {
+        console.error('Error deleting courses:', error);
+      }
+    );
+  }
+
+
+  // deleteCourse(id: any) {
+  //   this.courseService.deleteCourse(id)
+  //   .subscribe(
+  //       (response) => {
+  //         console.log(response);
+  //         this.toast.showSuccess('Course has been deleted successfuly!');
+  //       },
+  //       error => {
+  //         console.log(error);
+  //         this.toast.showError('Error in deleting Course !');
+  //       }
+  //       );
+  //       this.router.navigate(['/courses/all']);
+  //     }
+
+
+  
 }
 
 

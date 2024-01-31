@@ -49,13 +49,8 @@ export class AssistantsTableComponent {
     );
   }
 
-  displayedColumns: string[] = [
-    'fullname',
-    'email',
-    'phone',
-    'image',
-    'action',
-  ];
+  displayedColumns: string[] = ['fullname', 'email', 'phone', 'image','action'];
+
   clickedRows = new Set<TableElements>();
 
   deleteAssistant(id: any) {

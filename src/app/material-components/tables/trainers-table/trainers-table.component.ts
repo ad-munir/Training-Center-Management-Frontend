@@ -3,6 +3,8 @@ import { Router } from '@angular/router';
 import { Trainer } from 'src/app/models/trainer.model';
 import { ToastService } from 'src/app/services/toast.service';
 import { TrainerService } from 'src/app/services/trainer.service';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { EditDialogComponent } from './EditDialogComponent';
 
 
 
@@ -29,7 +31,9 @@ export class TrainersTableComponent  implements OnInit {
     private trainerService: TrainerService,
     private changeDetectorRef: ChangeDetectorRef,
     private router: Router,
-    private toast: ToastService
+    private toast: ToastService,
+    private dialog: MatDialog 
+
   ) {}
 
 
@@ -55,7 +59,7 @@ export class TrainersTableComponent  implements OnInit {
       );
   }
 
-  displayedColumns: string[] = ['fullname', 'email', 'phone', 'keywords', 'active', 'image', 'action'];
+  displayedColumns: string[] = ['fullname', 'email', 'phone', 'keywords', 'active', 'image','validate','action'];
   clickedRows = new Set<TableElements>();
 
 
@@ -106,9 +110,14 @@ export class TrainersTableComponent  implements OnInit {
       }
 
 
-  editTrainer(id: number) {
 
-  }
+  editTrainer(trainer: Trainer): void {
+    const dialogRef = this.dialog.open(EditDialogComponent, {
+      width: '410px',
+      height:'600px',
+      data: { trainer }, // Pass the trainer data to the dialog
+    });
 }
 
 
+}
