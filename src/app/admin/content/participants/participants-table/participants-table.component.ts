@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { Course } from 'src/app/models/course.model';
 import { Participant } from 'src/app/models/participant.model';
 import { ParticipantService } from 'src/app/services/participant.service';
+import { ToastService } from 'src/app/services/toast.service';
 
 export interface TableElements {
   id: number;
@@ -34,7 +35,8 @@ export class ParticipantsTableComponent implements OnInit {
   constructor(
     private participantService: ParticipantService,
     private changeDetectorRef: ChangeDetectorRef,
-    private router: Router
+    private router: Router,
+    private toast: ToastService
   ) {}
 
   participants: Participant[] = [];
@@ -72,19 +74,20 @@ export class ParticipantsTableComponent implements OnInit {
 
   assignToCourse(id: number): void {
     this.participantService.assignToCourse(id).subscribe(
-      () => {
-        console.log('Assignment successful');
+      (response) => {
+        console.log(response);
+        this.toast.showError("Error assigning participant to course:");
         this.refreshTable();
       },
       (error) => {
-        console.error('Error assigning participant to course:', error);
+        console.log(error);
+        this.toast.showSuccess('Assigninig has been made successfully');
         this.refreshTable();
       }
-    );
+      );
   }
 
   private refreshTable(): void {
-    // Assuming you have a method to fetch participants, call it again to refresh the table
     this.getParticipants();
   }
 

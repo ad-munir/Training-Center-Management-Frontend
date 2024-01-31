@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AssistantService } from 'src/app/services/assistant.service';
+import { ToastService } from 'src/app/services/toast.service';
 
 @Component({
   selector: 'app-assistants-form',
@@ -11,21 +12,24 @@ import { AssistantService } from 'src/app/services/assistant.service';
     './.././../../layout/bootstrap-overwrite.css',
   ],
 })
-export class AssistantsFormComponent  implements OnInit{
+export class AssistantsFormComponent implements OnInit {
+  form!: FormGroup; // Declare form as FormGroup
 
+  constructor(
+    private fb: FormBuilder,
+    private assistantService: AssistantService,
+    private toast: ToastService
+  ) {}
 
-  constructor(private fb: FormBuilder, private assistantService: AssistantService) {}
+  @ViewChild('fileInput') fileInput!: ElementRef;
 
-  form: any;
   selectedFile: File | null = null;
-
-
 
   ngOnInit(): void {
     this.form = this.fb.group({
       firstname: ['', Validators.required],
       lastname: ['', Validators.required],
-      email: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]],
       phone: ['', Validators.required],
       password: ['', Validators.required],
       image: [null, Validators.required],
@@ -41,11 +45,14 @@ export class AssistantsFormComponent  implements OnInit{
   }
 
   onSubmit(): void {
-    if (this.selectedFile) {
-      console.log("selectedFile");
-      console.log(this.form);
-
-
+    if (
+      this.selectedFile &&
+      this.form.get('firstname')?.value &&
+      this.form.get('lastname')?.value &&
+      this.form.get('email')?.value &&
+      this.form.get('phone')?.value &&
+      this.form.get('password')?.value
+    ) {
       const formData = new FormData();
 
       formData.append('firstname', this.form.get('firstname')?.value);
@@ -55,18 +62,29 @@ export class AssistantsFormComponent  implements OnInit{
       formData.append('password', this.form.get('password')?.value);
       formData.append('image', this.selectedFile);
 
-      this.assistantService.addAssistant(formData)
-        .subscribe(
-          (newAssistant) => {
-            console.log('Assistant added successfully:', newAssistant);
-          },
-          (error) => {
-            console.error('Error adding assistant:', error);
-          }
-        );
+      this.assistantService.addAssistant(formData).subscribe(
+        (newAssistant) => {
+          console.log('Assistant added successfully:', newAssistant);
+          this.toast.showSuccess('Assistant added successfully!');
+          this.resetForm();
+        },
+        (error) => {
+          console.error('Error adding assistant:', error);
+          this.toast.showError('Error adding assistant!');
+        }
+      );
     } else {
-      console.error('No file selected');
+      this.toast.showWarn('All fields are required!');
     }
   }
 
+  resetForm(): void {
+    this.form.reset();
+    this.selectedFile = null;
+
+    // Clear the file input visually
+    if (this.fileInput.nativeElement) {
+      this.fileInput.nativeElement.value = '';
+    }
+  }
 }

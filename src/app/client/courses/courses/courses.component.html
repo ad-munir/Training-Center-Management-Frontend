@@ -45,7 +45,7 @@
               <h6 class="title">Categories </h6>
             </a>
           </header>
-          <div class="filter-content collapse show" id="collapse_2" style="">
+          <div class="filter-content collapse show" id="collapse_2">
             <div class="card-body">
               <label class="custom-control custom-checkbox" *ngFor="let category of categories">
                 <input type="checkbox" [checked]="selectedCategories.has(category.id)"
@@ -93,7 +93,7 @@
               <h6 class="title">Type </h6>
             </a>
           </header>
-          <div class="filter-content collapse show" id="collapse_4" style="">
+          <div class="filter-content collapse show" id="collapse_4">
             <div class="card-body">
               <label class="checkbox-btn">
                 <input type="checkbox" [checked]="selectedTypes.has('COMPANY')" (change)="filterByType('COMPANY')">
@@ -128,7 +128,7 @@
               <img [src]="course.image" class="special_img" alt="{{ course.title }}">
             </div>
             <div class="special_cource_text">
-              <a class="btn_4 fw-semibold  text-white ">{{course.category}}</a>
+              <a class="btn_4 text-white ">{{course.category}}</a>
               <h4>${{course.cost}}</h4>
               <div class="course-title">
                 <a [routerLink]="['/course-details', course.id]">
@@ -170,8 +170,6 @@
 
 
 
-
-<app-advanced-feature></app-advanced-feature>
 
 
 <app-footer></app-footer>

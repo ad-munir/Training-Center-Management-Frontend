@@ -25,4 +25,8 @@ export class CompanyService {
   addCompany(formData: FormData): Observable<Company> {
     return this.http.post<Company>(`${this.url_backend}companies`, formData);
   }
+
+  deleteCompany(companyId: any): Observable<Company> {
+    return this.http.delete<Company>(this.url_backend + 'companies/' + companyId);
+  }
 }

@@ -1,6 +1,7 @@
 import {ChangeDetectorRef, Component, OnInit} from '@angular/core';
 import { Router } from '@angular/router';
 import { Trainer } from 'src/app/models/trainer.model';
+import { ToastService } from 'src/app/services/toast.service';
 import { TrainerService } from 'src/app/services/trainer.service';
 
 
@@ -27,7 +28,8 @@ export class TrainersTableComponent  implements OnInit {
   constructor(
     private trainerService: TrainerService,
     private changeDetectorRef: ChangeDetectorRef,
-    private router: Router
+    private router: Router,
+    private toast: ToastService
   ) {}
 
 
@@ -48,7 +50,7 @@ export class TrainersTableComponent  implements OnInit {
           this.changeDetectorRef.detectChanges();
         },
         error => {
-          console.error('Error fetching trainers:', error);
+          this.toast.showError("Error fetching trainers");
         }
       );
   }
@@ -63,29 +65,49 @@ export class TrainersTableComponent  implements OnInit {
     this.router.navigate(['/trainer-profile', trainerId]);
   }
 
-  // validateTrainer(id: any) {
-  //   this.trainerService.validateTrainerExtern(id).subscribe(data => {
-  //     console.log(data);
-  //   });
-  // }
-  
   validateTrainer(id: any) {
     this.trainerService.validateTrainerExtern(id).subscribe(data => {
       console.log(data);
 
+
       if (data === true) {
+        this.toast.showSuccess('Trainer has been activated successfuly!');
         const trainerToUpdate = this.trainers.find(trainer => trainer.id === id);
 
         if (trainerToUpdate) {
           // Update the 'active' property of the trainer
           trainerToUpdate.active = true;
         } else {
-          console.error('Trainer not found in the list.');
+          this.toast.showError('Trainer not found in the list.');
         }
       } else {
-        console.error('Validation failed.');
+        this.toast.showError('Validation failed!');
       }
+
+      this.router.navigate(['/trainers/all'])
     });
+
+  }
+
+
+  deleteTrainer(id: any) {
+    this.trainerService.deleteTrainer(id)
+    .subscribe(
+        (response) => {
+          console.log(response);
+          this.toast.showSuccess('Trainer has been deleted successfuly!');
+        },
+        error => {
+          console.log(error);
+          this.toast.showError('Error in deleting trainer !');
+        }
+        );
+        this.router.navigate(['/trainers/all']);
+      }
+
+
+  editTrainer(id: number) {
+
   }
 }
 

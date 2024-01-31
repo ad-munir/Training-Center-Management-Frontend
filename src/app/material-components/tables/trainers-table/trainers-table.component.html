@@ -49,13 +49,29 @@
     <td mat-cell *matCellDef="let element"><a href={{element.image}} target="_blank">view</a></td>
   </ng-container>
 
-  <!-- Validate Column -->
-  <ng-container matColumnDef="validate">
+   <!-- Validate Column -->
+   <ng-container matColumnDef="validate">
     <th mat-header-cell *matHeaderCellDef></th>
     <td mat-cell *matCellDef="let element">
       <button mat-button color="primary" *ngIf="!element.active" (click)="validateTrainer(element.id)" >validate</button>
     </td>
   </ng-container>
+
+  <!-- <ng-container matColumnDef="action">
+    <th mat-header-cell *matHeaderCellDef>Actions</th>
+    <td mat-cell *matCellDef="let element">
+      <button mat-icon-button  *ngIf="!element.active" (click)="validateTrainer(element.id)">
+        <mat-icon color="primary">done_all</mat-icon>
+      </button>
+      <button mat-icon-button (click)="editTrainer(element.id)">
+        <mat-icon color="yellow">edit</mat-icon>
+      </button>
+
+      <button mat-icon-button (click)="deleteTrainer(element.id)">
+        <mat-icon color="warn">delete</mat-icon>
+      </button>
+    </td>
+  </ng-container> -->
 
 
 
@@ -82,13 +98,3 @@
   ></tr>
 </table>
 
-
-<div *ngIf="!clickedRows.size">
-  Clicked rows will be logged here
-</div>
-
-<ul>
-  <li *ngFor="let clickedRow of clickedRows">
-    Clicked on {{clickedRow.firstname}}
-  </li>
-</ul>

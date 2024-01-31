@@ -23,15 +23,21 @@ export class CourseService {
     return this.http.post<Course>(`${this.url_backend}courses`, formData);
   }
 
+
+  deleteCourse(courseId: any): Observable<Course> {
+    return this.http.delete<Course>(this.url_backend + 'courses/' + courseId);
+  }
+
+
   getCourseById(courseId: any): Observable<any> {
     const url = `${this.url_backend}courses/${courseId}`;
     return this.http.get(url);
   }
 
-  deleteCourse(courseId: any): Observable<any> {
-    const url = `${this.url_backend}courses/${courseId}`;
-    return this.http.delete(url);
-  }
+  // deleteCourse(courseId: any): Observable<any> {
+  //   const url = `${this.url_backend}courses/${courseId}`;
+  //   return this.http.delete(url);
+  // }
 
 
 }

@@ -3,10 +3,14 @@
 
 
   <div class='demo-app-main'>
-    <full-calendar *ngIf='calendarVisible()' [options]='calendarOptions()'>
+    <full-calendar *ngIf='calendarVisible()' [options]='calendarOptions'>
       <ng-template #eventContent let-arg>
-        <b>{{ arg.timeText }}</b>
-        <i>{{ arg.event.title }}</i>
+        <div style="width: 100%; border: solid 1px ;text-wrap: wrap;">
+          <p>{{ arg.timeText }}</p>
+          <i>{{ arg.event.title }}</i>
+          <i>{{ arg.event.start }}</i>
+          <i>{{ arg.event.end }}</i>
+        </div>
       </ng-template>
     </full-calendar>
   </div>

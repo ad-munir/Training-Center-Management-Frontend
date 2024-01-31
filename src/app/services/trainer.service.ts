@@ -21,6 +21,11 @@ export class TrainerService {
   }
 
 
+  deleteTrainer(trainerId: any): Observable<Trainer> {
+    return this.http.delete<Trainer>(this.url_backend + 'trainers/' + trainerId);
+  }
+
+
   addTrainer(formData: FormData): Observable<Trainer> {
     return this.http.post<Trainer>(`${this.url_backend}trainers`, formData);
   }
@@ -29,7 +34,7 @@ export class TrainerService {
     return this.http.post<Trainer>(`${this.url_backend}trainers/extern`, formData);
   }
 
- validateTrainerExtern(id: string): Observable<boolean> {
+  validateTrainerExtern(id: string): Observable<boolean> {
   return this.http.post<boolean>(this.url_backend + 'trainers/validate/' + id, {});
 }
 
