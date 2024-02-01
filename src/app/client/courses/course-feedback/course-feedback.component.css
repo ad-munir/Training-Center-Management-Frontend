@@ -67,7 +67,8 @@ button:hover {
 }
 
 .feedback-message {
-    color: #05a7ed; /* Dark yellow text color */
+    color: #02051b; /* Dark yellow text color */
     margin-top: 10px; /* Add some top margin for spacing */
+    font-weight: bold;
   }
   

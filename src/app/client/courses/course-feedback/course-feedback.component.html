@@ -7,7 +7,7 @@
 </head>
 <body>
 
-    <form [formGroup]="feedbackForm" (ngSubmit)="onSubmit()" *ngIf="participant && !participant.evaluated">
+    <form [formGroup]="feedbackForm" (ngSubmit)="onSubmit()" *ngIf="participant && !participant.evaluated && !success">
         <a class="navbar-brand" routerLink="/"> <img src="./../../../assets/img/logo.png" alt="logo"> </a>
       
         <label for="comments">Comments:</label>
@@ -21,6 +21,9 @@
 
       <p *ngIf="participant && participant.evaluated" class="feedback-message">
         Hey {{ participant.firstname }}, you have already added your feedback.
+      </p>
+      <p *ngIf="success" class="feedback-message">
+        Thank you for your feedbakc .
       </p>
             
 </body>

@@ -4,6 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Participant } from 'src/app/models/participant.model';
 import { FeedbackService } from 'src/app/services/feedback.service';
 import { ParticipantService } from 'src/app/services/participant.service';
+import { ToastService } from 'src/app/services/toast.service';
 
 @Component({
   selector: 'app-course-feedback',
@@ -15,12 +16,15 @@ export class CourseFeedbackComponent {
   courseId: any;
   participantId: any;
   participant ? : Participant ;
+  success : boolean = false
 
   constructor(
     private route: ActivatedRoute,
     private fb: FormBuilder,
     private feedbackService: FeedbackService,
-    private participantService : ParticipantService
+    private participantService : ParticipantService,
+    private toast: ToastService
+
   ) {}
 
   ngOnInit() {
@@ -59,8 +63,10 @@ export class CourseFeedbackComponent {
 
       this.feedbackService.addFeedback(feedbackData).subscribe((data) => {
         console.log(data);
-        // Handle success or navigate to another page
-      });
+        this.toast.showSuccess("your feedback added successfully! thank you")
+        this.success = true
+        
+       });
     }
   }
   

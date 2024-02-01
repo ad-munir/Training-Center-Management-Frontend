@@ -53,7 +53,7 @@ export class CalendarComponent implements OnInit {
       this.events = data;
 
       this.calendarOptions.events = this.events.map((event) => ({
-        title: event.course.title ,
+        title: event.course?.title ,
         start: new Date(event.startDate),
         end: new Date(event.endDate),
       }));

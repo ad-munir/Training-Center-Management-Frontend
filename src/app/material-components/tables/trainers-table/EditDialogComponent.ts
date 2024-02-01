@@ -6,6 +6,7 @@ import { Keyword } from 'src/app/models/keyword.model';
 import { TrainerService } from 'src/app/services/trainer.service';
 import { KeywordService } from 'src/app/services/keyword.service';
 import { HttpClient } from '@angular/common/http';
+import { ToastService } from 'src/app/services/toast.service';
 
 
 @Component({
@@ -28,7 +29,9 @@ export class EditDialogComponent {
     private trainerService: TrainerService,
     private router: Router,
     private keywordService: KeywordService,
-    private http: HttpClient
+    private http: HttpClient,
+    private toast: ToastService
+
 
 
   ) {
@@ -97,15 +100,13 @@ export class EditDialogComponent {
         this.trainerService.editTrainer(formData,this.originalData.id)
           .subscribe(
             (newTrainer) => {
-              console.log('Trainer updated successfully:', newTrainer);
-              this.router.navigate(['/trainers/all']);
-
+              this.toast.showSuccess('Trainer updated successfully!');
+              location.reload();
             },
             (error) => {
               console.error('Error adding trainer:', error);
             }
           );
-     
   }
 
   onCancelClick(): void {
