@@ -80,27 +80,20 @@ export class EditDialogComponent {
     formData.append('phone', this.form.get('phone')?.value);
     formData.append('password', this.form.get('password')?.value);
     formData.append('keywords', keys);
-
-
     if (this.selectedFile) {
       formData.append('image', this.selectedFile);
     } else {
       formData.append('image', this.file);
     }
-
-
     this.trainerService.editTrainer(formData, this.originalData.id).subscribe(
       (newTrainer) => {
-
-        console.log('Trainer updated successfully:', newTrainer);
-        this.toast.showSuccess('Trainer has been updated successfully')
+        this.toast.showSuccess('Trainer updated successfully!');
+        location.reload();
       },
       (error) => {
         console.error('Error adding trainer:', error);
-        this.toast.showSuccess('Error in updating trainer')
       }
-      );
-      this.router.navigate(['/trainers/all']);
+    );
   }
 
   onCancelClick(): void {

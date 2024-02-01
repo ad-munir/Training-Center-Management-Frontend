@@ -3,6 +3,8 @@ import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Keyword } from 'src/app/models/keyword.model';
 import { KeywordService } from 'src/app/services/keyword.service';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-trainers-form',
@@ -17,7 +19,7 @@ export class TrainersFormComponent implements OnInit{
 
   keywords: Keyword[] = [];
 
-  constructor(private fb: FormBuilder, private trainerService: TrainerService, private keywordService: KeywordService) {
+  constructor(private fb: FormBuilder, private trainerService: TrainerService, private keywordService: KeywordService, private router: Router) {
     this.keywords = this.keywordService.getKeywords();
   }
 

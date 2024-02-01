@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Calendar, EventInput } from '@fullcalendar/core';
-import { signal, ChangeDetectorRef } from '@angular/core';
 import {
   CalendarOptions,
   DateSelectArg,
@@ -44,6 +42,9 @@ export class CalendarComponent implements OnInit {
     selectMirror: true,
     dayMaxEvents: true,
     select: this.handleDateSelect.bind(this),
+    themeSystem: 'bootstrap',
+    height: "auto",
+    eventBackgroundColor: "#FF6700"
   };
 
   ngOnInit(): void {

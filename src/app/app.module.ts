@@ -66,10 +66,8 @@ import { CalendarComponent } from './admin/content/calendar/calendar.component';
 import { FullCalendarModule } from '@fullcalendar/angular';
 import { LogoutComponent } from './auth/logout/logout.component';
 import { PlanningModalComponent } from './admin/content/planning-modal/planning-modal.component';
-
 import { NgToastModule } from 'ng-angular-popup';
 import { EditDialogComponent } from './material-components/tables/trainers-table/EditDialogComponent';
-
 
 
 
@@ -119,9 +117,8 @@ import { EditDialogComponent } from './material-components/tables/trainers-table
     CourseFeedbackComponent,
     CalendarComponent,
     LogoutComponent,
-    PlanningModalComponent,
-    EditDialogComponent
-
+    EditDialogComponent,
+    PlanningModalComponent
   ],
   imports: [
     MatDatepickerModule,
@@ -146,7 +143,9 @@ import { EditDialogComponent } from './material-components/tables/trainers-table
     MatInputModule,
     MatSelectModule,
     MatFormFieldModule,
-
+    MatInputModule,
+    MatSelectModule,
+    MatFormFieldModule,
 
   ],
   providers: [

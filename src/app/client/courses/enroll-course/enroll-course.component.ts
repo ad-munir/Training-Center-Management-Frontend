@@ -1,25 +1,28 @@
-import { Component, Inject } from '@angular/core';
+// enroll-course.component.ts
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ParticipantService } from 'src/app/services/participant.service';
+import { ToastService } from 'src/app/services/toast.service';
 
 @Component({
   selector: 'app-enroll-course',
   templateUrl: './enroll-course.component.html',
   styleUrls: ['./enroll-course.component.css'],
 })
-export class EnrollCourseComponent {
+export class EnrollCourseComponent implements OnInit {
   participantForm!: FormGroup;
   courseId: any;
 
   constructor(
     private fb: FormBuilder,
     private participantService: ParticipantService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private toastService: ToastService,
+    private router:Router
   ) {}
 
   ngOnInit(): void {
-
     this.route.paramMap.subscribe((params) => {
       this.courseId = params.get('id');
     });
@@ -27,7 +30,7 @@ export class EnrollCourseComponent {
     this.participantForm = this.fb.group({
       firstname: ['', Validators.required],
       lastname: ['', Validators.required],
-      birthday: ['', [Validators.required, this.validateDate]],
+      birthday: ['', [Validators.required, this.validateDate.bind(this)]],
       email: ['', [Validators.required, Validators.email]],
       phone: [''],
       city: [''],
@@ -44,19 +47,22 @@ export class EnrollCourseComponent {
     if (this.participantForm.valid) {
       const participantData = this.participantForm.value;
 
-      console.log(participantData);
-
-
       this.participantService.addParticipant(participantData).subscribe(
         (response) => {
-          console.log('Participant added successfully:', response);
+          this.toastService.showSuccess('Participant added successfully');
+          this.router.navigate(['/'])
         },
-
         (error) => {
-          console.error('Error adding participant:', error);
+          this.toastService.showError('Error adding participant');
         }
       );
+    } else {
+      this.toastService.showWarn('Please fill in the required fields');
     }
   }
 
+  isFieldInvalid(fieldName: string): boolean {
+    const control = this.participantForm.get(fieldName);
+    return control ? control.invalid && control.touched : false;
+  }
 }

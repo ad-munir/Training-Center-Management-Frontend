@@ -45,6 +45,7 @@ export class CoursesComponent implements OnInit {
   async getCourses() {
     try {
       this.courses = await this.service.getCourses().toPromise();
+      console.log(this.courses);
 
       if (this.courses && this.courses.length > 0) {
         this.maxPrice = Math.max(...this.courses.map((course) => course.cost));
@@ -149,4 +150,39 @@ export class CoursesComponent implements OnInit {
     this.selectedTypes.clear();
     this.applyFilters();
   }
+
+
+  getStarArray(score: number): number[] {
+    return Array.from({ length: 5 }, (_, index) => index + 1 <= score ? 1 : 0);
+  }
+
+
+
+  getStarRatingHtml(averageRating: number): string {
+    const roundedRating = Math.round(averageRating);
+
+    // Create HTML for star rating
+    const starHtml = Array.from({ length: 5 }, (_, index) =>
+      index < roundedRating
+        ? '<a href="#"><img src="../../assets/img/icon/color_star.svg" alt=""></a>'
+        : '<a href="#"><img src="../../assets/img/icon/star.svg" alt=""></a>'
+    ).join('');
+
+    return starHtml;
+  }
+
+
+  getAverageRating(feedbacks: any[]): number {
+    if (!feedbacks || feedbacks.length === 0) {
+      return 0;
+    }
+
+    const totalRating = feedbacks.reduce((sum, feedback) => sum + feedback.score, 0);
+    const averageRating = totalRating / feedbacks.length;
+
+    // Round to one decimal place
+    return Math.round(averageRating * 10) / 10;
+  }
+
+
 }
