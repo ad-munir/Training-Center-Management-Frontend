@@ -53,8 +53,10 @@ export class ParticipantMainComponent implements OnInit {
         to: participant.email,
         subject: 'Course Feedback',
         body: 'Hope you enjoyed the course, Go rate your experience.',
-        courseId :participant.courseId,
-        participantId : participant.id,
+        // courseId :participant.courseId,
+        // participantId : participant.id,
+        courseId: encodeURIComponent(participant.courseId),
+        participantId: encodeURIComponent(participant.id),
       };
 
       this.participantService.sendFeedbackMail(email).subscribe(

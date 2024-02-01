@@ -32,7 +32,7 @@ export class TrainersTableComponent  implements OnInit {
     private changeDetectorRef: ChangeDetectorRef,
     private router: Router,
     private toast: ToastService,
-    private dialog: MatDialog 
+    private dialog: MatDialog
 
   ) {}
 
@@ -100,6 +100,7 @@ export class TrainersTableComponent  implements OnInit {
         (response) => {
           console.log(response);
           this.toast.showSuccess('Trainer has been deleted successfuly!');
+          this.changeDetectorRef.detectChanges()
         },
         error => {
           console.log(error);

@@ -51,22 +51,22 @@ const routes: Routes = [
   {
     path: 'courses/all',
     component: CoursesMainComponent,
-    canActivate: [GuardAuthService], 
+    canActivate: [GuardAuthService],
   },
   {
     path: 'courses',
     component: CoursesFormComponent,
-    canActivate: [AdminGuard], 
+    canActivate: [AdminGuard],
   },
   {
     path: 'trainers/all',
     component: TrainersMainComponent,
-    canActivate: [GuardAuthService], 
+    canActivate: [GuardAuthService],
   },
   {
     path: 'trainers',
     component: TrainersFormComponent,
-    canActivate: [AdminGuard], 
+    canActivate: [AdminGuard],
   },
 
   { path: 'trainer-profile/:id', component: TrainerProfileComponent },
@@ -75,38 +75,38 @@ const routes: Routes = [
   {
     path: 'assistants/all',
     component: AssistantsMainComponent,
-    canActivate: [GuardAuthService], 
+    canActivate: [GuardAuthService],
   },
 
   {
     path: 'assistants',
     component: AssistantsFormComponent,
-    canActivate: [AdminGuard], 
+    canActivate: [AdminGuard],
   },
-  
+
   {
     path: 'participants/all',
     component: ParticipantMainComponent,
-    canActivate: [GuardAuthService], 
+    canActivate: [GuardAuthService],
   },
-  
+
   {
     path: 'participants/assigned',
     component: ParticipantMainComponent,
-    canActivate: [GuardAuthService], 
+    canActivate: [GuardAuthService],
   },
-  
+
   {
     path: 'companies/all',
     component: CompaniesMainComponent,
-    canActivate: [GuardAuthService], 
+    canActivate: [GuardAuthService],
   },
   {
     path: 'companies',
     component: CompaniesFormComponent,
-    canActivate: [AdminGuard], 
+    canActivate: [AdminGuard],
   },
-  
+
   { path: 'partners', component: PartnersComponent },
   { path: 'sorting', component: SortingTableComponent },
 ];

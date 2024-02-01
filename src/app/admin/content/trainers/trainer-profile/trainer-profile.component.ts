@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Course } from 'src/app/models/course.model';
 import { Trainer } from 'src/app/models/trainer.model';
 import { TrainerService } from 'src/app/services/trainer.service';
 
@@ -15,15 +16,21 @@ export class TrainerProfileComponent implements OnInit {
   trainerId: string = '';
   keywords: string[] = [];
 
+  courses!: Course[];
+
   constructor(
     private trainerService: TrainerService,
     private route: ActivatedRoute
     ) {}
 
+  role: any ;
+
 
   ngOnInit(): void {
     this.getTrainerId();
     this.getTrainer();
+    this.role = localStorage.getItem('ROLE');
+
   }
 
 
@@ -36,6 +43,9 @@ export class TrainerProfileComponent implements OnInit {
           console.log('trainer:', data);
 
           this.trainer = data;
+          this.courses = data.courses;
+          console.log('courses', this.courses);
+
           this.keywords = this.trainer?.keywords.split(',');
         },
         (error) => {

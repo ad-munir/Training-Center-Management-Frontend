@@ -24,8 +24,12 @@ export class CourseFeedbackComponent {
   ) {}
 
   ngOnInit() {
-    this.courseId = this.route.snapshot.queryParams['courseId'];
-    this.participantId = this.route.snapshot.queryParams['participantId'];
+    // this.courseId = this.route.snapshot.queryParams['courseId'];
+    // this.participantId = this.route.snapshot.queryParams['participantId'];
+
+    this.courseId = decodeURIComponent(this.route.snapshot.queryParams['courseId']);
+    this.participantId = decodeURIComponent(this.route.snapshot.queryParams['participantId']);
+
 
     // getting participant using participantId
     this.participantService.getParticipantById(this.participantId)
@@ -63,5 +67,5 @@ export class CourseFeedbackComponent {
       });
     }
   }
-  
+
 }

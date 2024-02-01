@@ -1,3 +1,4 @@
+import { ScheduleOut } from "./schedule.model";
 import { Trainer } from "./trainer.model";
 
 export interface Course {
@@ -9,6 +10,7 @@ export interface Course {
   category: string;
   image: any;
   trainer: Trainer;
+  schedules: ScheduleOut[];
 
-  [key: string]: string | number | File | Trainer | null;
+  [key: string]: string | number | File | Trainer | ScheduleOut[] | null;
 }

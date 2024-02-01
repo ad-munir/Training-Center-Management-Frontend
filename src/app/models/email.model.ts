@@ -2,7 +2,7 @@ export interface Email {
   to: string;
   subject: string;
   body: string;
-  courseId : number ;
-  participantId : number ;
+  courseId : any ;
+  participantId : any ;
 
 }

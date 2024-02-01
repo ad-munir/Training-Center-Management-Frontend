@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class TrainigCenterService {
+export class AuthService {
 
   url_backend : String  = 'http://localhost:8080/api/v1/'
 

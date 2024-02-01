@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Course } from 'src/app/models/course.model';
-import { TrainigCenterService } from 'src/app/services/auth.service';
+import { AuthService } from 'src/app/services/auth.service';
 import { CourseService } from 'src/app/services/course.service';
 // ... (your imports)
 

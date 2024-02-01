@@ -1,5 +1,60 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&family=Roboto:wght@300;400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700&display=swap');
+@import url("https://fonts.googleapis.com/css?family=Open+Sans:800|Poppins:300,400,500,600,700,800|Roboto:300,400,500");
 
+* {
+  font-family: 'Roboto', sans-serif;
+}
+
+.logo {
+  cursor: pointer;
+}
+
+.logout-btn {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-weight: 500;
+  padding: 5px 10px;
+  font-size: 15px;
+  color: #051031;
+  width: fit-content;
+  border-radius: 5px;
+  border: solid 1px 017EFA;
+  cursor: pointer;
+  background-color: #017EFA;
+}
+
+.logout-btn:hover {
+  background-color: #051031;
+  color: white;
+
+}
+
+.startdate, .enddate {
+  width: 170px;
+}
+
+.skill {
+  cursor: default;
+  border-radius: 10px;
+  color: white;
+  background-color: #081A51;
+  border: solid #081A51 2px;
+  font-size: 15px;
+  font-weight: 500;
+  text-transform: uppercase;
+  width: min-content;
+  padding: 2px 15px;
+}
+
+.skill:hover {
+  background-color: #eee;
+  color: #4A89DC;
+}
+
+.type {
+  text-transform: lowercase;
+}
 
 .timeline {
   border-left: 2px solid #E6E9ED;
@@ -105,6 +160,7 @@ html {
 .name {
   font-family: 'Roboto', sans-serif;
   font-weight: 600;
+  text-transform: capitalize;
 
 }
 
@@ -185,4 +241,30 @@ html {
     padding-top: 5rem;
     page-break-before: always;
   }
+}
+
+
+.category {
+  background-color: #ff663b;
+  padding: 4px 10px ;
+  font-size: 16px;
+  text-transform: capitalize;
+  font-weight: 700;
+  border: 2px solid transparent;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  color: #fff;
+  float: right;
+}
+
+.category:hover {
+  background: rgba(255, 102, 59, 0.8);
+  color: #fff;
+}
+
+.desc {
+  color: #353535;
+  font-size: 18px;
+  margin: 15px 0;
+  font-family: 'Poppins', sans-serif;
 }

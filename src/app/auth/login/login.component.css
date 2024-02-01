@@ -1,42 +1,51 @@
- body {
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700&display=swap');
+
+* {
+  font-family: 'Roboto', sans-serif !important;
+}
+
+
+.logo {
+  cursor: pointer;
+}
+.login-page {
     margin: 0;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
     background-color: #f0f0f0;
-    font-family: Arial, sans-serif;
   }
-  
+
   .container {
     width: 300px;
     padding: 20px;
-    background-color: #fff;
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   }
-  
+
   .login-form {
     display: flex;
     flex-direction: column;
   }
-  
+
   h2 {
     text-align: center;
     margin-bottom: 20px;
     color: #333;
   }
-  
+
   .form-group {
     margin-bottom: 15px;
   }
-  
+
   label {
     display: block;
     margin-bottom: 5px;
     color: #666;
+    font-weight: 500;
   }
-  
+
   input[type="email"],
   input[type="password"] {
     width: 100%;
@@ -44,7 +53,7 @@
     border: 1px solid #ccc;
     border-radius: 3px;
   }
-  
+
   button {
     padding: 8px 15px;
     border: none;
@@ -54,12 +63,12 @@
     cursor: pointer;
     transition: background-color 0.3s ease;
   }
-  
+
   button:disabled {
     background-color: #ccc;
     cursor: not-allowed;
   }
-   
+
 
 
 
