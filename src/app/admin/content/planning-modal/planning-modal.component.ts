@@ -24,7 +24,7 @@ export class PlanningModalComponent implements OnInit {
     private toast: ToastService
   ) {}
 
-  selectedCourseId: any;
+  selectedCourse: any;
   courseControl = new FormControl();
 
   ngOnInit(): void {
@@ -50,13 +50,13 @@ export class PlanningModalComponent implements OnInit {
 
   onSubmit() {
 
-    console.log(this.selectedCourseId);
+    console.log('selectedCourse ',this.selectedCourse);
 
 
-    if(this.selectedCourseId) {
+    if(this.selectedCourse) {
 
       const schedule: ScheduleIn = {
-        courseId: this.selectedCourseId,
+        courseId: this.selectedCourse.id,
         startDate: new Date(this.data.start),
         endDate: new Date(this.data.end)
       };
@@ -66,6 +66,7 @@ export class PlanningModalComponent implements OnInit {
           console.log('Schedule saved:', savedSchedule);
           this.dialogRef.close();
           this.toast.showSuccess('Schedule saved')
+          location.reload();
         },
         (error) => {
           console.error('Error saving schedule:', error);

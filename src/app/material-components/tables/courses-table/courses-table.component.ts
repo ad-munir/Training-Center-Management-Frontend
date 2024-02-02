@@ -79,7 +79,7 @@ export class CoursesTableComponent implements OnInit {
       );
   }
 
-  displayedColumns: string[] = ['category', 'cost', 'description', 'hours', 'image', 'title', 'trainer', 'type', 'action'];
+  displayedColumns: string[] = ['title', 'category', 'trainer', 'cost', 'description', 'hours', 'image', 'type', 'action'];
   clickedRows = new Set<TableElements>();
 
 
@@ -124,7 +124,7 @@ export class CoursesTableComponent implements OnInit {
   //     }
 
 
-  
+
 }
 
 

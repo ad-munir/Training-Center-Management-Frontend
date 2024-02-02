@@ -45,6 +45,7 @@ export class CoursesComponent implements OnInit {
   async getCourses() {
     try {
       this.courses = await this.service.getCourses().toPromise();
+      this.courses = this.courses?.filter(crs => crs.type === "PARTICIPANT")
       console.log(this.courses);
 
       if (this.courses && this.courses.length > 0) {

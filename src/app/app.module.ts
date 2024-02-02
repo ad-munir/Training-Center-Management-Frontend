@@ -118,7 +118,7 @@ import { EditDialogComponent } from './material-components/tables/trainers-table
     CalendarComponent,
     LogoutComponent,
     EditDialogComponent,
-    PlanningModalComponent
+    PlanningModalComponent,
   ],
   imports: [
     MatDatepickerModule,

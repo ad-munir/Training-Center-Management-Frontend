@@ -34,7 +34,7 @@ export class CalendarComponent implements OnInit {
       center: 'title',
       right: 'dayGridMonth,timeGridWeek,timeGridDay,listWeek',
     },
-    initialView: 'dayGridMonth',
+    initialView: 'timeGridWeek',
     events: [],
     weekends: true,
     editable: true,

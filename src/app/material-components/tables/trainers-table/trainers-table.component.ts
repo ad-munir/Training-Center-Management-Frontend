@@ -49,7 +49,6 @@ export class TrainersTableComponent  implements OnInit {
         (data: Trainer[]) => {
           console.log('fetch trainers:', data);
 
-          // Update trainers and trigger change detection
           this.trainers = data;
           this.changeDetectorRef.detectChanges();
         },
@@ -59,7 +58,7 @@ export class TrainersTableComponent  implements OnInit {
       );
   }
 
-  displayedColumns: string[] = ['fullname', 'email', 'phone', 'keywords', 'active', 'image','validate','action'];
+  displayedColumns: string[] = ['fullname', 'email', 'phone', 'keywords', 'active', 'image', 'action'];
   clickedRows = new Set<TableElements>();
 
 

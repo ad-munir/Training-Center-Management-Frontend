@@ -39,7 +39,11 @@ export class LoginComponent {
 
         localStorage.setItem('ROLE', role);
         localStorage.setItem('JWT', jwtToken);
-        this.router.navigateByUrl('/dashboard');
+        if(role === "TRAINER")
+
+          this.router.navigateByUrl(`/trainer-profile/${response.id}`);
+        else
+          this.router.navigateByUrl('/dashboard');
         this.toast.showInfo(`Welcome back ${role}`)
       }
     });

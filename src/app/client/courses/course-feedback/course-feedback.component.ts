@@ -1,3 +1,4 @@
+import { HttpParams } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
@@ -31,8 +32,17 @@ export class CourseFeedbackComponent {
     // this.courseId = this.route.snapshot.queryParams['courseId'];
     // this.participantId = this.route.snapshot.queryParams['participantId'];
 
-    this.courseId = decodeURIComponent(this.route.snapshot.queryParams['courseId']);
-    this.participantId = decodeURIComponent(this.route.snapshot.queryParams['participantId']);
+
+    const hash = window.location.href.split('?')[1]
+    console.log(hash);
+    const decodedString = atob(hash.replace(/-/g, '+').replace(/_/g, '/'));
+    console.log(decodedString);
+
+
+    const params = new URLSearchParams(decodedString);
+    this.courseId = params.get('courseId');
+    this.participantId = params.get('participantId');
+
 
 
     // getting participant using participantId
@@ -69,7 +79,7 @@ export class CourseFeedbackComponent {
         console.log(data);
         this.toast.showSuccess("your feedback added successfully! thank you")
         this.success = true
-        
+
        });
     }
   }

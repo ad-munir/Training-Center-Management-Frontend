@@ -50,7 +50,7 @@ export class AssignedParticipantTableComponent implements OnInit {
       );
   }
 
-  displayedColumns: string[] = ['fullname', 'birthday', 'email', 'phone', 'city', 'evaluated', 'course', 'select'];
+  displayedColumns: string[] = ['fullname', 'birthday', 'email', 'phone', 'city', 'course', 'evaluated', 'select'];
   clickedRows = new Set<TableElements>();
   selectedParticipants: Participant[] = [];
 

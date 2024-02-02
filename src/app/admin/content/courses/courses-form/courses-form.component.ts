@@ -7,6 +7,8 @@ import { TrainerService } from 'src/app/services/trainer.service';
 import { Router } from '@angular/router';
 import { Trainer } from 'src/app/models/trainer.model';
 import { ToastService } from 'src/app/services/toast.service';
+import { Company } from 'src/app/models/company.model';
+import { CompanyService } from 'src/app/services/company.service';
 
 @Component({
   selector: 'app-courses-form',
@@ -22,6 +24,7 @@ export class CoursesFormComponent implements OnInit {
   selectedFile: File | null = null;
   courses: Course[] = [];
   trainers: Trainer[] = [];
+  companies: Company[] = [];
   types = ["COMPANY", "PARTICIPANT"]
 
 
@@ -29,7 +32,9 @@ export class CoursesFormComponent implements OnInit {
     private trainerService: TrainerService,
     private changeDetectorRef: ChangeDetectorRef,
     private router: Router,
-    private toast: ToastService
+    private toast: ToastService,
+    private companyService: CompanyService,
+
   ) {}
 
 
@@ -38,6 +43,7 @@ export class CoursesFormComponent implements OnInit {
       .subscribe(
         (data: Trainer[]) => {
           console.log('fetch trainers:', data);
+
 
           // Update trainers and trigger change detection
           this.trainers = data;
@@ -49,20 +55,37 @@ export class CoursesFormComponent implements OnInit {
       );
   }
 
+  getCompanies(): void {
+    this.companyService.getCompanies().subscribe(
+      (data: Company[]) => {
+        console.log('fetch companies:', data);
 
+        this.companies = data;
+        this.changeDetectorRef.detectChanges();
+
+
+      },
+      (error) => {
+        console.error('Error fetching companies:', error);
+      }
+    );
+  }
 
   ngOnInit(): void {
     this.getTrainers();
+    this.getCompanies();
+
 
     this.form = this.fb.group({
       title: ['', Validators.required],
-      hours: ['', [Validators.required, Validators.min(1)]],  // Add minimum value validation for hours
-      cost: [0, [Validators.required, Validators.min(0)]],     // Add minimum value validation for cost
+      hours: ['', [Validators.required, Validators.min(1)]],
+      cost: [0, [Validators.required, Validators.min(0)]],
       description: ['', Validators.required],
       type: ['', Validators.required],
       category: ['', Validators.required],
       image: [null, Validators.required],
       trainerId: [null, Validators.required],
+      companyId: [null], // Add companyId field to the form
     });
   }
 
@@ -116,10 +139,13 @@ export class CoursesFormComponent implements OnInit {
   }
 
 
-
   selectType(event: any): void {
     const type = event.target.value;
     this.form.get('type')?.setValue(type);
+
+    if (type !== 'COMPANY') {
+      this.form.get('companyId')?.setValue(null);
+    }
   }
 
 }

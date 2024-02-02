@@ -4,6 +4,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { Keyword } from 'src/app/models/keyword.model';
 import { KeywordService } from 'src/app/services/keyword.service';
 import { Router } from '@angular/router';
+import { ToastService } from 'src/app/services/toast.service';
 
 
 @Component({
@@ -19,7 +20,9 @@ export class TrainersFormComponent implements OnInit{
 
   keywords: Keyword[] = [];
 
-  constructor(private fb: FormBuilder, private trainerService: TrainerService, private keywordService: KeywordService, private router: Router) {
+  constructor(private fb: FormBuilder, private trainerService: TrainerService,
+    private toast: ToastService,
+     private keywordService: KeywordService, private router: Router) {
     this.keywords = this.keywordService.getKeywords();
   }
 
@@ -70,15 +73,16 @@ export class TrainersFormComponent implements OnInit{
         .subscribe(
           (newTrainer) => {
             console.log('Trainer added successfully:', newTrainer);
-            // Optionally, you can redirect or perform other actions here
+            this.toast.showSuccess('Trainer added successfully')
+            this.router.navigate(['/trainers/all'])
           },
           (error) => {
             console.error('Error adding trainer:', error);
-            // Handle error as needed
+            this.toast.showError('Error adding trainer');
           }
         );
     } else {
-      console.error('No file selected');
+      this.toast.showWarn('No file selected');
     }
   }
 

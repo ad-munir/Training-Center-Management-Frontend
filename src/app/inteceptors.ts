@@ -20,7 +20,7 @@ export class Interceptor implements HttpInterceptor {
   ): Observable<HttpEvent<any>> {
 
 
-    if ( !request.url.includes('http://localhost:8080/api/v1/auth/authenticate') ) {
+    if ( !request.url.includes('http://localhost:8080/api/v1/auth/authenticate') || !request.url.includes('http://localhost:8080/api/v1/courses') ) {
 
       const jwtToken = localStorage.getItem('JWT');
 
