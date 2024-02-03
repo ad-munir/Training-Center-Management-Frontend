@@ -99,6 +99,15 @@ export class CoursesFormComponent implements OnInit {
 
   onSubmit(): void {
     if (this.form.valid && this.selectedFile) {
+
+      console.log('companyId : ', this.form.get('companyId')?.value);
+
+      if(!this.form.get('companyId')?.value){
+        console.log("0000000000000000000000000000");
+
+        return;
+      }
+
       const formData = new FormData();
 
       formData.append('title', this.form.get('title')?.value);
@@ -109,6 +118,13 @@ export class CoursesFormComponent implements OnInit {
       formData.append('category', this.form.get('category')?.value);
       formData.append('image', this.selectedFile);
       formData.append('trainerId', this.form.get('trainerId')?.value);
+
+      console.log('formData: ', formData.get('companyId'));
+      if(this.form.get('companyId')?.value)
+        formData.append('companyId', this.form.get('companyId')?.value);
+
+        console.log('formData22: ', formData.get('companyId'));
+
 
       this.courseService.addCourse(formData).subscribe(
         (newCourse) => {
@@ -139,6 +155,12 @@ export class CoursesFormComponent implements OnInit {
   }
 
 
+  selectCompany(event: any): void {
+    const companyId = event.target.value;
+    this.form.get('companyId')?.setValue(companyId);
+  }
+
+
   selectType(event: any): void {
     const type = event.target.value;
     this.form.get('type')?.setValue(type);
@@ -147,5 +169,6 @@ export class CoursesFormComponent implements OnInit {
       this.form.get('companyId')?.setValue(null);
     }
   }
+
 
 }

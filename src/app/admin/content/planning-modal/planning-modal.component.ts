@@ -55,10 +55,20 @@ export class PlanningModalComponent implements OnInit {
 
     if(this.selectedCourse) {
 
+      // console.log(this.selectedCourse);
+
+      // let compId
+      // if(this.selectedCourse.type === "COMPANY"){
+      //   compId
+      // } else {
+      //   compId = null;
+      // }
+
       const schedule: ScheduleIn = {
         courseId: this.selectedCourse.id,
         startDate: new Date(this.data.start),
-        endDate: new Date(this.data.end)
+        endDate: new Date(this.data.end),
+        // companyId: compId
       };
 
       this.calendarService.saveSchedule(schedule).subscribe(

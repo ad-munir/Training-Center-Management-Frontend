@@ -11,4 +11,5 @@ export interface ScheduleIn {
   courseId: any;
   startDate: Date;
   endDate: Date;
+  // companyId: any;
 }
