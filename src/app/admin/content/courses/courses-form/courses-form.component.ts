@@ -46,7 +46,7 @@ export class CoursesFormComponent implements OnInit {
 
 
           // Update trainers and trigger change detection
-          this.trainers = data;
+          this.trainers = data.filter(trainer => trainer.active);
           this.changeDetectorRef.detectChanges();
         },
         error => {
@@ -78,8 +78,8 @@ export class CoursesFormComponent implements OnInit {
 
     this.form = this.fb.group({
       title: ['', Validators.required],
-      hours: ['', [Validators.required, Validators.min(1)]],
-      cost: [0, [Validators.required, Validators.min(0)]],
+      hours: [, [Validators.required, Validators.min(1)]],
+      cost: [, [Validators.required, Validators.min(0)]],
       description: ['', Validators.required],
       type: ['', Validators.required],
       category: ['', Validators.required],
@@ -102,11 +102,6 @@ export class CoursesFormComponent implements OnInit {
 
       console.log('companyId : ', this.form.get('companyId')?.value);
 
-      if(!this.form.get('companyId')?.value){
-        console.log("0000000000000000000000000000");
-
-        return;
-      }
 
       const formData = new FormData();
 
@@ -131,8 +126,9 @@ export class CoursesFormComponent implements OnInit {
           console.log('Course added successfully:', newCourse);
           this.toast.showSuccess('Course added successfully!');
 
-          this.form.reset();
+          // this.form.reset();
           this.selectedFile = null;
+          this.router.navigate(['/courses/all'])
         },
         (error) => {
           console.error('Error adding course:', error);

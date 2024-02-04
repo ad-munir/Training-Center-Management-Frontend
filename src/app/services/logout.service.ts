@@ -10,5 +10,6 @@ export class LogoutService {
   logout(): void {
     localStorage.removeItem('JWT');
     localStorage.removeItem('ROLE');
+    localStorage.removeItem('PHOTO');
   }
 }

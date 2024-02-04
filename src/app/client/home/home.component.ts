@@ -32,10 +32,10 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     // Trigger the animation for each counter
-    this.triggerAnimation('teacherCount', 10);
-    this.triggerAnimation('studentCount', 160);
-    this.triggerAnimation('onlineCount', 20);
-    this.triggerAnimation('companyCount', 15);
+    this.triggerAnimation('teacherCount', 11);
+    this.triggerAnimation('studentCount', 10);
+    this.triggerAnimation('onlineCount', 11);
+    this.triggerAnimation('companyCount', 4);
   }
 
   triggerAnimation(property: string, finalValue: number): void {

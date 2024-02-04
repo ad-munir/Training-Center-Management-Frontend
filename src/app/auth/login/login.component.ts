@@ -26,26 +26,33 @@ export class LoginComponent {
     });
   }
 
-
-
   login() {
+    this.service.login(this.loginForm.value).subscribe(
+      (response) => {
+        console.log(response);
 
-    this.service.login(this.loginForm.value).subscribe((response) => {
-      console.log(response);
+        if (response.token) {
+          const jwtToken = response.token;
+          const role = response.role;
+          const photo = response.image;
 
-      if (response.token) {
-        const jwtToken = response.token;
-        const role = response.role;
+          localStorage.setItem('ROLE', role);
+          localStorage.setItem('JWT', jwtToken);
+          localStorage.setItem('PHOTO', photo);
 
-        localStorage.setItem('ROLE', role);
-        localStorage.setItem('JWT', jwtToken);
-        if(role === "TRAINER")
+          if (role === 'TRAINER')
+            this.router.navigateByUrl(`/trainer-profile/${response.id}`);
+          else
+            this.router.navigateByUrl('/dashboard');
 
-          this.router.navigateByUrl(`/trainer-profile/${response.id}`);
-        else
-          this.router.navigateByUrl('/dashboard');
-        this.toast.showInfo(`Welcome back ${role}`)
+            this.toast.showInfo(`Welcome back ${role}`);
+        }
+      },
+      (error) => {
+        this.loginForm.reset();
+        console.error(error);
+        this.toast.showError(error.error.message);
       }
-    });
+    );
   }
 }

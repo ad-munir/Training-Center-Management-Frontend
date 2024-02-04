@@ -42,8 +42,12 @@
   font-size: 15px;
   font-weight: 500;
   text-transform: uppercase;
-  width: min-content;
+  width: max-content;
   padding: 2px 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
 }
 
 .skill:hover {

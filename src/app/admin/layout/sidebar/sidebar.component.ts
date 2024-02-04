@@ -1,17 +1,26 @@
-import { Component , OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-sidebar',
   templateUrl: './sidebar.component.html',
-  styleUrls: ['./sidebar.component.css', './../layout.component.css']
+  styleUrls: ['./sidebar.component.css', './../layout.component.css'],
 })
-export class SidebarComponent implements OnInit  {
+export class SidebarComponent implements OnInit {
+  isLoading: boolean = false;
 
-  role: any ; // Assurez-vous de définir le type correct de votre rôle
+  role: any;
+  photo: any;
 
   ngOnInit() {
+    this.isLoading = true;
+
+    setTimeout(() => {
+      this.isLoading = false;
+    }, 500);
+
     // Obtenez le rôle à partir du stockage local
     this.role = localStorage.getItem('ROLE');
+    this.photo = localStorage.getItem('PHOTO');
   }
 
   isCoursesDropdownOpen = false;
@@ -50,7 +59,6 @@ export class SidebarComponent implements OnInit  {
     this.isCompaniesDropdownOpen = !this.isCompaniesDropdownOpen;
     this.closeOtherDropdowns('companies');
   }
-
 
   private closeOtherDropdowns(exclude: string): void {
     if (exclude !== 'courses') {

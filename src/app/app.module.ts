@@ -68,6 +68,8 @@ import { LogoutComponent } from './auth/logout/logout.component';
 import { PlanningModalComponent } from './admin/content/planning-modal/planning-modal.component';
 import { NgToastModule } from 'ng-angular-popup';
 import { EditDialogComponent } from './material-components/tables/trainers-table/EditDialogComponent';
+import { ImagePopupComponent } from './material-components/image-popup/image-popup.component';
+import { TextPopupComponent } from './material-components/text-popup/text-popup.component';
 
 
 
@@ -119,6 +121,8 @@ import { EditDialogComponent } from './material-components/tables/trainers-table
     LogoutComponent,
     EditDialogComponent,
     PlanningModalComponent,
+    ImagePopupComponent,
+    TextPopupComponent,
   ],
   imports: [
     MatDatepickerModule,

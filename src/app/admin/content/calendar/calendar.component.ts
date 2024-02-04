@@ -66,12 +66,17 @@ export class CalendarComponent implements OnInit {
     console.log('Selection Start: ' + selectInfo.startStr);
     console.log('Selection End: ' + selectInfo.endStr);
 
+    // Calculate the difference in hours
+    const start = new Date(selectInfo.startStr);
+    const end = new Date(selectInfo.endStr);
+    const hoursDifference = Math.abs(end.getTime() - start.getTime()) / (60 * 60 * 1000);
+
     const dialogRef = this.dialog.open(PlanningModalComponent, {
       width: '400px',
-
       data: {
         start: selectInfo.startStr,
         end: selectInfo.endStr,
+        hours: hoursDifference.toFixed(1), // Ensure one decimal place
       },
     });
   }
