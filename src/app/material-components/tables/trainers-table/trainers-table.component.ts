@@ -5,6 +5,8 @@ import { ToastService } from 'src/app/services/toast.service';
 import { TrainerService } from 'src/app/services/trainer.service';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { EditDialogComponent } from './EditDialogComponent';
+import { ImagePopupComponent } from '../../image-popup/image-popup.component';
+import { TextPopupComponent } from '../../text-popup/text-popup.component';
 
 
 
@@ -50,6 +52,9 @@ export class TrainersTableComponent  implements OnInit {
           console.log('fetch trainers:', data);
 
           this.trainers = data;
+          this.trainers.map(tr => {
+            tr.keywords = tr.keywords.replace(/,/g, ', ');
+          })
           this.changeDetectorRef.detectChanges();
         },
         error => {
@@ -99,7 +104,7 @@ export class TrainersTableComponent  implements OnInit {
         (response) => {
           console.log(response);
           this.toast.showSuccess('Trainer has been deleted successfuly!');
-          this.changeDetectorRef.detectChanges()
+          this.getTrainers()
         },
         error => {
           console.log(error);
@@ -113,11 +118,26 @@ export class TrainersTableComponent  implements OnInit {
 
   editTrainer(trainer: Trainer): void {
     const dialogRef = this.dialog.open(EditDialogComponent, {
-      width: '410px',
-      height:'600px',
-      data: { trainer }, // Pass the trainer data to the dialog
+      data: { trainer },
     });
-}
+  }
 
 
+  onOpenImage(img: any){
+    const dialogRef = this.dialog.open(ImagePopupComponent, {
+
+      data: {
+        image: img
+      },
+    });
+  }
+
+
+  onOpenText(desc: any){
+    const dialogRef = this.dialog.open(TextPopupComponent, {
+      data: {
+        text: desc
+      },
+    });
+  }
 }

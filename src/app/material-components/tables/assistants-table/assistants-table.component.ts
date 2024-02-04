@@ -3,6 +3,8 @@ import { Router } from '@angular/router';
 import { Assistant } from 'src/app/models/assistant.model';
 import { AssistantService } from 'src/app/services/assistant.service';
 import { ToastService } from 'src/app/services/toast.service';
+import { ImagePopupComponent } from '../../image-popup/image-popup.component';
+import { MatDialog } from '@angular/material/dialog';
 
 
 export interface TableElements {
@@ -24,6 +26,7 @@ export class AssistantsTableComponent {
   constructor(
     private assistantService: AssistantService,
     private changeDetectorRef: ChangeDetectorRef,
+    private dialog: MatDialog,
     private router: Router,
     private toast: ToastService
   ) {}
@@ -68,4 +71,17 @@ export class AssistantsTableComponent {
   }
 
   editAssistant(id: number) {}
+
+
+
+  onOpenImage(img: any){
+    const dialogRef = this.dialog.open(ImagePopupComponent, {
+
+      data: {
+        image: img
+      },
+    });
+  }
+
+
 }

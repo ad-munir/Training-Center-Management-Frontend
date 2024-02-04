@@ -8,19 +8,18 @@ import { KeywordService } from 'src/app/services/keyword.service';
 import { HttpClient } from '@angular/common/http';
 import { ToastService } from 'src/app/services/toast.service';
 
-
 @Component({
   selector: 'app-edit-dialog',
+  styleUrls: ['./trainers-table.component.css'],
   templateUrl: 'EditDialogComponent.html',
 })
 export class EditDialogComponent {
-
   originalData: any;
   keywords: Keyword[] = [];
   form: any;
   selectedFile: File | null = null;
-  keywordsArray : any = []
-  file : any
+  keywordsArray: any = [];
+  file: any;
 
   constructor(
     public dialogRef: MatDialogRef<EditDialogComponent>,
@@ -31,18 +30,12 @@ export class EditDialogComponent {
     private keywordService: KeywordService,
     private http: HttpClient,
     private toast: ToastService
-
-
-
   ) {
-
-    this.keywordService.clearKeywords()
+    this.keywordService.clearKeywords();
     this.originalData = { ...data.trainer };
-
   }
 
   ngOnInit(): void {
-
     this.form = this.fb.group({
       firstname: [this.originalData.firstname, Validators.required],
       lastname: [this.originalData.lastname, Validators.required],
@@ -52,14 +45,12 @@ export class EditDialogComponent {
       image: [],
     });
 
-     this.fetchImageData();
+    this.fetchImageData();
 
-     this.keywordsArray = this.originalData.keywords.split(',');
-     this.keywordsArray.forEach((keyword: any) => {
-     this.keywordService.addKeyword({ name: keyword });
-
+    this.keywordsArray = this.originalData.keywords.split(',');
+    this.keywordsArray.forEach((keyword: any) => {
+      this.keywordService.addKeyword({ name: keyword });
     });
-
   }
 
   fetchImageData(): void {
@@ -73,40 +64,36 @@ export class EditDialogComponent {
     );
   }
 
-
-
   onSaveClick(): void {
+    this.dialogRef.close();
 
-    this.dialogRef.close()
+    this.keywords = this.keywordService.getKeywords();
 
-        this.keywords = this.keywordService.getKeywords();
+    const keys = this.keywords.map((key) => key.name).join(',');
 
-        const keys = this.keywords.map(key => key.name).join(',');
+    console.log(keys);
 
-        console.log(keys);
-
-        const formData = new FormData();
-        formData.append('firstname', this.form.get('firstname')?.value);
-        formData.append('lastname', this.form.get('lastname')?.value);
-        formData.append('email', this.form.get('email')?.value);
-        formData.append('phone', this.form.get('phone')?.value);
-        formData.append('password', this.form.get('password')?.value);
-        formData.append('keywords', keys);
-        if (this.selectedFile) {
-        formData.append('image', this.selectedFile);
-        }else{
-        formData.append('image', this.file);
-        }
-        this.trainerService.editTrainer(formData,this.originalData.id)
-          .subscribe(
-            (newTrainer) => {
-              this.toast.showSuccess('Trainer updated successfully!');
-              location.reload();
-            },
-            (error) => {
-              console.error('Error adding trainer:', error);
-            }
-          );
+    const formData = new FormData();
+    formData.append('firstname', this.form.get('firstname')?.value);
+    formData.append('lastname', this.form.get('lastname')?.value);
+    formData.append('email', this.form.get('email')?.value);
+    formData.append('phone', this.form.get('phone')?.value);
+    formData.append('password', this.form.get('password')?.value);
+    formData.append('keywords', keys);
+    if (this.selectedFile) {
+      formData.append('image', this.selectedFile);
+    } else {
+      formData.append('image', this.file);
+    }
+    this.trainerService.editTrainer(formData, this.originalData.id).subscribe(
+      (newTrainer) => {
+        this.toast.showSuccess('Trainer updated successfully!');
+        location.reload();
+      },
+      (error) => {
+        console.error('Error adding trainer:', error);
+      }
+    );
   }
 
   onCancelClick(): void {
@@ -118,8 +105,6 @@ export class EditDialogComponent {
 
     if (inputElement.files && inputElement.files.length > 0) {
       this.selectedFile = inputElement.files[0];
-
     }
   }
-
 }

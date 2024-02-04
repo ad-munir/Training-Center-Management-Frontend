@@ -6,6 +6,9 @@ import { Router } from '@angular/router';
 import { Trainer } from 'src/app/models/trainer.model';
 import { TrainerService } from 'src/app/services/trainer.service';
 import { ToastService } from 'src/app/services/toast.service';
+import { MatDialog } from '@angular/material/dialog';
+import { ImagePopupComponent } from '../../image-popup/image-popup.component';
+import { TextPopupComponent } from '../../text-popup/text-popup.component';
 
 export interface TableElements {
   category: string;
@@ -30,6 +33,7 @@ export class CoursesTableComponent implements OnInit {
     private courseService: CourseService,
     private trainerService: TrainerService,
     private changeDetectorRef: ChangeDetectorRef,
+    private dialog: MatDialog,
     private router: Router,
     private toast: ToastService
   ) {}
@@ -95,16 +99,36 @@ export class CoursesTableComponent implements OnInit {
     console.log('Edit course:', course);
   }
 
-  deleteCourse(courseId: number) {
+  deleteCourse(courseId: any) {
     this.courseService.deleteCourse(courseId).subscribe(
       (data) => {
         console.log('Delete course with ID:', courseId);
         this.changeDetectorRef.detectChanges();
+        this.toast.showSuccess('Course deleted')
+        this.getCourses()
       },
       error => {
-        console.error('Error deleting courses:', error);
+        console.error('Error deleting course:', error);
+        this.toast.showError('Error in deleting course')
       }
     );
+  }
+
+
+  onOpenImage(img: any){
+    const dialogRef = this.dialog.open(ImagePopupComponent, {
+      data: {
+        image: img
+      },
+    });
+  }
+
+  onOpenText(desc: any){
+    const dialogRef = this.dialog.open(TextPopupComponent, {
+      data: {
+        text: desc
+      },
+    });
   }
 
 

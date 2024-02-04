@@ -21,9 +21,16 @@
   <ng-container matColumnDef="description">
     <th mat-header-cell *matHeaderCellDef>Description</th>
     <td class="line" mat-cell *matCellDef="let element">
-      {{ element.description.length > 10 ? element.description.substring(0, 10) + '...' : element.description }}
+      <span *ngIf="element.description.length > 15">
+        {{ element.description.substring(0, 15) }}
+        <span (click)="onOpenText(element.description)" class="text-primary fw-bold"> ...</span>
+      </span>
+      <span *ngIf="element.description.length <= 15">
+        {{ element.description }}
+      </span>
     </td>
   </ng-container>
+
 
 
   <!-- Type Column -->
@@ -41,8 +48,8 @@
   <!-- Image Column -->
   <ng-container matColumnDef="image">
     <th mat-header-cell *matHeaderCellDef>Image</th>
-    <td class="line" mat-cell *matCellDef="let element">
-      <a href={{element.image}} target="_blank">
+    <td class="line-img" mat-cell *matCellDef="let element">
+      <a (click)="onOpenImage(element.image)">
         <mat-icon>image</mat-icon>
       </a>
     </td>
@@ -64,7 +71,7 @@
         <mat-icon>edit</mat-icon>
       </button>
       <button mat-icon-button (click)="deleteCourse(element.id)">
-        <mat-icon>delete</mat-icon>
+        <mat-icon color="warn">delete</mat-icon>
       </button>
     </td>
   </ng-container>
